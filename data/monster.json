@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Orc",
+    "challenge": "Minion",
+    "experience": 3,
+    "hitPoints": 9,
+    "initiative": -1,
+    "damageDice": "d6",
+    "damageType": "Physical"
+  },
+  { "name": "Morgoth",
+    "challenge": "Boss",
+    "experience": 168,
+    "hitPoints": 100,
+    "initiative": 4,
+    "damageDice": "d20",
+    "damageType": "Psychical"
+  },
+  { "name": "Soldier",
+    "challenge": "Minion",
+    "experience": 10,
+    "hitPoints": 15,
+    "initiative": 2,
+    "damageDice": "d4",
+    "damageType": "Psychical"
+  },
+  { "name": "Druid",
+    "challenge": "Minion",
+    "experience": 15,
+    "hitPoints": 10,
+    "initiative": 7,
+    "damageDice": "d10",
+    "damageType": "Magic"
+  },
+  { "name": "Vegna",
+    "challenge": "Boss",
+    "experience": 50,
+    "hitPoints": 120,
+    "initiative": 3,
+    "damageDice": "d12",
+    "damageType": "Magic"
+  }
+]

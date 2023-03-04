@@ -1,0 +1,110 @@
+[
+  {
+    "player": "Oscar",
+    "xp": 749,
+    "body": 0,
+    "mind": 1,
+    "spirit": 0,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Oscar",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Marta",
+    "xp": 999,
+    "body": 1,
+    "mind": 1,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Marta",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Oscar",
+    "xp": 987,
+    "body": 2,
+    "mind": 1,
+    "spirit": 2,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Lava Man",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Ivan",
+    "xp": 999,
+    "body": 1,
+    "mind": 1,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Nospa",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Agapito",
+    "xp": 999,
+    "body": 1,
+    "mind": 2,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Agapito",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Pol",
+    "xp": 999,
+    "body": 1,
+    "mind": 2,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Pol",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Alex",
+    "xp": 999,
+    "body": 2,
+    "mind": 1,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Alex",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Ivan",
+    "xp": 399,
+    "body": 1,
+    "mind": 0,
+    "spirit": 0,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Ivan",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  },
+  {
+    "player": "Ivan",
+    "xp": 199,
+    "body": 1,
+    "mind": 2,
+    "spirit": 1,
+    "maxLife": 0,
+    "type": "Adventurer",
+    "name": "Mauricio",
+    "currentInitiative": 0,
+    "hitPoints": 0
+  }
+]
