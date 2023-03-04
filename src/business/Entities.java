@@ -1,7 +1,7 @@
 package business;
 
 public class Entities {
-    private String name;
+    private final String name;
     private int currentInitiative;
     private int hitPoints;
 
@@ -11,10 +11,6 @@ public class Entities {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getCurrentInitiative() {

@@ -1,9 +1,9 @@
 package business.character;
 
 import business.Dice;
-import persistance.CharacterApiDAO;
-import persistance.CharacterDAO;
-import persistance.CharacterJsonDAO;
+import persistence.CharacterApiDAO;
+import persistence.CharacterDAO;
+import persistence.CharacterJsonDAO;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class CharacterManager {
         }
     }
 
-    public boolean addCharacter(String charName, String playersName, int level){
+    public boolean checkCharacterName(String charName){
         LinkedList<Character> characters;
         try {
             characters = characterDAO.getCharList();
@@ -29,13 +29,6 @@ public class CharacterManager {
             throw new RuntimeException(e);
         }
 
-        if(!checkCharacterName(charName, characters)){
-            return false;
-        }
-        return true;
-    }
-
-    private boolean checkCharacterName(String charName, LinkedList<Character> characters) {
         for (Character character : characters) {
             if (character.getName().equals(charName)) {
                 return false;

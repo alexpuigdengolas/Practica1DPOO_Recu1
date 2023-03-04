@@ -4,31 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_5_javadoc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Practica 1 Recu.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/adventure.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/monster.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/gson-2.8.5-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/gson-2.8.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/Dice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/Entities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/character/Character.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/character/CharacterManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/persistance/CharacterApiDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/persistance/CharacterDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/persistance/CharacterJsonDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/CharacterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +47,8 @@
     "last_opened_file_path": "D:/Universidad/Archivos Universidad/DPOO/Practica 1 Recu/data",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -94,17 +79,23 @@
       <option name="presentableId" value="Default" />
       <updated>1677928926982</updated>
     </task>
+    <task id="LOCAL-00001" summary="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings">
+      <created>1677936010416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677936010416</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/business/BusinessController.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erroneos&#10;- Comentar todo el codigo antes" />
+    <MESSAGE value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
