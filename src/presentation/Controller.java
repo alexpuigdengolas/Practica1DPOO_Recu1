@@ -1,7 +1,9 @@
 package presentation;
 
 import business.BusinessController;
-import business.character.Character;
+import business.character.Char;
+
+import java.util.LinkedList;
 
 /**
  * Clase que servirá de controlador principal del programa
@@ -20,7 +22,7 @@ public class Controller {
     /**
      * Manager de todas las vistas
      */
-    private ViewManager viewManager;
+    private final ViewManager viewManager;
 
     /**
      * Manager de la gestión interna del código
@@ -56,30 +58,36 @@ public class Controller {
 
     /**
      * Este método lo utilizamos para poder declarar nuestro BusinessController. Aun asi, este método es mucho
-     * más que un simple getter. Como podemos observar, pedira el valor inicial para saber que base de datos quiere
-     * emplear el ususario y comprobara que esta sea funcional, esto es para evitar la creación de un BusinessController
+     * más que un simple getter. Como podemos observar, pedirá el valor inicial para saber que base de datos quiere
+     * emplear el usuario y comprobara que esta sea funcional, esto es para evitar la creación de un BusinessController
      * que no sea funcional al cien por cien.
-     * @return un boleano que dira si estos archivos son accesibles o no.
+     * @return un boolean que dirá si estos archivos son accesibles o no.
      */
     private boolean setBusinessController() {
-        viewManager.DAOMenu();
-        int option = viewManager.askForInteger("-> Answer: ");
-        this.businessController = new BusinessController(option);
-        viewManager.spacing();
-        viewManager.showMessage("Loading data...");
-        boolean answer = businessController.fileExists();
-        if (answer) {
-            viewManager.showMessage("Data was successfully loaded.");
-            return true;
-        } else {
-            viewManager.showMessage("One of the files does not exist.");
-            return false;
-        }
+        do {
+            viewManager.DAOMenu();
+            int option = viewManager.askForInteger("-> Answer: ");
+            if(option < 1 || option > 2){
+                viewManager.showMessage("You have to select a correct answer [1..2]");
+            }else {
+                this.businessController = new BusinessController(option);
+                viewManager.spacing();
+                viewManager.showMessage("Loading data...");
+                boolean answer = businessController.fileExists();
+                if (answer) {
+                    viewManager.showMessage("Data was successfully loaded.");
+                    return true;
+                } else {
+                    viewManager.showMessage("One of the files does not exist.");
+                    return false;
+                }
+            }
+        }while(true);
     }
 
     /**
-     * Este metodo contiene el funcionamiento del menu principal de cada partida
-     * @param option es la opcion que nos permite decidir cual sera la siguiente funcion que se le pedira al codigo
+     * Este método contiene el funcionamiento del menu principal de cada partida
+     * @param option es la opción que nos permite decidir cuál será la siguiente función que se le pedirá al código
      */
     private void runOption(int option) {
         switch (option) {
@@ -88,12 +96,12 @@ public class Controller {
             case ADD_ADVENTURE -> addAdventure();
             case PLAY_ADVENTURE -> playAdventure();
             case EXIT_MENU -> exitMenu();
-            default -> viewManager.showMessage("Wrong option. Enter a number from 1 to 6, both included");
+            default -> viewManager.showMessage("Please select an answer among the ones you can [1..5]");
         }
     }
 
     /**
-     * Este metodo servira para añadir un personaje a nuestra base de datos, enviando la informaicon necesaria a
+     * Este método servirá para añadir un personaje a nuestra base de datos, enviando la información necesaria a
      * BusinessController que se encargara de hacer las comprobaciones necesarias para poder crear un nuevo personaje
      */
     private void addCharacter() {
@@ -124,10 +132,12 @@ public class Controller {
         boolean charCreated = businessController.checkCharacterName(charName);
 
         if(charCreated){
+            charName = businessController.capitalizeString(charName);
+
             //Calculamos las stats
             viewManager.showMessage("Great, let me get a closer look at you...");
             viewManager.spacing();
-            Character character = new Character(charName, playersName, level);
+            Char character = new Char(charName, playersName, level);
             viewManager.showMessage("Generating your stats...");
             //Cuerpo
             int[] dices = businessController.generateCharacterStat("Body", character);
@@ -145,19 +155,76 @@ public class Controller {
             viewManager.showMessage("   - Mind: "+character.getMind());
             viewManager.showMessage("   - Spirit: "+character.getSpirit());
             viewManager.spacing();
+
+            //Seleccionamos la clase
+            viewManager.showMessage("Tavern keeper: “Looking good!”");
+            viewManager.showMessage("“And, lastly, ?”");
+            viewManager.spacing();
+            Char definitiveChar;
+            do {
+                String type = viewManager.askForString("-> Enter the character’s initial class [Adventurer, Cleric, Mage]: ");
+                viewManager.spacing();
+                viewManager.showMessage("Tavern keeper: Any decent party needs one of those.");
+                viewManager.showMessage("I guess that means you’re a " + type + " by now, nice!");
+                definitiveChar = businessController.generateClassifiedChar(character, type);
+                if(character == definitiveChar){
+                    viewManager.showMessage("You have not selected an adecuate class");
+                }
+            }while(character == definitiveChar);
+
             viewManager.showMessage("The new character "+charName+" has been created.");
 
             //Añadimos el personaje a la base de datos seleccionada
-            businessController.updateCharacterList(character);
+            businessController.updateCharacterList(definitiveChar);
         }else{
             //Enviamos un mensaje de error porque el nombre ya existe
-            viewManager.showMessage("It looks like there is a character that already uses that name");
+            viewManager.showMessage("It looks like there is a problem with the character name");
             viewManager.spacing();
         }
 
     }
 
+    /**
+     * Este método se emplea para poder listar todos los personajes que tenemos en la base de datos. Se tendrá en cuenta
+     * que estos personajes hayan sido creados por un jugador en específico para solo mostrar esos personajes.
+     * Si se selecciona un personaje se mostrará su información y se permitirá eliminar a dicho personaje de la base de
+     * datos.
+     */
     private void listCharacters() {
+        //Seleccionamos el nombre del jugador a investigar y mostramos los resultados
+        viewManager.spacing();
+        viewManager.showMessage("Tavern keeper: Lads! They want to see you!");
+        viewManager.showMessage("Who piques your interest?");
+        viewManager.spacing();
+        String player = viewManager.askForString("-> Enter the name of the Player to filter: ");
+        viewManager.spacing();
+
+        //Seleccionamos alguno de los personajes
+        LinkedList<Char> characters = businessController.getCharacterListByPlayer(player);
+        viewManager.showCharacterList(characters);
+        viewManager.spacing();
+
+        boolean charSelectedStatus = false;
+        do {
+            int charSelected = viewManager.askForInteger("Who would you like to meet [0.."+characters.size()+"]: ") - 1;
+            if (charSelected >= 1 && charSelected < characters.size()) {
+                charSelectedStatus = true;
+                viewManager.showChararcterInfo(characters.get(charSelected));
+
+                //Preguntamos si desean eliminar al personaje seleccionado
+                viewManager.showMessage("[Enter name to delete, or press enter to cancel]");
+                String charNameIntroduced = viewManager.askForString("Do you want to delete " + characters.get(charSelected).getName() + "? ");
+                if (charNameIntroduced.equals(characters.get(charSelected).getName())) {
+                    businessController.deleteCharacter(characters.get(charSelected).getName());
+                    viewManager.showMessage("Tavern keeper: I’m sorry kiddo, but you have to leave.");
+                    viewManager.spacing();
+                    viewManager.showMessage("Character " + characters.get(charSelected).getName() + " left the Guild.");
+                    viewManager.spacing();
+                }
+            } else if (charSelected != 0) {
+                viewManager.showMessage("You have to select a number between [0.."+characters.size()+"]");
+            }
+        }while (!charSelectedStatus);
 
     }
 
@@ -169,7 +236,9 @@ public class Controller {
 
     }
 
-
+    /**
+     * Este método nos mostrará que el funcionamiento del programa está por concluir
+     */
     private void exitMenu() {
         viewManager.spacing();
         viewManager.showMessage("Tavern keeper: Are you leaving already? See you soon, adventurer.");

@@ -96,15 +96,15 @@
     "hitPoints": 0
   },
   {
-    "player": "Ivan",
-    "xp": 199,
-    "body": 1,
-    "mind": 2,
+    "player": "Alex",
+    "xp": 0,
+    "body": 2,
+    "mind": 1,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 24,
     "type": "Adventurer",
-    "name": "Mauricio",
+    "name": "Hola",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 24
   }
 ]

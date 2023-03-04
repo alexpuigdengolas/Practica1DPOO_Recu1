@@ -7,7 +7,7 @@ import business.Entities;
  * Esta clase extiende de la clase Entities para poder aplicar ciertas funciones y servirá para poder
  * extender de ella y sacar distintos tipos de personajes
  */
-public class Character extends Entities {
+public class Char extends Entities {
     /**
      * Estas serán las variables que representaran a nuestros personajes
      */
@@ -25,11 +25,13 @@ public class Character extends Entities {
      * @param player el nombre de nuestro jugador
      * @param xp la experiencia inicial de nuestro personaje
      */
-    public Character(String name, String player, int xp) {
+    public Char(String name, String player, int xp) {
         super(name);
         this.player = player;
         this.xp = (xp*100)-101;
-        this.type = "Adventurer";
+        if(xp < 0){
+           this.xp = 0;
+        }
     }
 
     /**
@@ -118,5 +120,28 @@ public class Character extends Entities {
      */
     public int getLevel(){
         return (int) (Math.floor(xp/100) +1);
+    }
+
+    /**
+     * Este método nos retorna el nombre del jugador que lo creo
+     * @return el nombre del jugador
+     */
+    public String getPlayer() {
+        return player;
+    }
+
+    /**
+     * Este método es para conseguir la experiencia del personaje
+     * @return la experiencia actual del personaje
+     */
+    public int getXp() {
+        return xp;
+    }
+
+    /**
+     * Método para calcular la vida maxima actual del personaje
+     */
+    public void calcMaxLife(){
+        setMaxLife(10);
     }
 }

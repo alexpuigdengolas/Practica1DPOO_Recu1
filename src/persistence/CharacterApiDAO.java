@@ -1,6 +1,6 @@
 package persistence;
 
-import business.character.Character;
+import business.character.Char;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,12 +8,12 @@ import java.util.LinkedList;
 
 public class CharacterApiDAO implements CharacterDAO{
     @Override
-    public LinkedList<Character> getCharList() throws FileNotFoundException {
+    public LinkedList<Char> getCharList() throws FileNotFoundException {
         return null;
     }
 
     @Override
-    public void updateCharList(LinkedList<Character> characters) throws IOException {
+    public void updateCharList(LinkedList<Char> characters) throws IOException {
 
     }
 

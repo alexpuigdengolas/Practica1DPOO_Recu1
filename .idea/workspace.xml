@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings">
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras&#10;- Comentar la parte de persistencia">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/character/Adventurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Entities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Entities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/Char.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/character/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/CharacterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistance/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,13 +92,39 @@
       <option name="project" value="LOCAL" />
       <updated>1677936010416</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Comentado parte del código.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código">
+      <created>1677940312961</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677940312961</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erroneos&#10;- Comentar todo el codigo antes" />
     <MESSAGE value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación de personajes y añadir a estos en el JSON.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código antes&#10;- Solucionar warnings" />
+    <MESSAGE value="Comentado parte del código.&#10;&#10;TODO antes de seguir: &#10;- Corregir todos los posibles errores e inputs erróneos&#10;- Comentar todo el código" />
+    <MESSAGE value="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras" />
+    <MESSAGE value="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras&#10;- Comentar la parte de persistencia" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras&#10;- Comentar la parte de persistencia" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
+          <line>209</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

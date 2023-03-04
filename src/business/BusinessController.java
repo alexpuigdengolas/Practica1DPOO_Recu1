@@ -1,7 +1,9 @@
 package business;
 
-import business.character.Character;
+import business.character.Char;
 import business.character.CharacterManager;
+
+import java.util.LinkedList;
 
 /**
  * Este es el controlador de nuestro Business. Aquí gestionaremos toda la información que se nos proporciones tanto
@@ -30,6 +32,27 @@ public class BusinessController {
      */
     public boolean checkCharacterName(String charName) {
         return characterManager.checkCharacterName(charName);
+
+    }
+
+    /**
+     * Este método se utiliza para poder poner en mayúsculas todas las palabras que sean precedidas por un espacio
+     * para poder cumplir todas las demandas del enunciado
+     * @param string es la string con la que queremos trabajar
+     * @return La string modificada
+     */
+    public String capitalizeString(String string) {
+        char[] chars = string.toLowerCase().toCharArray();
+        boolean found = false;
+        for (int i = 0; i < chars.length; i++) {
+            if (!found && Character.isLetter(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+                found = true;
+            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
+                found = false;
+            }
+        }
+        return String.valueOf(chars);
     }
 
     /**
@@ -46,7 +69,7 @@ public class BusinessController {
      * @param character es el personaje al que le afecta este cambio
      * @return un array de enteros que dirán cuál ha sido el valor de los dados lanzados en este método
      */
-    public int[] generateCharacterStat(String stat, Character character) {
+    public int[] generateCharacterStat(String stat, Char character) {
         return characterManager.generateCharacterStat(stat, character);
     }
 
@@ -54,7 +77,36 @@ public class BusinessController {
      * Este método llamará a character manager para poder actualizar la lista de personajes
      * @param character el personaje que queremos añadir
      */
-    public void updateCharacterList(Character character) {
+    public void updateCharacterList(Char character) {
         characterManager.updateCharacterList(character);
+    }
+
+    /**
+     * Este método nos retorna una lista con todos los personajes creados por un jugador
+     * en específico
+     * @param player el nombre del jugador del cual queremos la información
+     * @return una lista de los jugadores de ese jugador
+     */
+    public LinkedList<Char> getCharacterListByPlayer(String player) {
+        return characterManager.getCharacterListByPlayer(player);
+    }
+
+    /**
+     * Este método nos retorna un personaje ya clasificado en su nuevo tipo. Es decir que pasa de ser Char a, por ejemplo,
+     * Adventurer
+     * @param character el personaje original
+     * @param type el tipo al que se quiere llegar
+     * @return el personaje ya modificado dentro de su tipo
+     */
+    public Char generateClassifiedChar(Char character, String type) {
+        return characterManager.generateClassifiedChar(character, type);
+    }
+
+    /**
+     * Método para eliminar personajes de la base de datos
+     * @param name el nombre del personaje a eliminar
+     */
+    public void deleteCharacter(String name) {
+        characterManager.deleteCharacter(name);
     }
 }
