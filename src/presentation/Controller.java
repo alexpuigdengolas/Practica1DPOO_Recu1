@@ -1,7 +1,10 @@
 package presentation;
 
 import business.BusinessController;
-import business.character.Char;
+import business.Char;
+import business.Combat;
+import business.Monster;
+import business.adventure.Adventure;
 
 import java.util.LinkedList;
 
@@ -206,30 +209,101 @@ public class Controller {
 
         boolean charSelectedStatus = false;
         do {
-            int charSelected = viewManager.askForInteger("Who would you like to meet [0.."+characters.size()+"]: ") - 1;
-            if (charSelected >= 1 && charSelected < characters.size()) {
+            int charSelected = viewManager.askForInteger("Who would you like to meet [0.."+characters.size()+"]: ");
+            if (charSelected >= 1 && charSelected <= characters.size()) {
                 charSelectedStatus = true;
-                viewManager.showChararcterInfo(characters.get(charSelected));
+                viewManager.showChararcterInfo(characters.get(charSelected-1));
 
                 //Preguntamos si desean eliminar al personaje seleccionado
                 viewManager.showMessage("[Enter name to delete, or press enter to cancel]");
-                String charNameIntroduced = viewManager.askForString("Do you want to delete " + characters.get(charSelected).getName() + "? ");
-                if (charNameIntroduced.equals(characters.get(charSelected).getName())) {
-                    businessController.deleteCharacter(characters.get(charSelected).getName());
+                String charNameIntroduced = viewManager.askForString("Do you want to delete " + characters.get(charSelected-1).getName() + "? ");
+                if (charNameIntroduced.equals(characters.get(charSelected-1).getName())) {
+                    businessController.deleteCharacter(characters.get(charSelected-1).getName());
                     viewManager.showMessage("Tavern keeper: I’m sorry kiddo, but you have to leave.");
                     viewManager.spacing();
-                    viewManager.showMessage("Character " + characters.get(charSelected).getName() + " left the Guild.");
+                    viewManager.showMessage("Character " + characters.get(charSelected-1).getName() + " left the Guild.");
                     viewManager.spacing();
                 }
             } else if (charSelected != 0) {
                 viewManager.showMessage("You have to select a number between [0.."+characters.size()+"]");
+            }else{
+                charSelectedStatus = true;
             }
         }while (!charSelectedStatus);
 
     }
 
     private void addAdventure() {
+        viewManager.showMessage("Tavern keeper: Planning an adventure? Good luck with that!");
+        viewManager.spacing();
+        String name = viewManager.askForString("-> Name your adventure: ");
+        if(businessController.checkAdventureName(name)){
+            viewManager.spacing();
+            viewManager.showMessage("Tavern keeper: You plan to undertake "+name+", really?");
+            viewManager.showMessage("How long will that take?");
+            viewManager.spacing();
+            int numCombats;
+            do {
+                numCombats = viewManager.askForInteger("-> How many encounters do you want [1..4]: ");
+            }while(numCombats < 1 || numCombats > 4);
+            viewManager.spacing();
+            viewManager.showMessage("Tavern keeper: 2 encounters? That is too much for me...");
+            viewManager.spacing();
+            viewManager.spacing();
 
+            LinkedList<Combat> combats = new LinkedList<Combat>();
+            Adventure adventure = new Adventure(name, numCombats);
+
+            for(int i = 0; i < numCombats; i++){
+                Combat newCombat = new Combat();
+                while(true) {
+                    viewManager.showCombatCreationMenu(i + 1, numCombats, newCombat);
+                    int option;
+                    do {
+                        option = viewManager.askForInteger("-> Enter an option [1..3]: ");
+                    } while (option < 1 || option > 3);
+
+                    switch (option) {
+                        case 1:
+                            addMonster(newCombat);
+                        case 2:
+                            //removeMonster(combats.get(i));
+                        default:
+                            break;
+                    }
+                    if(option == 3){
+                        break;
+                    }
+                }
+                combats.add(newCombat);
+            }
+
+            adventure.setCombats(combats);
+            businessController.addAdventure(adventure);
+            viewManager.spacing();
+            viewManager.showMessage("Tavern keeper: Great plan lad! I hope you won’t die!");
+            viewManager.spacing();
+            viewManager.showMessage("The new adventure "+adventure.getName()+" has been created.");
+        }else{
+            viewManager.showMessage("There is already a Adventure named "+name);
+            viewManager.spacing();
+        }
+
+    }
+
+    private void addMonster(Combat combat) {
+        viewManager.spacing();
+        LinkedList<Monster> monsters = businessController.getMonsterList();
+        viewManager.showMonsterList(monsters);
+        viewManager.spacing();
+        int monsterChosen = viewManager.askForInteger("-> Choose a monster to add [1.."+monsters.size()+"]: ") -1;
+        int monsterAmount = viewManager.askForInteger("-> How many "+monsters.get(monsterChosen).getName()+"(s) do you want to add: ");
+
+        for(int i = 0; i < monsterAmount; i++){
+            combat.getMonsters().add(monsters.get(monsterChosen));
+        }
+
+        viewManager.spacing();
     }
 
     private void playAdventure() {

@@ -1,6 +1,6 @@
 package persistence;
 
-import business.character.Char;
+import business.Char;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

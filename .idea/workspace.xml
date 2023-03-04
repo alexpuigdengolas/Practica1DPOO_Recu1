@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras&#10;- Comentar la parte de persistencia">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/character/Adventurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/Combat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/Monster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/MonsterManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/adventure/Adventure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/adventure/AdventureManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/AdventureDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/MonsterDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Entities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Entities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/Char.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/character/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/character/CharacterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Adventurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Char.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/character/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/CharacterManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
@@ -25,6 +33,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -35,6 +46,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,21 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Universidad/Archivos Universidad/DPOO/Practica 1 Recu/data",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Universidad/Archivos Universidad/DPOO/Practica 1 Recu/data&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="business" />
+      <recent name="persistence" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Universidad\Archivos Universidad\DPOO\Practica 1 Recu\data" />
@@ -115,12 +128,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>177</line>
+          <line>180</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>209</line>
+          <line>212</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

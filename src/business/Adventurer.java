@@ -1,4 +1,4 @@
-package business.character;
+package business;
 
 public class Adventurer extends Char{
     /**

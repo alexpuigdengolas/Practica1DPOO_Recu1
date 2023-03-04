@@ -1,7 +1,7 @@
 package business;
 
-import business.character.Char;
-import business.character.CharacterManager;
+import business.adventure.Adventure;
+import business.adventure.AdventureManager;
 
 import java.util.LinkedList;
 
@@ -14,6 +14,8 @@ public class BusinessController {
      * Aquí crearemos las variables de todos los managers que necesitemos en nuestro código
      */
     private CharacterManager characterManager; //Manager de personajes
+    private AdventureManager adventureManager; //Manager de aventuras
+    private MonsterManager monsterManager; //Manager de monstruos
 
     /**
      * Aquí tenemos el constructor de nuestro BusinessController el cual se comunicara con el resto de Managers dentro
@@ -22,6 +24,8 @@ public class BusinessController {
      */
     public BusinessController(int option) {
         this.characterManager = new CharacterManager(option);
+        this.adventureManager = new AdventureManager(option);
+        this.monsterManager = new MonsterManager(option);
     }
 
     /**
@@ -108,5 +112,17 @@ public class BusinessController {
      */
     public void deleteCharacter(String name) {
         characterManager.deleteCharacter(name);
+    }
+
+    public boolean checkAdventureName(String name) {
+        return adventureManager.checkAdventureName(name);
+    }
+
+    public LinkedList<Monster> getMonsterList() {
+        return monsterManager.getMonsterList();
+    }
+
+    public void addAdventure(Adventure adventure) {
+        adventureManager.updateAdventureList(adventure);
     }
 }

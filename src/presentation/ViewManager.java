@@ -1,6 +1,9 @@
 package presentation;
 
-import business.character.Char;
+import business.Char;
+import business.Combat;
+import business.Monster;
+
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -151,5 +154,29 @@ public class ViewManager {
         System.out.println("* Spirit: "+character.getSpirit());
         System.out.println();
 
+    }
+
+    public void showCombatCreationMenu(int i, int numCombats, Combat combat) {
+        System.out.println("* Encounter "+i+" / "+numCombats);
+        System.out.println("* Monsters in encounter");
+        if(!(combat.getMonsters().isEmpty())) {
+            for (int j = 0; j < combat.getMonsters().size(); j++) {
+                //TODO: Mostrar todos los mosntruos del mismo tipo juntos
+                System.out.println("    # "+combat.getMonsters().get(j).getName());
+            }
+        }else{
+            System.out.println("    # Empty");
+        }
+        System.out.println();
+        System.out.println("1. Add monster");
+        System.out.println("2. Remove monster");
+        System.out.println("3. Continue");
+        System.out.println();
+    }
+
+    public void showMonsterList(LinkedList<Monster> monsterList) {
+        for(int i = 0; i < monsterList.size(); i++){
+            System.out.println((i+1)+". "+monsterList.get(i).getName()+" ("+monsterList.get(i).getChallenge()+")");
+        }
     }
 }

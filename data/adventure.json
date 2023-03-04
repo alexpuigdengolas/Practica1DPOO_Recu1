@@ -1,693 +1,777 @@
 [
   {
-    "numCombat": 2,
     "name": "The Ultimate Quest",
-    "combats": [
-      {
-        "monsters": [
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 4,
-            "name": "Morgoth",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 100,
-            "damageDice": "d20",
-            "experience": 168,
-            "damageType": "Psychical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 4,
-            "name": "Morgoth",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 100,
-            "damageDice": "d20",
-            "experience": 168,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": -1,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "numCombat": 3,
-    "name": "Midel age La Salle",
-    "combats": [
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Morgoth",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 100,
-            "damageDice": "d20",
-            "experience": 168,
-            "damageType": "Psychical"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "numCombat": 4,
-    "name": "Critical Rolle",
-    "combats": [
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Morgoth",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 100,
-            "damageDice": "d20",
-            "experience": 168,
-            "damageType": "Psychical"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "numCombat": 3,
-    "name": "Strange Things",
-    "combats": [
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Druid",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
-          },
-          {
-            "initiative": 0,
-            "name": "Druid",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Vegna",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 120,
-            "damageDice": "d12",
-            "experience": 50,
-            "damageType": "Magic"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "numCombat": 3,
-    "name": "La Salle",
-    "combats": [
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Soldier",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 15,
-            "damageDice": "d4",
-            "experience": 10,
-            "damageType": "Psychical"
-          },
-          {
-            "initiative": 0,
-            "name": "Druid",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
-          },
-          {
-            "initiative": 0,
-            "name": "Druid",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
-          },
-          {
-            "initiative": 0,
-            "name": "Orc",
-            "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
-          }
-        ]
-      },
-      {
-        "monsters": [
-          {
-            "initiative": 0,
-            "name": "Vegna",
-            "currentInitiative": 0,
-            "challenge": "Boss",
-            "hitPoints": 120,
-            "damageDice": "d12",
-            "experience": 50,
-            "damageType": "Magic"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "numCombat": 2,
-    "name": "Holi",
     "combats": [
       {
         "monsters": [
           {
-            "initiative": 0,
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
             "name": "Orc",
             "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
+            "hitPoints": 9
           },
           {
-            "initiative": 0,
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
             "name": "Orc",
             "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
-            "experience": 3,
-            "damageType": "Physical"
+            "hitPoints": 9
           },
           {
-            "initiative": 0,
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
             "name": "Orc",
             "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
             "challenge": "Minion",
-            "hitPoints": 9,
-            "damageDice": "d6",
             "experience": 3,
-            "damageType": "Physical"
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Boss",
+            "experience": 168,
+            "initiative": 4,
+            "damageDice": "d20",
+            "damageType": "Psychical",
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "hitPoints": 100
           }
         ]
       },
       {
         "monsters": [
           {
-            "initiative": 0,
-            "name": "Druid",
+            "challenge": "Boss",
+            "experience": 168,
+            "initiative": 4,
+            "damageDice": "d20",
+            "damageType": "Psychical",
+            "name": "Morgoth",
             "currentInitiative": 0,
-            "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
+            "hitPoints": 100
           },
           {
-            "initiative": 0,
-            "name": "Druid",
-            "currentInitiative": 0,
             "challenge": "Minion",
-            "hitPoints": 10,
-            "damageDice": "d10",
-            "experience": 15,
-            "damageType": "Magic"
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
           },
           {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Midel age La Salle",
+    "numCombat": 3,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
             "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Boss",
+            "experience": 168,
+            "initiative": 0,
+            "damageDice": "d20",
+            "damageType": "Psychical",
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "hitPoints": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Critical Rolle",
+    "numCombat": 4,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Boss",
+            "experience": 168,
+            "initiative": 0,
+            "damageDice": "d20",
+            "damageType": "Psychical",
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "hitPoints": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Strange Things",
+    "numCombat": 3,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Boss",
+            "experience": 50,
+            "initiative": 0,
+            "damageDice": "d12",
+            "damageType": "Magic",
             "name": "Vegna",
             "currentInitiative": 0,
+            "hitPoints": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "La Salle",
+    "numCombat": 3,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 0,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
             "challenge": "Boss",
-            "hitPoints": 120,
-            "damageDice": "d12",
             "experience": 50,
-            "damageType": "Magic"
+            "initiative": 0,
+            "damageDice": "d12",
+            "damageType": "Magic",
+            "name": "Vegna",
+            "currentInitiative": 0,
+            "hitPoints": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Holi",
+    "numCombat": 2,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": 0,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Minion",
+            "experience": 15,
+            "initiative": 0,
+            "damageDice": "d10",
+            "damageType": "Magic",
+            "name": "Druid",
+            "currentInitiative": 0,
+            "hitPoints": 10
+          },
+          {
+            "challenge": "Boss",
+            "experience": 50,
+            "initiative": 0,
+            "damageDice": "d12",
+            "damageType": "Magic",
+            "name": "Vegna",
+            "currentInitiative": 0,
+            "hitPoints": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Elden Ring",
+    "numCombat": 2,
+    "combats": [
+      {
+        "monsters": [
+          {
+            "challenge": "Boss",
+            "experience": 168,
+            "initiative": 4,
+            "damageDice": "d20",
+            "damageType": "Psychical",
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "hitPoints": 100
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          },
+          {
+            "challenge": "Minion",
+            "experience": 3,
+            "initiative": -1,
+            "damageDice": "d6",
+            "damageType": "Physical",
+            "name": "Orc",
+            "currentInitiative": 0,
+            "hitPoints": 9
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "challenge": "Boss",
+            "experience": 50,
+            "initiative": 3,
+            "damageDice": "d12",
+            "damageType": "Magic",
+            "name": "Vegna",
+            "currentInitiative": 0,
+            "hitPoints": 120
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 2,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
+          },
+          {
+            "challenge": "Minion",
+            "experience": 10,
+            "initiative": 2,
+            "damageDice": "d4",
+            "damageType": "Psychical",
+            "name": "Soldier",
+            "currentInitiative": 0,
+            "hitPoints": 15
           }
         ]
       }

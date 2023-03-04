@@ -1,6 +1,5 @@
-package business.character;
+package business;
 
-import business.Dice;
 import persistence.CharacterApiDAO;
 import persistence.CharacterDAO;
 import persistence.CharacterJsonDAO;
