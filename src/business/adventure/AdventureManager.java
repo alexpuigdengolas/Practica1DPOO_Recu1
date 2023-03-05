@@ -69,4 +69,12 @@ public class AdventureManager {
             throw new RuntimeException(e);
         }
     }
+
+    public LinkedList<Adventure> getAdventureList() {
+        try {
+            return adventureDAO.getAdventureList();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

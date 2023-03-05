@@ -247,29 +247,28 @@ public class Controller {
                 numCombats = viewManager.askForInteger("-> How many encounters do you want [1..4]: ");
             }while(numCombats < 1 || numCombats > 4);
             viewManager.spacing();
-            viewManager.showMessage("Tavern keeper: 2 encounters? That is too much for me...");
+            viewManager.showMessage("Tavern keeper: "+numCombats+" encounters? That is too much for me...");
             viewManager.spacing();
             viewManager.spacing();
 
-            LinkedList<Combat> combats = new LinkedList<Combat>();
+            LinkedList<Combat> combats = new LinkedList<>();
             Adventure adventure = new Adventure(name, numCombats);
 
             for(int i = 0; i < numCombats; i++){
                 Combat newCombat = new Combat();
                 while(true) {
-                    viewManager.showCombatCreationMenu(i + 1, numCombats, newCombat);
+                    LinkedList<String> monsterName = new LinkedList<>();
+                    LinkedList<Integer> monsterCount = new LinkedList<>();
+                    viewManager.showCombatCreationMenu(i + 1, numCombats, newCombat, monsterName, monsterCount);
                     int option;
                     do {
                         option = viewManager.askForInteger("-> Enter an option [1..3]: ");
                     } while (option < 1 || option > 3);
 
                     switch (option) {
-                        case 1:
-                            addMonster(newCombat);
-                        case 2:
-                            //removeMonster(combats.get(i));
-                        default:
-                            break;
+                        case 1 -> addMonster(newCombat);
+
+                        case 2 -> removeMonster(newCombat, monsterName);
                     }
                     if(option == 3){
                         break;
@@ -296,18 +295,123 @@ public class Controller {
         LinkedList<Monster> monsters = businessController.getMonsterList();
         viewManager.showMonsterList(monsters);
         viewManager.spacing();
-        int monsterChosen = viewManager.askForInteger("-> Choose a monster to add [1.."+monsters.size()+"]: ") -1;
-        int monsterAmount = viewManager.askForInteger("-> How many "+monsters.get(monsterChosen).getName()+"(s) do you want to add: ");
-
-        for(int i = 0; i < monsterAmount; i++){
-            combat.getMonsters().add(monsters.get(monsterChosen));
+        boolean bossIn = false;
+        for(int i = 0; i < combat.getMonsters().size(); i++){
+            if(combat.getMonsters().get(i).getChallenge().equals("Boss")){
+                bossIn = true;
+                break;
+            }
         }
 
+        int monsterChosen = viewManager.askForInteger("-> Choose a monster to add [1.."+monsters.size()+"]: ") -1;
+
+        if(monsters.get(monsterChosen).getChallenge().equals("Boss") && bossIn){
+            viewManager.showMessage("The monster selected is a classified as a Boss and this combat already has one");
+        }else {
+            if (!monsters.get(monsterChosen).getChallenge().equals("Boss")) {
+                int monsterAmount = viewManager.askForInteger("-> How many " + monsters.get(monsterChosen).getName() + "(s) do you want to add: ");
+                for (int i = 0; i < monsterAmount; i++) {
+                    combat.getMonsters().add(monsters.get(monsterChosen));
+                }
+            } else {
+                viewManager.showMessage("The monster selected is a classified as a Boss and there can only be one per combat");
+                combat.getMonsters().add(monsters.get(monsterChosen));
+            }
+        }
         viewManager.spacing();
+
+
+    }
+
+    private void removeMonster(Combat combat, LinkedList<String> monsterName) {
+        if(combat.getMonsters().isEmpty()){
+            viewManager.spacing();
+            viewManager.showMessage("There are no monsters at the moment in this combat");
+            viewManager.spacing();
+        }else{
+            int numMonsters = 0;
+            int monsterSelected;
+            do {
+                 monsterSelected = viewManager.askForInteger("-> Which monster do you want to delete: ") - 1;
+                 if(monsterSelected < 0 || monsterSelected > monsterName.size()){
+                     viewManager.showMessage("That is no an existing enemy");
+                 }
+            }while (monsterSelected < 0 || monsterSelected > monsterName.size());
+            String monsterType = monsterName.get(monsterSelected);
+            for(int i = combat.getMonsters().size()-1; i >= 0; i--){
+                if(combat.getMonsters().get(i).getName().equals(monsterType)){
+                    combat.getMonsters().remove(i);
+                    numMonsters++;
+                }
+            }
+            viewManager.spacing();
+            viewManager.showMessage(numMonsters+" "+monsterType+" were removed from the encounter.");
+            viewManager.spacing();
+        }
     }
 
     private void playAdventure() {
+        viewManager.spacing();
+        viewManager.showMessage("Tavern keeper: So, you are looking to go on an adventure?");
+        viewManager.showMessage("Where do you fancy going?");
+        viewManager.spacing();
+        LinkedList<Adventure> adventureList = businessController.getAdventureList();
+        for (Adventure adventure : adventureList) {
+            adventure.setParty(new LinkedList<>());
+        }
+        viewManager.showAdventureListe(adventureList);
+        int adventureSelected;
+        do {
+            adventureSelected = viewManager.askForInteger("-> Choose an adventure: ") -1;
+            if(adventureSelected < 0 || adventureSelected >= adventureList.size()){
+                viewManager.showMessage("You haven't selected any real adventure, please try again");
+            }
+        }while (adventureSelected < 0 || adventureSelected >= adventureList.size());
 
+        characterSelectionScreen(adventureList, adventureSelected);
+
+
+    }
+
+    private void characterSelectionScreen(LinkedList<Adventure> adventureList, int adventureSelected){
+        viewManager.showMessage("Tavern keeper: "+adventureList.get(adventureSelected).getName()+" it is!");
+        viewManager.showMessage("And how many people shall join you?");
+        viewManager.spacing();
+        int numPartyMembers;
+        do {
+            numPartyMembers = viewManager.askForInteger("-> Choose a number of characters [3..5]: ");
+            if(numPartyMembers < 3 || numPartyMembers > 5){
+                viewManager.showMessage("You have to select a good number");
+            }
+        }while (numPartyMembers < 3 || numPartyMembers > 5);
+        viewManager.spacing();
+        viewManager.showMessage("Tavern keeper: Great, "+numPartyMembers+" it is.");
+        viewManager.showMessage("“Who among these lads shall join you?”");
+        viewManager.spacing();
+        LinkedList<Char> characters = businessController.getCharacterList();
+        int index = 1;
+        do {
+            viewManager.showSelectionCharacterScreen(characters, adventureList.get(adventureSelected).getParty(), index, numPartyMembers);
+            int characterSelected;
+            boolean charNotInParty = false;
+            do {
+
+                characterSelected = viewManager.askForInteger("-> Choose character " + index + " in your party: ") -1;
+                if(!(characterSelected < 0 || characterSelected >= characters.size())) {
+                    if (adventureList.get(adventureSelected).getParty().contains(characters.get(characterSelected))) {
+                        viewManager.showMessage("This character already belongs to the party");
+                    } else {
+                        charNotInParty = true;
+                    }
+                }else{
+                    viewManager.showMessage("You have to select an available member to the party");
+                }
+            }while((characterSelected < 0 || characterSelected >= characters.size()) || !charNotInParty);
+
+            adventureList.get(adventureSelected).getParty().add(characters.get(characterSelected));
+
+            index++;
+        }while (adventureList.get(adventureSelected).getParty().size() < numPartyMembers);
     }
 
     /**

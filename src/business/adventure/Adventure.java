@@ -9,11 +9,11 @@ public class Adventure {
     /**
      * Nombre de la aventura
      */
-    private String name;
+    private final String name;
     /**
      * Numero de combates que componen nuestra aventura
      */
-    private int numCombat;
+    private final int numCombat;
     /**
      * Listado de combates que componen la aventura
      */
@@ -21,11 +21,12 @@ public class Adventure {
     /**
      * Listado de personajes que participan en la aventura
      */
-    private final LinkedList<Char> party = new LinkedList<>();
+    private LinkedList<Char> party;
 
     public Adventure(String name, int numCombat) {
         this.name = name;
         this.numCombat = numCombat;
+        party = new LinkedList<>();
     }
 
     public void setCombats(LinkedList<Combat> combats) {
@@ -34,5 +35,21 @@ public class Adventure {
 
     public String getName() {
         return name;
+    }
+
+    public int getNumCombat() {
+        return numCombat;
+    }
+
+    public LinkedList<Combat> getCombats() {
+        return combats;
+    }
+
+    public LinkedList<Char> getParty() {
+        return party;
+    }
+
+    public void setParty(LinkedList<Char> party) {
+        this.party = party;
     }
 }

@@ -13,9 +13,9 @@ public class BusinessController {
     /**
      * Aquí crearemos las variables de todos los managers que necesitemos en nuestro código
      */
-    private CharacterManager characterManager; //Manager de personajes
-    private AdventureManager adventureManager; //Manager de aventuras
-    private MonsterManager monsterManager; //Manager de monstruos
+    private final CharacterManager characterManager; //Manager de personajes
+    private final AdventureManager adventureManager; //Manager de aventuras
+    private final MonsterManager monsterManager; //Manager de monstruos
 
     /**
      * Aquí tenemos el constructor de nuestro BusinessController el cual se comunicara con el resto de Managers dentro
@@ -124,5 +124,13 @@ public class BusinessController {
 
     public void addAdventure(Adventure adventure) {
         adventureManager.updateAdventureList(adventure);
+    }
+
+    public LinkedList<Adventure> getAdventureList() {
+        return adventureManager.getAdventureList();
+    }
+
+    public LinkedList<Char> getCharacterList() {
+        return characterManager.getCharacterList();
     }
 }

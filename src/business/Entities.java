@@ -31,4 +31,12 @@ public class Entities {
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
     }
+
+    public int getCurrentInitiative() {
+        return currentInitiative;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
 }

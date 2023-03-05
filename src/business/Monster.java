@@ -5,11 +5,11 @@ public class Monster extends Entities{
     /**
      * Desafió que supondrá el monstruo
      */
-    private String challenge;
+    private final String challenge;
     /**
      * Experiencia que conseguiremos después de derrotar al monstruo
      */
-    private int experience;
+    private final int experience;
     /**
      * Iniciativa inicial del monstruo
      */
@@ -17,11 +17,11 @@ public class Monster extends Entities{
     /**
      * dado de daño del monstruo
      */
-    private String damageDice;
+    private final String damageDice;
     /**
      * Tipo de daño realizado por el monstruo
      */
-    private String damageType;
+    private final String damageType;
 
     public Monster(String name, String challenge, int experience, int hitPoints, int initiative, String damageDice, String damageType) {
         super(name);
@@ -35,5 +35,21 @@ public class Monster extends Entities{
 
     public String getChallenge() {
         return challenge;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public String getDamageDice() {
+        return damageDice;
+    }
+
+    public String getDamageType() {
+        return damageType;
     }
 }

@@ -3,6 +3,7 @@ package presentation;
 import business.Char;
 import business.Combat;
 import business.Monster;
+import business.adventure.Adventure;
 
 import java.util.InputMismatchException;
 import java.util.LinkedList;
@@ -156,13 +157,27 @@ public class ViewManager {
 
     }
 
-    public void showCombatCreationMenu(int i, int numCombats, Combat combat) {
+    public void showCombatCreationMenu(int i, int numCombats, Combat combat, LinkedList<String> monsterNames, LinkedList<Integer> monsterCount) {
         System.out.println("* Encounter "+i+" / "+numCombats);
         System.out.println("* Monsters in encounter");
+        boolean found;
         if(!(combat.getMonsters().isEmpty())) {
             for (int j = 0; j < combat.getMonsters().size(); j++) {
-                //TODO: Mostrar todos los mosntruos del mismo tipo juntos
-                System.out.println("    # "+combat.getMonsters().get(j).getName());
+                found = false;
+                for(int x = 0; x < monsterNames.size(); x++){
+                    if(monsterNames.get(x).equals(combat.getMonsters().get(j).getName())){
+                        monsterCount.set(x, monsterCount.get(x) + 1);
+                        found = true;
+                    }
+                }
+                if(!found){
+                    monsterNames.add(combat.getMonsters().get(j).getName());
+                    monsterCount.add(1);
+                }
+            }
+
+            for(int j = 0; j < monsterNames.size(); j++){
+                System.out.println("    "+(j+1)+". "+monsterNames.get(j)+" ( x"+monsterCount.get(j)+" )");
             }
         }else{
             System.out.println("    # Empty");
@@ -177,6 +192,33 @@ public class ViewManager {
     public void showMonsterList(LinkedList<Monster> monsterList) {
         for(int i = 0; i < monsterList.size(); i++){
             System.out.println((i+1)+". "+monsterList.get(i).getName()+" ("+monsterList.get(i).getChallenge()+")");
+        }
+    }
+
+    public void showAdventureListe(LinkedList<Adventure> adventureList) {
+        System.out.println("Available adventures: ");
+        for(int i = 0; i < adventureList.size(); i++){
+            System.out.println("   "+(i+1)+". "+adventureList.get(i).getName());
+        }
+        System.out.println();
+    }
+
+    public void showSelectionCharacterScreen(LinkedList<Char> characters, LinkedList<Char> party, int index, int numCharsInParty) {
+        System.out.println();
+        System.out.println("--------------------------------");
+        System.out.println("Your party ("+index+"/"+numCharsInParty+"):");
+        int num = 0;
+        for(int i = 0; party.size() > i; i++){
+            System.out.println("   " + (i + 1) + ". " + party.get(i).getName());
+            num = i+1;
+        }
+        for(int i = 0; i < numCharsInParty - party.size(); i++) {
+                System.out.println("   " + (i + 1 + num) + ". Empty");
+        }
+        System.out.println("--------------------------------");
+        System.out.println("Available characters: ");
+        for(int i = 0; i < characters.size(); i++){
+            System.out.println("   "+(i+1)+". "+characters.get(i).getName());
         }
     }
 }

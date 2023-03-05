@@ -148,7 +148,7 @@ public class CharacterManager {
             LinkedList<Char> originalCharacters = characterDAO.getCharList();
             if(player.equals("")) return originalCharacters;
             else{
-                LinkedList<Char> characters = new LinkedList<Char>();
+                LinkedList<Char> characters = new LinkedList<>();
                 for (Char originalCharacter : originalCharacters) {
                     if (originalCharacter.getPlayer().equals(player)) {
                         characters.add(originalCharacter);
@@ -187,6 +187,14 @@ public class CharacterManager {
             characters.removeIf(character -> character.getName().equals(name));
             characterDAO.updateCharList(characters);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public LinkedList<Char> getCharacterList() {
+        try {
+            return characterDAO.getCharList();
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
