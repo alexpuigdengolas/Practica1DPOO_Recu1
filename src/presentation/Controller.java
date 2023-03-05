@@ -3,8 +3,9 @@ package presentation;
 import business.BusinessController;
 import business.Char;
 import business.Combat;
-import business.Monster;
 import business.adventure.Adventure;
+import business.entities.Entity;
+import business.entities.monster.Monster;
 
 import java.util.LinkedList;
 
@@ -140,7 +141,9 @@ public class Controller {
             //Calculamos las stats
             viewManager.showMessage("Great, let me get a closer look at you...");
             viewManager.spacing();
-            Char character = new Char(charName, playersName, level);
+            int xp = (level*100)-101;
+            if(xp < 0) xp = 0;
+            Char character = new Char(charName, playersName, xp);
             viewManager.showMessage("Generating your stats...");
             //Cuerpo
             int[] dices = businessController.generateCharacterStat("Body", character);
@@ -368,13 +371,107 @@ public class Controller {
             }
         }while (adventureSelected < 0 || adventureSelected >= adventureList.size());
 
-        characterSelectionScreen(adventureList, adventureSelected);
+        Adventure adventure = adventureList.get(adventureSelected);
+        characterSelectionScreen(adventure);
 
+        boolean adventureLost = false;
+        //Jugar partida
+        viewManager.spacing();
+        viewManager.showMessage("Tavern keeper: “Great, good luck on your adventure lads!”");
+        viewManager.spacing();
+        viewManager.showMessage("The "+adventure.getName()+" will start soon...");
+        for(int i = 0; i < adventure.getNumCombat(); i++){
 
+            //Jugar Combate
+            viewManager.showCombatMonsterList(adventure.getCombats().get(i), i+1);
+            viewManager.spacing();
+            viewManager.spacing();
+
+            //Preparation Stage
+            businessController.preparationStage(adventure.getParty());
+            viewManager.preparationStageShow(adventure.getParty());
+
+            //Calculating Initiative
+            LinkedList<Entity> entitiesOnGame = new LinkedList<>();
+            entitiesOnGame.addAll(adventure.getParty());
+            entitiesOnGame.addAll(adventure.getCombats().get(i).getMonsters());
+            businessController.calculateInitiative(entitiesOnGame);
+            viewManager.showInitiativeOrder(entitiesOnGame);
+
+            //Combat Stage
+            boolean combatDone, combatOver;
+            int round = 1;
+            do {
+                //Show Life
+                viewManager.showCombatStageStart(adventure.getParty(), round);
+
+                //Attack
+                combatDone = true;
+                combatOver  = true;
+                for (Entity entity : entitiesOnGame) {
+                    int dmgDone;
+                    int critical;
+                    if(entity.getHitPoints() > 0) {
+                        Entity objective = businessController.objectiveSelection(entity, adventure.getParty(), adventure.getCombats().get(i).getMonsters());
+                        critical = businessController.attackCritical(entity);
+                        dmgDone = businessController.attackStage(entity, objective, critical);
+                        viewManager.showAttack(entity, objective, dmgDone, critical);
+                    }
+
+                    for (int x = 0; x < adventure.getParty().size(); x++) {
+                        if (adventure.getParty().get(x).getHitPoints() > 0) {
+                            combatOver = false;
+                            break;
+                        }
+                    }
+
+                    for (int y = 0; y < adventure.getCombats().get(i).getMonsters().size(); y++) {
+                        if (adventure.getCombats().get(i).getMonsters().get(y).getHitPoints() > 0) {
+                            combatDone = false;
+                            break;
+                        }
+                    }
+                }
+                viewManager.showMessage("End of round "+round);
+                round++;
+            }while(!combatDone && !combatOver);
+
+            if(combatDone){
+                viewManager.showMessage("All enemies are defeated.");
+                int xpSum = businessController.getXpEarned(adventure, i);
+                for(int j = 0; j < adventure.getParty().size(); j++){
+                    //TODO: Asegurarse de que no se puede subir mas de 999 de xp
+                    int oldXp = adventure.getParty().get(j).getLevel();
+                    adventure.getParty().get(j).setXp(adventure.getParty().get(j).getXp() + xpSum);
+                    viewManager.showMessage(adventure.getParty().get(j).getName()+" gains "+xpSum+" xp.");
+
+                    if(Math.floor(oldXp) < Math.floor(adventure.getParty().get(j).getLevel())){
+                        viewManager.showMessage(adventure.getParty().get(j).getName()+" levels up. They are now lvl "+adventure.getParty().get(j).getLevel()+"!");
+                    }
+                }
+            }
+            if(combatOver){
+                viewManager.showMessage("Tavern keeper: Lad, wake up. Yes, your party fell unconscious.");
+                viewManager.showMessage("Don’t worry, you are safe back at the Tavern.");
+                adventureLost = true;
+                break;
+            }
+
+            //TODO: Descanso corto (cura)
+            businessController.stopPreparationStage(adventure.getParty());
+
+        }
+        viewManager.spacing();
+        if(!adventureLost){
+            System.out.println("Congratulations, your party completed "+adventure.getName());
+        }
+
+        businessController.setCharsAfterGame(adventure.getParty());
+        //TODO: Comprobar que se puede acabar la partida si se pierde
     }
 
-    private void characterSelectionScreen(LinkedList<Adventure> adventureList, int adventureSelected){
-        viewManager.showMessage("Tavern keeper: "+adventureList.get(adventureSelected).getName()+" it is!");
+    private void characterSelectionScreen(Adventure adventure){
+        viewManager.showMessage("Tavern keeper: "+adventure.getName()+" it is!");
         viewManager.showMessage("And how many people shall join you?");
         viewManager.spacing();
         int numPartyMembers;
@@ -391,14 +488,14 @@ public class Controller {
         LinkedList<Char> characters = businessController.getCharacterList();
         int index = 1;
         do {
-            viewManager.showSelectionCharacterScreen(characters, adventureList.get(adventureSelected).getParty(), index, numPartyMembers);
+            viewManager.showSelectionCharacterScreen(characters, adventure.getParty(), index, numPartyMembers);
             int characterSelected;
             boolean charNotInParty = false;
             do {
 
                 characterSelected = viewManager.askForInteger("-> Choose character " + index + " in your party: ") -1;
                 if(!(characterSelected < 0 || characterSelected >= characters.size())) {
-                    if (adventureList.get(adventureSelected).getParty().contains(characters.get(characterSelected))) {
+                    if (adventure.getParty().contains(characters.get(characterSelected))) {
                         viewManager.showMessage("This character already belongs to the party");
                     } else {
                         charNotInParty = true;
@@ -408,10 +505,10 @@ public class Controller {
                 }
             }while((characterSelected < 0 || characterSelected >= characters.size()) || !charNotInParty);
 
-            adventureList.get(adventureSelected).getParty().add(characters.get(characterSelected));
+            adventure.getParty().add(characters.get(characterSelected));
 
             index++;
-        }while (adventureList.get(adventureSelected).getParty().size() < numPartyMembers);
+        }while (adventure.getParty().size() < numPartyMembers);
     }
 
     /**

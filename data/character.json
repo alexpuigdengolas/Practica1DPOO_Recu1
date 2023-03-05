@@ -5,11 +5,12 @@
     "body": 0,
     "mind": 1,
     "spirit": 0,
-    "maxLife": 0,
+    "maxLife": 80,
     "type": "Adventurer",
     "name": "Oscar",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 80,
+    "damageType": "Physical"
   },
   {
     "player": "Marta",
@@ -17,11 +18,12 @@
     "body": 1,
     "mind": 1,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 110,
     "type": "Adventurer",
     "name": "Marta",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 110,
+    "damageType": "Physical"
   },
   {
     "player": "Oscar",
@@ -29,11 +31,12 @@
     "body": 2,
     "mind": 1,
     "spirit": 2,
-    "maxLife": 0,
+    "maxLife": 120,
     "type": "Adventurer",
     "name": "Lava Man",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 120,
+    "damageType": "Physical"
   },
   {
     "player": "Ivan",
@@ -41,11 +44,12 @@
     "body": 1,
     "mind": 1,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 110,
     "type": "Adventurer",
     "name": "Nospa",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 110,
+    "damageType": "Physical"
   },
   {
     "player": "Agapito",
@@ -53,11 +57,12 @@
     "body": 1,
     "mind": 2,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 110,
     "type": "Adventurer",
     "name": "Agapito",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 110,
+    "damageType": "Physical"
   },
   {
     "player": "Pol",
@@ -65,11 +70,12 @@
     "body": 1,
     "mind": 2,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 110,
     "type": "Adventurer",
     "name": "Pol",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 110,
+    "damageType": "Physical"
   },
   {
     "player": "Alex",
@@ -77,11 +83,12 @@
     "body": 2,
     "mind": 1,
     "spirit": 1,
-    "maxLife": 0,
+    "maxLife": 120,
     "type": "Adventurer",
     "name": "Alex",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 120,
+    "damageType": "Physical"
   },
   {
     "player": "Ivan",
@@ -89,11 +96,12 @@
     "body": 1,
     "mind": 0,
     "spirit": 0,
-    "maxLife": 0,
+    "maxLife": 44,
     "type": "Adventurer",
     "name": "Ivan",
     "currentInitiative": 0,
-    "hitPoints": 0
+    "hitPoints": 44,
+    "damageType": "Physical"
   },
   {
     "player": "Alex",
@@ -101,10 +109,11 @@
     "body": 2,
     "mind": 1,
     "spirit": 1,
-    "maxLife": 24,
+    "maxLife": 12,
     "type": "Adventurer",
     "name": "Hola",
     "currentInitiative": 0,
-    "hitPoints": 24
+    "hitPoints": 12,
+    "damageType": "Physical"
   }
 ]

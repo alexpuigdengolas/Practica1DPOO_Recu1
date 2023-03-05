@@ -1,6 +1,6 @@
 package persistence;
 
-import business.Monster;
+import business.entities.monster.Monster;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,7 +21,7 @@ public class MonsterJsonDAO implements MonsterDAO{
 
     @Override
     public LinkedList<Monster> getMonsterList() throws FileNotFoundException {
-        return new LinkedList<Monster>(Arrays.asList(gson.fromJson(gson.newJsonReader(new FileReader(PATH)), Monster[].class)));
+        return new LinkedList<>(Arrays.asList(gson.fromJson(gson.newJsonReader(new FileReader(PATH)), Monster[].class)));
     }
 
     @Override

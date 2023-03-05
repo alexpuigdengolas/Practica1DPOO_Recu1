@@ -2,7 +2,11 @@ package business;
 
 import business.adventure.Adventure;
 import business.adventure.AdventureManager;
+import business.entities.Entity;
+import business.entities.monster.Monster;
+import business.entities.monster.MonsterManager;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
@@ -132,5 +136,71 @@ public class BusinessController {
 
     public LinkedList<Char> getCharacterList() {
         return characterManager.getCharacterList();
+    }
+
+    public void preparationStage(LinkedList<Char> party) {
+        for (Char aChar : party) {
+            aChar.preparationStage();
+        }
+    }
+
+    public void calculateInitiative(LinkedList<Entity> entitiesOnGame) {
+        for (Entity entity : entitiesOnGame) {
+            entity.calculateCurrentInitiative();
+        }
+
+        Comparator<Entity> initiativeComparator = new Comparator<Entity>() {
+            public int compare(Entity e1, Entity e2) {
+                return Integer.compare(e2.getCurrentInitiative(), e1.getCurrentInitiative());
+            }
+        };
+
+        entitiesOnGame.sort(initiativeComparator);
+    }
+
+    public void stopPreparationStage(LinkedList<Char> party) {
+        for (Char aChar : party) {
+            aChar.stopPreparationStage();
+        }
+    }
+
+    public int attackStage(Entity entity, Entity objective, int critical) {
+        switch (entity.getClass().getSimpleName()){
+            case "Monster":
+                Monster monster = new Monster((Monster)entity);
+                return monster.attack(objective, critical);
+
+            default:
+                Char character = (Char) entity;
+                return character.attack(objective, critical);
+        }
+    }
+
+    public Entity objectiveSelection(Entity entity, LinkedList<Char> characters, LinkedList<Monster> monsters) {
+        switch (entity.getClass().getSimpleName()){
+            case "Monster":
+                Monster monster = new Monster((Monster)entity);
+                return monster.selectCharacterObjective(characters);
+
+            default:
+                Char character = (Char) entity;
+                return character.selectMonsterObjective(monsters);
+        }
+    }
+
+    public int attackCritical(Entity entity) {
+        return entity.isCriticalDmg();
+    }
+
+    public int getXpEarned(Adventure adventure, int i) {
+        int xpSum = 0;
+        for(int j = 0; j < adventure.getCombats().get(i).getMonsters().size(); j++){
+            xpSum += adventure.getCombats().get(i).getMonsters().get(j).getExperience();
+        }
+        return xpSum;
+    }
+
+    public void setCharsAfterGame(LinkedList<Char> party) {
+        characterManager.setCharsAfterGame(party);
     }
 }

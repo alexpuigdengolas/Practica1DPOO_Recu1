@@ -2,7 +2,8 @@ package presentation;
 
 import business.Char;
 import business.Combat;
-import business.Monster;
+import business.entities.Entity;
+import business.entities.monster.Monster;
 import business.adventure.Adventure;
 
 import java.util.InputMismatchException;
@@ -70,42 +71,6 @@ public class ViewManager {
                 scanner.nextLine();
             }
         }
-    }
-
-    /**
-     * Este método nos permite controlar que se nos pase un double
-     * @param message el mensaje que queremos mostrar antes de pedir el double
-     * @return el double introducido por el usuario
-     */
-    public double askForDouble(String message) {
-        while (true) {
-            try {
-                System.out.print(message);
-                return scanner.nextDouble();
-            } catch (InputMismatchException e) {
-                System.out.println("That's not a valid double, try again!");
-            } finally {
-                scanner.nextLine();
-            }
-        }
-    }
-
-    /**
-     * Este método nos permite mostrar varios mensajes tabulados
-     * @param messages el listado de mensajes que queremos mostrar
-     */
-    public void showTabulatedList(String[] messages) {
-        for (String message : messages) {
-            showTabulatedMessage(message);
-        }
-    }
-
-    /**
-     * Este método nos permite mostrar un mensaje tabulado
-     * @param message el mensaje que queremos mostrar
-     */
-    public void showTabulatedMessage(String message) {
-        System.out.println("\t" + message);
     }
 
     /**
@@ -220,5 +185,82 @@ public class ViewManager {
         for(int i = 0; i < characters.size(); i++){
             System.out.println("   "+(i+1)+". "+characters.get(i).getName());
         }
+    }
+
+    public void showCombatMonsterList(Combat combat, int currentCombat) {
+        System.out.println("----------------------");
+        System.out.println("Starting Encounter "+currentCombat+":");
+        LinkedList<Monster> shownMonsters = new LinkedList<>();
+        LinkedList<Integer> countMonsters = new LinkedList<>();
+        for(int i = 0; i < combat.getMonsters().size(); i++){
+            if(shownMonsters.contains(combat.getMonsters().get(i))){
+                countMonsters.set(i, countMonsters.get(i) + 1);
+            }else{
+                shownMonsters.add(combat.getMonsters().get(i));
+                countMonsters.add(1);
+            }
+        }
+
+        for(int i = 0; i < shownMonsters.size(); i++){
+            System.out.println("    - "+countMonsters.get(i)+"x "+shownMonsters.get(i).getName());
+        }
+    }
+
+    public void preparationStageShow(LinkedList<Char> party) {
+        for (Char aChar : party) {
+            switch (aChar.getType()) {
+                case "Adventurer":
+                    System.out.println(aChar.getName() + " uses Self-Motivated. Their Spirit increases in +1.");
+                    break;
+            }
+        }
+    }
+
+    public void showInitiativeOrder(LinkedList<Entity> entitiesOnGame) {
+        System.out.println();
+        System.out.println("Rolling initiative...");
+        for (Entity entity : entitiesOnGame) {
+            System.out.println("    - " + entity.getCurrentInitiative() + "  " + entity.getName());
+        }
+        System.out.println();
+    }
+
+    public void showCombatStageStart(LinkedList<Char> party, int round) {
+        System.out.println("--------------------");
+        System.out.println("*** Combat stage ***");
+        System.out.println("--------------------");
+        System.out.println("Round "+round+":");
+        System.out.println("Party:");
+        for (Char aChar : party) {
+            System.out.println("    - " + aChar.getName() + "    " + aChar.getHitPoints() + " / " + aChar.getMaxLife() + " hit points");
+        }
+    }
+
+    public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
+        System.out.print(entity.getName()+" attacks "+objective.getName());
+        switch (entity.getClass().getSimpleName()){
+            case "Adventurer":
+                System.out.print(" with Sword slash.");
+                break;
+        }
+        System.out.println();
+        if(dmgDone != 0) {
+            if (critical == 2) {
+                System.out.println("Hits and deals " + dmgDone + " " + entity.getDamageType());
+            } else if(critical == 3){
+                System.out.println("Critical hit and deals " + dmgDone + " " + entity.getDamageType());
+            }
+        }else{
+            System.out.println("Fails and deals 0 "+ entity.getDamageType());
+        }
+        if(objective.getHitPoints() <= 0){
+            if(objective.getClass().getSimpleName().equals("Monster")){
+                System.out.println(objective.getName()+" dies.");
+            }else{
+                System.out.println(objective.getName()+" falls unconscious.");
+            }
+        }
+        System.out.println();
+
     }
 }

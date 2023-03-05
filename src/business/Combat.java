@@ -1,5 +1,7 @@
 package business;
 
+import business.entities.monster.Monster;
+
 import java.util.LinkedList;
 
 public class Combat {
@@ -9,7 +11,7 @@ public class Combat {
     LinkedList<Monster> monsters;
 
     public Combat() {
-        monsters = new LinkedList<Monster>();
+        monsters = new LinkedList<>();
     }
 
     public LinkedList<Monster> getMonsters() {

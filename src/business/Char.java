@@ -1,13 +1,16 @@
 package business;
 
-import business.Entities;
+import business.entities.Entity;
+import business.entities.monster.Monster;
+
+import java.util.LinkedList;
 
 /**
  * Esta clase representa a todos los personajes que queramos crear durante el funcionamiento del código
- * Esta clase extiende de la clase Entities para poder aplicar ciertas funciones y servirá para poder
+ * Esta clase extiende de la clase Entity para poder aplicar ciertas funciones y servirá para poder
  * extender de ella y sacar distintos tipos de personajes
  */
-public class Char extends Entities {
+public class Char extends Entity {
     /**
      * Estas serán las variables que representaran a nuestros personajes
      */
@@ -28,10 +31,13 @@ public class Char extends Entities {
     public Char(String name, String player, int xp) {
         super(name);
         this.player = player;
-        this.xp = (xp*100)-101;
-        if(xp < 0){
-           this.xp = 0;
-        }
+        this.xp = xp;
+    }
+
+    public Char (Char character){
+        super(character.getName());
+        this.player = character.getPlayer();
+        this.xp = character.getXp();
     }
 
     /**
@@ -138,10 +144,27 @@ public class Char extends Entities {
         return xp;
     }
 
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
     /**
      * Método para calcular la vida maxima actual del personaje
      */
     public void calcMaxLife(){
         setMaxLife(10);
     }
+
+    public void preparationStage() {
+    }
+
+    public void stopPreparationStage(){
+
+    }
+
+    public Monster selectMonsterObjective(LinkedList<Monster> monsters) {
+        return monsters.get(0);
+    }
+
+
 }

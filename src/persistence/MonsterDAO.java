@@ -1,6 +1,6 @@
 package persistence;
 
-import business.Monster;
+import business.entities.monster.Monster;
 
 import java.io.FileNotFoundException;
 import java.util.LinkedList;

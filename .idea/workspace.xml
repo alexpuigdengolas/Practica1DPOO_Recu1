@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Ya se pueden crear aventuras añadiendo monstruos. Se guardan el JSON y hemos creado casi todas las clases necesarias para el funcionamiento del código.&#10;&#10;TODO antes de seguir: &#10;- Poder eliminar los monstruos&#10;- Mostrar los monstruos del mismo tipo con un multiplicador&#10;- No guardar la party dentro del JSON&#10;- Jugar las partidas">
-      <change afterPath="$PROJECT_DIR$/lib/json-java.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_5_javadoc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_5_javadoc.xml" afterDir="false" />
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Ya se pueden crear aventuras por completo sin guardar la party en el JSON. También se puede seleccionar la aventura que se quiere jugar y la party que acompañara a esa aventura.&#10;&#10;TODO antes de seguir: &#10;- Comentar el código&#10;- Poder jugar las partidas en sí&#10;- Comprobaciones generales del código">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/adventure.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/adventure.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Adventurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Char.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/CharacterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Entities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Entities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/adventure/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/adventure/Adventure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/adventure/AdventureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/adventure/AdventureManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Combat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Entities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/MonsterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
     </list>
@@ -110,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677959392338</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Ya se pueden crear aventuras por completo sin guardar la party en el JSON. También se puede seleccionar la aventura que se quiere jugar y la party que acompañara a esa aventura.&#10;&#10;TODO antes de seguir: &#10;- Comentar el código&#10;- Poder jugar las partidas en sí&#10;- Comprobaciones generales del código">
+      <created>1678017993645</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678017993645</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -120,28 +130,29 @@
     <MESSAGE value="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras" />
     <MESSAGE value="Ya se pueden listar y eliminar los personajes de la base de datos. Comentado el código y solución de los inputs erróneos&#10;&#10;TODO antes de seguir: &#10;- Añadir Aventuras&#10;- Jugar Aventuras&#10;- Comentar la parte de persistencia" />
     <MESSAGE value="Ya se pueden crear aventuras añadiendo monstruos. Se guardan el JSON y hemos creado casi todas las clases necesarias para el funcionamiento del código.&#10;&#10;TODO antes de seguir: &#10;- Poder eliminar los monstruos&#10;- Mostrar los monstruos del mismo tipo con un multiplicador&#10;- No guardar la party dentro del JSON&#10;- Jugar las partidas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ya se pueden crear aventuras añadiendo monstruos. Se guardan el JSON y hemos creado casi todas las clases necesarias para el funcionamiento del código.&#10;&#10;TODO antes de seguir: &#10;- Poder eliminar los monstruos&#10;- Mostrar los monstruos del mismo tipo con un multiplicador&#10;- No guardar la party dentro del JSON&#10;- Jugar las partidas" />
+    <MESSAGE value="Ya se pueden crear aventuras por completo sin guardar la party en el JSON. También se puede seleccionar la aventura que se quiere jugar y la party que acompañara a esa aventura.&#10;&#10;TODO antes de seguir: &#10;- Comentar el código&#10;- Poder jugar las partidas en sí&#10;- Comprobaciones generales del código" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ya se pueden crear aventuras por completo sin guardar la party en el JSON. También se puede seleccionar la aventura que se quiere jugar y la party que acompañara a esa aventura.&#10;&#10;TODO antes de seguir: &#10;- Comentar el código&#10;- Poder jugar las partidas en sí&#10;- Comprobaciones generales del código" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>180</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>212</line>
+          <line>215</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/ViewManager.java</url>
-          <line>213</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/business/CharacterManager.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="entitiesOnGame.get(1)" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

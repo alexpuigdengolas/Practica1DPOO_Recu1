@@ -1,13 +1,12 @@
 package persistence;
 
-import business.Monster;
+import business.entities.monster.Monster;
 
-import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 public class MonsterApiDAO implements MonsterDAO{
     @Override
-    public LinkedList<Monster> getMonsterList() throws FileNotFoundException {
+    public LinkedList<Monster> getMonsterList(){
         return null;
     }
 

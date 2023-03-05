@@ -1,5 +1,6 @@
 package persistence;
 
+import business.Adventurer;
 import business.Char;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,7 +21,14 @@ public class CharacterJsonDAO implements CharacterDAO{
 
     @Override
     public LinkedList<Char> getCharList() throws FileNotFoundException {
-        return new LinkedList<Char>(Arrays.asList(gson.fromJson(gson.newJsonReader(new FileReader(PATH)), Char[].class)));
+        LinkedList<Char> classifiedCharacters = new LinkedList<>();
+        LinkedList<Char> characters = new LinkedList<>(Arrays.asList(gson.fromJson(gson.newJsonReader(new FileReader(PATH)), Char[].class)));
+        for (Char character : characters) {
+            switch (character.getType()) {
+                case "Adventurer" -> classifiedCharacters.add(new Adventurer(character));
+            }
+        }
+        return classifiedCharacters;
     }
 
     @Override

@@ -198,4 +198,21 @@ public class CharacterManager {
             throw new RuntimeException(e);
         }
     }
+
+    public void setCharsAfterGame(LinkedList<Char> party) {
+        try {
+            LinkedList<Char> characters = characterDAO.getCharList();
+            for(int i = 0; i < characters.size(); i++){
+                for (Char aChar : party) {
+                    if (characters.get(i).equals(aChar)) {
+                        characters.set(i, aChar);
+                    }
+                }
+                characters.get(i).setHitPoints(characters.get(i).getMaxLife());
+            }
+            characterDAO.updateCharList(characters);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
