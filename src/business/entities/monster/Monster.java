@@ -1,6 +1,6 @@
 package business.entities.monster;
 
-import business.Char;
+import business.entities.characters.Char;
 import business.Dice;
 import business.entities.Entity;
 

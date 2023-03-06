@@ -1,5 +1,6 @@
-package business;
+package business.entities.characters;
 
+import business.Dice;
 import business.entities.Entity;
 import business.entities.monster.Monster;
 

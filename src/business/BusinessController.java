@@ -3,6 +3,8 @@ package business;
 import business.adventure.Adventure;
 import business.adventure.AdventureManager;
 import business.entities.Entity;
+import business.entities.characters.Char;
+import business.entities.characters.CharacterManager;
 import business.entities.monster.Monster;
 import business.entities.monster.MonsterManager;
 

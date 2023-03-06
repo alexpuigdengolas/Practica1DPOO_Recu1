@@ -1,7 +1,7 @@
 package presentation;
 
 import business.BusinessController;
-import business.Char;
+import business.entities.characters.Char;
 import business.Combat;
 import business.adventure.Adventure;
 import business.entities.Entity;
@@ -163,8 +163,8 @@ public class Controller {
             viewManager.spacing();
 
             //Seleccionamos la clase
-            viewManager.showMessage("Tavern keeper: “Looking good!”");
-            viewManager.showMessage("“And, lastly, ?”");
+            viewManager.showMessage("Tavern keeper: Looking good!");
+            viewManager.showMessage("And, lastly, ?");
             viewManager.spacing();
             Char definitiveChar;
             do {
@@ -395,7 +395,7 @@ public class Controller {
         boolean adventureLost = false;
         //Jugar partida
         viewManager.spacing();
-        viewManager.showMessage("Tavern keeper: “Great, good luck on your adventure lads!”");
+        viewManager.showMessage("Tavern keeper: Great, good luck on your adventure lads!");
         viewManager.spacing();
         viewManager.showMessage("The "+adventure.getName()+" will start soon...");
 
@@ -521,7 +521,7 @@ public class Controller {
         }while (numPartyMembers < 3 || numPartyMembers > 5);
         viewManager.spacing();
         viewManager.showMessage("Tavern keeper: Great, "+numPartyMembers+" it is.");
-        viewManager.showMessage("“Who among these lads shall join you?”");
+        viewManager.showMessage("Who among these lads shall join you?");
         viewManager.spacing();
         LinkedList<Char> characters = businessController.getCharacterList();
         int index = 1;

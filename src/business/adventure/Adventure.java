@@ -1,6 +1,6 @@
 package business.adventure;
 
-import business.Char;
+import business.entities.characters.Char;
 import business.Combat;
 
 import java.util.LinkedList;

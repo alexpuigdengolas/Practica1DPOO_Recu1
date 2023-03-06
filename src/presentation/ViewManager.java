@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Char;
+import business.entities.characters.Char;
 import business.Combat;
 import business.entities.Entity;
 import business.entities.monster.Monster;

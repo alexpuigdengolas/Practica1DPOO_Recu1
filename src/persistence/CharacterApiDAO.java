@@ -1,6 +1,6 @@
 package persistence;
 
-import business.Char;
+import business.entities.characters.Char;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

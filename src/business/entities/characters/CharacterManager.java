@@ -1,4 +1,4 @@
-package business;
+package business.entities.characters;
 
 import persistence.CharacterApiDAO;
 import persistence.CharacterDAO;
