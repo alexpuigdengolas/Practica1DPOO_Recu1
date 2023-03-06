@@ -263,4 +263,11 @@ public class ViewManager {
         System.out.println();
 
     }
+
+    public void showBrake(Char aChar, int amount) {
+        switch (aChar.getType()){
+            case "Adventurer" -> {System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");}
+        }
+
+    }
 }

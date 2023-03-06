@@ -203,4 +203,8 @@ public class BusinessController {
     public void setCharsAfterGame(LinkedList<Char> party) {
         characterManager.setCharsAfterGame(party);
     }
+
+    public int shortBrake(Char character) {
+        return characterManager.showrtBrake(character);
+    }
 }

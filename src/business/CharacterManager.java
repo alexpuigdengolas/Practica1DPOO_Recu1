@@ -202,17 +202,21 @@ public class CharacterManager {
     public void setCharsAfterGame(LinkedList<Char> party) {
         try {
             LinkedList<Char> characters = characterDAO.getCharList();
-            for(int i = 0; i < characters.size(); i++){
+            for (Char character : characters) {
                 for (Char aChar : party) {
-                    if (characters.get(i).equals(aChar)) {
-                        characters.set(i, aChar);
+                    if (character.getName().equals(aChar.getName())) {
+                        character.setXp(aChar.getXp());
                     }
                 }
-                characters.get(i).setHitPoints(characters.get(i).getMaxLife());
+                character.setHitPoints(character.getMaxLife());
             }
             characterDAO.updateCharList(characters);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int showrtBrake(Char character) {
+        return character.shortBrake();
     }
 }

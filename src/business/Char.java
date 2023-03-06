@@ -167,4 +167,13 @@ public class Char extends Entity {
     }
 
 
+    public int shortBrake() {
+        Dice dice = new Dice(8);
+        int healAmount =  dice.throwDice() + this.getMind();
+        this.setHitPoints(this.getHitPoints() + healAmount);
+        if(this.getHitPoints() > this.getMaxLife()){
+            this.setHitPoints(this.getMaxLife());
+        }
+        return healAmount;
+    }
 }
