@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 
+/**
+ * Esta clase se encargará de gestionar lo que esté relacionado con las aventuras
+ */
 public class AdventureManager {
     private static final int JSON = 1;
     private static final int API = 2;
@@ -70,6 +73,10 @@ public class AdventureManager {
         }
     }
 
+    /**
+     * Este método nos permitirá leer toda la lista de aventuras de nuestra base de datos
+     * @return el listado de aventuras
+     */
     public LinkedList<Adventure> getAdventureList() {
         try {
             return adventureDAO.getAdventureList();

@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="La partida ya es casi jugable, pero hay algunos problemas mayores&#10;&#10;TODO:&#10;- Hay que asegurar que no se pueda subir a más de 999 de xp&#10;- Hay que implementar la mecánica del descanso corto&#10;- Hay que se pueda acabar la partida si durante esta mueren todos los personajes&#10;- Comentar todo el código">
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="La partida ya es totalmente jugable. Hemos conseguido mostrar la experiencia ganada durante el combate. Comprobar que acabe la partida si todos los personajes quedan inconscientes y verificar que los personajes no suben más de 99 de xp.&#10;TODO:&#10;- Comentar todo el código&#10;- Fase 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Adventurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Char.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/CharacterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Combat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
     </list>
@@ -118,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678044080273</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="La partida ya es totalmente jugable. Hemos conseguido mostrar la experiencia ganada durante el combate. Comprobar que acabe la partida si todos los personajes quedan inconscientes y verificar que los personajes no suben más de 99 de xp.&#10;TODO:&#10;- Comentar todo el código&#10;- Fase 4">
+      <created>1678098427740</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678098427740</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -130,7 +151,8 @@
     <MESSAGE value="Ya se pueden crear aventuras añadiendo monstruos. Se guardan el JSON y hemos creado casi todas las clases necesarias para el funcionamiento del código.&#10;&#10;TODO antes de seguir: &#10;- Poder eliminar los monstruos&#10;- Mostrar los monstruos del mismo tipo con un multiplicador&#10;- No guardar la party dentro del JSON&#10;- Jugar las partidas" />
     <MESSAGE value="Ya se pueden crear aventuras por completo sin guardar la party en el JSON. También se puede seleccionar la aventura que se quiere jugar y la party que acompañara a esa aventura.&#10;&#10;TODO antes de seguir: &#10;- Comentar el código&#10;- Poder jugar las partidas en sí&#10;- Comprobaciones generales del código" />
     <MESSAGE value="La partida ya es casi jugable, pero hay algunos problemas mayores&#10;&#10;TODO:&#10;- Hay que asegurar que no se pueda subir a más de 999 de xp&#10;- Hay que implementar la mecánica del descanso corto&#10;- Hay que se pueda acabar la partida si durante esta mueren todos los personajes&#10;- Comentar todo el código" />
-    <option name="LAST_COMMIT_MESSAGE" value="La partida ya es casi jugable, pero hay algunos problemas mayores&#10;&#10;TODO:&#10;- Hay que asegurar que no se pueda subir a más de 999 de xp&#10;- Hay que implementar la mecánica del descanso corto&#10;- Hay que se pueda acabar la partida si durante esta mueren todos los personajes&#10;- Comentar todo el código" />
+    <MESSAGE value="La partida ya es totalmente jugable. Hemos conseguido mostrar la experiencia ganada durante el combate. Comprobar que acabe la partida si todos los personajes quedan inconscientes y verificar que los personajes no suben más de 99 de xp.&#10;TODO:&#10;- Comentar todo el código&#10;- Fase 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="La partida ya es totalmente jugable. Hemos conseguido mostrar la experiencia ganada durante el combate. Comprobar que acabe la partida si todos los personajes quedan inconscientes y verificar que los personajes no suben más de 99 de xp.&#10;TODO:&#10;- Comentar todo el código&#10;- Fase 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -141,9 +163,9 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/business/CharacterManager.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="34" />
+          <url>file://$PROJECT_DIR$/src/business/BusinessController.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

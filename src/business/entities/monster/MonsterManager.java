@@ -5,6 +5,9 @@ import persistence.*;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
+/**
+ * Esta clase sirve para poder gestionar toda la información relacionada con los monstruos
+ */
 public class MonsterManager {
     private static final int JSON = 1;
     private static final int API = 2;
@@ -30,7 +33,10 @@ public class MonsterManager {
         return monsterDAO.fileExists();
     }
 
-
+    /**
+     * Este método nos permite conseguir el listado de monstruos que tenemos en nuestra base de datos
+     * @return el listado de monstruos
+     */
     public LinkedList<Monster> getMonsterList() {
         try {
             return monsterDAO.getMonsterList();

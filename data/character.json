@@ -1,7 +1,7 @@
 [
   {
     "player": "Oscar",
-    "xp": 749,
+    "xp": 950,
     "body": 0,
     "mind": 1,
     "spirit": 0,
@@ -96,11 +96,11 @@
     "body": 1,
     "mind": 0,
     "spirit": 0,
-    "maxLife": 77,
+    "maxLife": 88,
     "type": "Adventurer",
     "name": "Ivan",
     "currentInitiative": 0,
-    "hitPoints": 77,
+    "hitPoints": 88,
     "damageType": "Physical"
   },
   {
@@ -109,11 +109,11 @@
     "body": 2,
     "mind": 1,
     "spirit": 1,
-    "maxLife": 36,
+    "maxLife": 48,
     "type": "Adventurer",
     "name": "Hola",
     "currentInitiative": 0,
-    "hitPoints": 36,
+    "hitPoints": 48,
     "damageType": "Physical"
   }
 ]

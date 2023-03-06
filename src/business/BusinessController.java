@@ -68,7 +68,7 @@ public class BusinessController {
      * @return un booleano para saber si estos archivos son accesibles
      */
     public boolean fileExists() {
-        return characterManager.fileExists();
+        return (characterManager.fileExists() && monsterManager.fileExists() && adventureManager.fileExists());
     }
 
     /**
@@ -165,27 +165,21 @@ public class BusinessController {
     }
 
     public int attackStage(Entity entity, Entity objective, int critical) {
-        switch (entity.getClass().getSimpleName()){
-            case "Monster":
-                Monster monster = new Monster((Monster)entity);
-                return monster.attack(objective, critical);
-
-            default:
-                Char character = (Char) entity;
-                return character.attack(objective, critical);
+        if (entity.getClass().getSimpleName().equals("Monster")) {
+            Monster monster = new Monster((Monster) entity);
+            return monster.attack(objective, critical);
         }
+        Char character = (Char) entity;
+        return character.attack(objective, critical);
     }
 
     public Entity objectiveSelection(Entity entity, LinkedList<Char> characters, LinkedList<Monster> monsters) {
-        switch (entity.getClass().getSimpleName()){
-            case "Monster":
-                Monster monster = new Monster((Monster)entity);
-                return monster.selectCharacterObjective(characters);
-
-            default:
-                Char character = (Char) entity;
-                return character.selectMonsterObjective(monsters);
+        if (entity.getClass().getSimpleName().equals("Monster")) {
+            Monster monster = new Monster((Monster) entity);
+            return monster.selectCharacterObjective(characters);
         }
+        Char character = (Char) entity;
+        return character.selectMonsterObjective(monsters);
     }
 
     public int attackCritical(Entity entity) {
@@ -205,6 +199,6 @@ public class BusinessController {
     }
 
     public int shortBrake(Char character) {
-        return characterManager.showrtBrake(character);
+        return characterManager.shortBrake(character);
     }
 }

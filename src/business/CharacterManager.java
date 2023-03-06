@@ -66,61 +66,9 @@ public class CharacterManager {
      * @return un array de enteros con los valores de nuestros dados
      */
     public int[] generateCharacterStat(String stat, Char character) {
-        Dice dice = new Dice(6);
 
-        int num1 = dice.throwDice();
-        int num2 = dice.throwDice();
 
-        int[] nums = new int[2];
-
-        nums[0] = num1;
-        nums[1] = num2;
-
-        int sum = num1 + num2;
-
-        switch (stat) {
-            case "Body" -> {
-                if (sum <= 2) {
-                    character.setBody(-1);
-                } else if (sum <= 5) {
-                    character.setBody(0);
-                } else if (sum <= 9) {
-                    character.setBody(1);
-                } else if (sum <= 11) {
-                    character.setBody(2);
-                } else {
-                    character.setBody(3);
-                }
-            }
-            case "Mind" -> {
-                if (sum <= 2) {
-                    character.setMind(-1);
-                } else if (sum <= 5) {
-                    character.setMind(0);
-                } else if (sum <= 9) {
-                    character.setMind(1);
-                } else if (sum <= 11) {
-                    character.setMind(2);
-                } else {
-                    character.setMind(3);
-                }
-            }
-            case "Spirit" -> {
-                if (sum <= 2) {
-                    character.setSpirit(-1);
-                } else if (sum <= 5) {
-                    character.setSpirit(0);
-                } else if (sum <= 9) {
-                    character.setSpirit(1);
-                } else if (sum <= 11) {
-                    character.setSpirit(2);
-                } else {
-                    character.setSpirit(3);
-                }
-            }
-        }
-
-        return nums;
+        return character.generateStats(stat, character);
     }
 
     /**
@@ -169,7 +117,7 @@ public class CharacterManager {
      */
     public Char generateClassifiedChar(Char character, String type) {
         switch (type){
-            case "Adventurer": return new Adventurer(character.getName(), character.getPlayer(), character.getLevel(), character.getMind(), character.getBody(), character.getSpirit());
+            case "Adventurer": return new Adventurer(character);
             case "Cleric": break;//return new Cleric(character.getName(), character.getPlayer(), character.getLevel());
             case "Paladin": break;//return new Paladin(character.getName(), character.getPlayer(), character.getLevel());
             default: return character;
@@ -191,6 +139,10 @@ public class CharacterManager {
         }
     }
 
+    /**
+     * Este método accederá al characterDAO para poder retornar los personajes de nuestra base de datos
+     * @return la lista de nuestros personajes
+     */
     public LinkedList<Char> getCharacterList() {
         try {
             return characterDAO.getCharList();
@@ -199,6 +151,10 @@ public class CharacterManager {
         }
     }
 
+    /**
+     * Este método se utilizará para poder settear la vida de un listado de personajes al máximo
+     * @param party es la lista de personajes que queremos settear al máximo de vida
+     */
     public void setCharsAfterGame(LinkedList<Char> party) {
         try {
             LinkedList<Char> characters = characterDAO.getCharList();
@@ -216,7 +172,12 @@ public class CharacterManager {
         }
     }
 
-    public int showrtBrake(Char character) {
+    /**
+     * Este método permite al personaje ejecutar la función de tomarse un descanso para poder entre combates
+     * @param character el personaje que se toma el descanso
+     * @return la cantidad de lo que haga este personaje durante su descanso (vida, escudo, ...)
+     */
+    public int shortBrake(Char character) {
         return character.shortBrake();
     }
 }

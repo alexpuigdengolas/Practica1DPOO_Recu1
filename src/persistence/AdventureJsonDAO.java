@@ -23,11 +23,21 @@ public class AdventureJsonDAO implements AdventureDAO{
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
+    /**
+     * Este método nos permitirá leer el archivo designado y conseguir un listado de nuestras aventuras
+     * @return Listado de las aventuras guardado en la base de datos seleccionada
+     * @throws FileNotFoundException chequea que el archivo exista antes de recoger la información de la base de datos
+     */
     @Override
     public LinkedList<Adventure> getAdventureList() throws FileNotFoundException {
         return new LinkedList<>(Arrays.asList(gson.fromJson(gson.newJsonReader(new FileReader(PATH)), Adventure[].class)));
     }
 
+    /**
+     * Este método va a permitirnos enviar una lista de aventuras para después poder actualizar la base de datos
+     * y guardar nueva información.
+     * @param adventures es el listado de aventuras que queremos guardar
+     */
     @Override
     public void updateAdventureList(LinkedList<Adventure> adventures){
         JSONArray jsonArray = new JSONArray();
@@ -44,6 +54,10 @@ public class AdventureJsonDAO implements AdventureDAO{
         }
     }
 
+    /**
+     * Este método comprobará que el archivo exista y que por ende sea accesible
+     * @return un booleano que nos dara la respuesta a nuestra duda
+     */
     @Override
     public boolean fileExists() {
         File file = new File(PATH);

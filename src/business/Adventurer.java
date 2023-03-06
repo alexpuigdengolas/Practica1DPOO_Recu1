@@ -6,25 +6,15 @@ import business.entities.monster.Monster;
 import java.util.Comparator;
 import java.util.LinkedList;
 
+/**
+ * Esta clase nos permite representar una de las multiples clase que pueden representar nuestros personajes (Aventurero)
+ */
 public class Adventurer extends Char {
-    /**
-     * Este será el constructor de nuestro personaje
-     *
-     * @param name   el nombre que le queremos asignar
-     * @param player el nombre de nuestro jugador
-     * @param xp     la experiencia inicial de nuestro personaje
-     */
-    public Adventurer(String name, String player, int xp, int mind, int body, int spirit) {
-        super(name, player, xp);
-        this.setType("Adventurer");
-        this.setBody(body);
-        this.setMind(mind);
-        this.setSpirit(spirit);
-        this.calcMaxLife();
-        this.setHitPoints(this.getMaxLife());
-        this.setDamageType("Physical");
-    }
 
+    /**
+     * Este es el constructor de nuestra clase que recibiendo un Personaje es capaz de generar un aventurero
+     * @param aChar la información del personaje con la que podemos crear nuestro aventurero
+     */
     public Adventurer(Char aChar) {
         super(aChar.getName(), aChar.getPlayer(), aChar.getXp());
         this.setType("Adventurer");
@@ -44,22 +34,39 @@ public class Adventurer extends Char {
         this.setMaxLife(((10 + getBody())*this.getLevel()));
     }
 
+    /**
+     * Este método implementa la etapa de preparación de cada personaje.
+     * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
+     */
     @Override
     public void preparationStage() {
         setSpirit(getSpirit()+1);
     }
 
+    /**
+     * Este método implementa el fin de la etapa de preparación de cada personaje
+     * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
+     */
     @Override
     public void stopPreparationStage() {
         setSpirit(getSpirit()-1);
     }
 
+    /**
+     * Método para calcular la iniciativa actual de nuestra entidad. Esto permitirá ordenar las entidades
+     * por su iniciativa y el orden marcará el orden en el que deben atacar.
+     */
     @Override
     public void calculateCurrentInitiative() {
         Dice dice = new Dice(12);
         this.setCurrentInitiative(getSpirit() + dice.throwDice());
     }
 
+    /**
+     * Este método será capaz de implementar una manera en la que se puede seleccionar el objetivo de su ataque
+     * @param monsters esta será la lista de posibles objetivos del ataque
+     * @return el objetivo del ataque
+     */
     @Override
     public Monster selectMonsterObjective(LinkedList<Monster> monsters) {
         Comparator<Monster> hitpointsComparator = new Comparator<Monster>() {
@@ -77,6 +84,12 @@ public class Adventurer extends Char {
         return monsters.get(0);
     }
 
+    /**
+     * Método que permite a la entidad atacar a otra entidad
+     * @param entity entidad atacada
+     * @param critical entero que marca si el ataque es crítico o se falla.
+     * @return un entero con el daño hecho por el atacante
+     */
     @Override
     public int attack(Entity entity, int critical) {
         Dice dice = new Dice(6);
@@ -96,5 +109,20 @@ public class Adventurer extends Char {
             entity.setHitPoints(0);
         }
         return dmgDone;
+    }
+
+    /**
+     * Es el método que implementa el descanso que deben tener cada personaje
+     * @return el entero con el resultado de lo que hayan hecho
+     */
+    @Override
+    public int shortBrake() {
+        Dice dice = new Dice(8);
+        int healAmount =  dice.throwDice() + this.getMind();
+        this.setHitPoints(this.getHitPoints() + healAmount);
+        if(this.getHitPoints() > this.getMaxLife()){
+            this.setHitPoints(this.getMaxLife());
+        }
+        return healAmount;
     }
 }

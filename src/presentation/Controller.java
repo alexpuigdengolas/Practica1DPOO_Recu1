@@ -215,7 +215,7 @@ public class Controller {
             int charSelected = viewManager.askForInteger("Who would you like to meet [0.."+characters.size()+"]: ");
             if (charSelected >= 1 && charSelected <= characters.size()) {
                 charSelectedStatus = true;
-                viewManager.showChararcterInfo(characters.get(charSelected-1));
+                viewManager.showCharacterInfo(characters.get(charSelected-1));
 
                 //Preguntamos si desean eliminar al personaje seleccionado
                 viewManager.showMessage("[Enter name to delete, or press enter to cancel]");
@@ -236,6 +236,10 @@ public class Controller {
 
     }
 
+    /**
+     * Este método va a encargarse de que se puedan crear aventuras nuevas mostrando los menus necesarios para poder
+     * acceder a esta function del menu principal
+     */
     private void addAdventure() {
         viewManager.showMessage("Tavern keeper: Planning an adventure? Good luck with that!");
         viewManager.spacing();
@@ -293,6 +297,11 @@ public class Controller {
 
     }
 
+    /**
+     * Este método servirá para añadir monstruos dentro de un combate. Este método lleva a cabo esta opción siguiendo
+     * todas las instrucciones de nuestro enunciado.
+     * @param combat el combate en el que queremos añadir los monstruos
+     */
     private void addMonster(Combat combat) {
         viewManager.spacing();
         LinkedList<Monster> monsters = businessController.getMonsterList();
@@ -326,6 +335,12 @@ public class Controller {
 
     }
 
+    /**
+     * Este método servirá para eliminar monstruos dentro de un combate. Este método lleva a cabo esta opción siguiendo
+     * todas las instrucciones de nuestro enunciado.
+     * @param combat El combate en el que queremos añadir los monstruos
+     * @param monsterName Listado con los nombres de todos los monstruos del combate
+     */
     private void removeMonster(Combat combat, LinkedList<String> monsterName) {
         if(combat.getMonsters().isEmpty()){
             viewManager.spacing();
@@ -353,6 +368,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Este método servirá para poder jugar una aventura siguiendo todas las especificaciones de nuestro enunciado
+     */
     private void playAdventure() {
         viewManager.spacing();
         viewManager.showMessage("Tavern keeper: So, you are looking to go on an adventure?");
@@ -362,7 +380,7 @@ public class Controller {
         for (Adventure adventure : adventureList) {
             adventure.setParty(new LinkedList<>());
         }
-        viewManager.showAdventureListe(adventureList);
+        viewManager.showAdventureList(adventureList);
         int adventureSelected;
         do {
             adventureSelected = viewManager.askForInteger("-> Choose an adventure: ") -1;
@@ -486,6 +504,10 @@ public class Controller {
         businessController.setCharsAfterGame(adventure.getParty());
     }
 
+    /**
+     * Este método permitirá escoger y mostrar todos los personajes seleccionables
+     * @param adventure la aventura en la que participan nuestros personajes
+     */
     private void characterSelectionScreen(Adventure adventure){
         viewManager.showMessage("Tavern keeper: "+adventure.getName()+" it is!");
         viewManager.showMessage("And how many people shall join you?");

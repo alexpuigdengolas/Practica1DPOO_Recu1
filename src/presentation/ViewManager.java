@@ -107,7 +107,7 @@ public class ViewManager {
      * Este método nos mostrará toda la información específica de un personaje
      * @param character el personaje que queremos analizar
      */
-    public void showChararcterInfo(Char character) {
+    public void showCharacterInfo(Char character) {
         System.out.println("Tavern keeper: Hey "+character.getName()+" get here; the boss wants to see you!");
         System.out.println();
         System.out.println("* Name: "+character.getName());
@@ -160,7 +160,7 @@ public class ViewManager {
         }
     }
 
-    public void showAdventureListe(LinkedList<Adventure> adventureList) {
+    public void showAdventureList(LinkedList<Adventure> adventureList) {
         System.out.println("Available adventures: ");
         for(int i = 0; i < adventureList.size(); i++){
             System.out.println("   "+(i+1)+". "+adventureList.get(i).getName());
@@ -193,9 +193,14 @@ public class ViewManager {
         LinkedList<Monster> shownMonsters = new LinkedList<>();
         LinkedList<Integer> countMonsters = new LinkedList<>();
         for(int i = 0; i < combat.getMonsters().size(); i++){
-            if(shownMonsters.contains(combat.getMonsters().get(i))){
-                countMonsters.set(i, countMonsters.get(i) + 1);
-            }else{
+            boolean found = false;
+            for(int j = 0; j < shownMonsters.size(); j++){
+                if(shownMonsters.get(j).getName().equals(combat.getMonsters().get(i).getName())){
+                    countMonsters.set(j, countMonsters.get(j) + 1);
+                    found = true;
+                }
+            }
+            if(!found){
                 shownMonsters.add(combat.getMonsters().get(i));
                 countMonsters.add(1);
             }
