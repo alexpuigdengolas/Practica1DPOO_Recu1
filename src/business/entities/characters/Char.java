@@ -204,6 +204,7 @@ public class Char extends Entity {
      * @param character el personaje a modificar
      * @return los números extraídos por los dos dados
      */
+    //TODO: No pasar character (es un this)
     public int[] generateStats(String stat, Char character) {
         Dice dice = new Dice(6);
 

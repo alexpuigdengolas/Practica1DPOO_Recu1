@@ -141,6 +141,7 @@ public class Controller {
             //Calculamos las stats
             viewManager.showMessage("Great, let me get a closer look at you...");
             viewManager.spacing();
+            //TODO: No hacer calculos aqui
             int xp = (level*100)-101;
             if(xp < 0) xp = 0;
             Char character = new Char(charName, playersName, xp);

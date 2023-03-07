@@ -166,6 +166,7 @@ public class BusinessController {
         }
     }
 
+    //TODO: Instance Of
     public int attackStage(Entity entity, Entity objective, int critical) {
         if (entity.getClass().getSimpleName().equals("Monster")) {
             Monster monster = new Monster((Monster) entity);
