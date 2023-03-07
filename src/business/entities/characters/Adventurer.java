@@ -40,7 +40,7 @@ public class Adventurer extends Char {
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
      */
     @Override
-    public void preparationStage() {
+    public void preparationStage(LinkedList<Char> party) {
         setSpirit(getSpirit()+1);
     }
 
@@ -49,7 +49,7 @@ public class Adventurer extends Char {
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
      */
     @Override
-    public void stopPreparationStage() {
+    public void stopPreparationStage(LinkedList<Char> party) {
         setSpirit(getSpirit()-1);
     }
 
@@ -92,7 +92,7 @@ public class Adventurer extends Char {
      * @return un entero con el daño hecho por el atacante
      */
     @Override
-    public int attack(Entity entity, int critical) {
+    public int attack(Entity entity,  LinkedList<Entity> objectives, int critical) {
         Dice dice = new Dice(6);
         int dmgDone = 0;
         if(critical >=2) {

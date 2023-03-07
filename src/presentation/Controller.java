@@ -435,7 +435,7 @@ public class Controller {
 
                         Entity objective = businessController.objectiveSelection(entity, adventure.getParty(), adventure.getCombats().get(i).getMonsters());
                         critical = businessController.attackCritical(entity);
-                        dmgDone = businessController.attackStage(entity, objective, critical);
+                        dmgDone = businessController.attackStage(entity, objective, entitiesOnGame, critical);
                         viewManager.showAttack(entity, objective, dmgDone, critical);
 
                         for (int x = 0; x < adventure.getParty().size(); x++) {

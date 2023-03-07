@@ -142,7 +142,7 @@ public class BusinessController {
 
     public void preparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
-            aChar.preparationStage();
+            aChar.preparationStage(party);
         }
     }
 
@@ -162,17 +162,17 @@ public class BusinessController {
 
     public void stopPreparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
-            aChar.stopPreparationStage();
+            aChar.stopPreparationStage(party);
         }
     }
 
-    public int attackStage(Entity entity, Entity objective, int critical) {
+    public int attackStage(Entity entity, Entity objective, LinkedList<Entity> entitiesOnGame, int critical) {
         if (entity.getClass().getSimpleName().equals("Monster")) {
             Monster monster = new Monster((Monster) entity);
-            return monster.attack(objective, critical);
+            return monster.attack(objective, entitiesOnGame, critical);
         }
         Char character = (Char) entity;
-        return character.attack(objective, critical);
+        return character.attack(objective, entitiesOnGame, critical);
     }
 
     public Entity objectiveSelection(Entity entity, LinkedList<Char> characters, LinkedList<Monster> monsters) {

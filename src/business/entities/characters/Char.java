@@ -168,14 +168,14 @@ public class Char extends Entity {
      * Este método implementa la etapa de preparación de cada personaje.
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
      */
-    public void preparationStage() {
+    public void preparationStage(LinkedList<Char> persons) {
     }
 
     /**
      * Este método implementa el fin de la etapa de preparación de cada personaje
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
      */
-    public void stopPreparationStage(){
+    public void stopPreparationStage(LinkedList<Char> party){
 
     }
 

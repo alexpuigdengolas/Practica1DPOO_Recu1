@@ -118,11 +118,10 @@ public class CharacterManager {
     public Char generateClassifiedChar(Char character, String type) {
         switch (type){
             case "Adventurer": return new Adventurer(character);
-            case "Cleric": break;//return new Cleric(character.getName(), character.getPlayer(), character.getLevel());
-            case "Paladin": break;//return new Paladin(character.getName(), character.getPlayer(), character.getLevel());
+            //case "Cleric": return new Cleric(character);
+            //case "Paladin": //return new Mage(character);
             default: return character;
         }
-        return character;
     }
 
     /**

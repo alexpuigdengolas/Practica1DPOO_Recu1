@@ -106,7 +106,7 @@ public class Monster extends Entity {
      * @return un entero con el daño hecho por el atacante
      */
     @Override
-    public int attack(Entity entity, int critical) {
+    public int attack(Entity entity,  LinkedList<Entity> objectives, int critical) {
         String auxDamageDice = damageDice.replace("d", "");
         Dice dice = new Dice(Integer.parseInt(auxDamageDice));
 

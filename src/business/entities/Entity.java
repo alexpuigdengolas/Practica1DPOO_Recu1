@@ -2,6 +2,8 @@ package business.entities;
 
 import business.Dice;
 
+import java.util.LinkedList;
+
 /**
  * Esta clase sirve para poder representar cualquier tipo de personaje o monstruo que puedan haber en un combate
  */
@@ -73,7 +75,7 @@ public class Entity {
      * @param critical entero que marca si el ataque es crítico o se falla.
      * @return un entero con el daño hecho por el atacante
      */
-    public int attack(Entity entity, int critical){
+    public int attack(Entity entity, LinkedList<Entity> objectives, int critical){
         return 0;
     }
 
