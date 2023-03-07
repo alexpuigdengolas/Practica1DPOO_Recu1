@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Todo el código ha sido comentado y solo queda hacer unas últimas comprobaciones&#10;&#10;TODO:&#10;- Fase 4&#10;   + API Reader&#10;   + Char classes&#10;   + Monster boss change attack&#10;- Comprobaciones fase 2">
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/adventure.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/adventure.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Combat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Char.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterApiDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="fase_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678117863779</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien.">
+      <created>1678217624692</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678217624692</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +171,8 @@
     <MESSAGE value="La partida ya es casi jugable, pero hay algunos problemas mayores&#10;&#10;TODO:&#10;- Hay que asegurar que no se pueda subir a más de 999 de xp&#10;- Hay que implementar la mecánica del descanso corto&#10;- Hay que se pueda acabar la partida si durante esta mueren todos los personajes&#10;- Comentar todo el código" />
     <MESSAGE value="La partida ya es totalmente jugable. Hemos conseguido mostrar la experiencia ganada durante el combate. Comprobar que acabe la partida si todos los personajes quedan inconscientes y verificar que los personajes no suben más de 99 de xp.&#10;TODO:&#10;- Comentar todo el código&#10;- Fase 4" />
     <MESSAGE value="Todo el código ha sido comentado y solo queda hacer unas últimas comprobaciones&#10;&#10;TODO:&#10;- Fase 4&#10;   + API Reader&#10;   + Char classes&#10;   + Monster boss change attack&#10;- Comprobaciones fase 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Todo el código ha sido comentado y solo queda hacer unas últimas comprobaciones&#10;&#10;TODO:&#10;- Fase 4&#10;   + API Reader&#10;   + Char classes&#10;   + Monster boss change attack&#10;- Comprobaciones fase 2" />
+    <MESSAGE value="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
