@@ -14,11 +14,18 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Esta clase será util para poder acceder a toda la base de datos tanto leer como escribir información relacionada con
+ * las aventuras
+ */
 public class AdventureJsonDAO implements AdventureDAO{
 
     static final String PATH = "data/adventure.json";
     private final Gson gson;
 
+    /**
+     * Es el constructor de nuestra clase que inicializara el gson para poder gestionar toda la base de datos
+     */
     public AdventureJsonDAO() {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }

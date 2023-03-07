@@ -2,10 +2,12 @@ package business.entities;
 
 import business.Dice;
 
+import java.util.LinkedList;
+
 /**
  * Esta clase sirve para poder representar cualquier tipo de personaje o monstruo que puedan haber en un combate
  */
-public class Entity {
+public abstract class Entity {
     private final String name;
     private int currentInitiative;
     private int hitPoints;
@@ -106,6 +108,28 @@ public class Entity {
             return 2;
         }else{
             return 1;
+        }
+    }
+
+    /**
+     * Este método se usará para que esta entidad pueda escoger un objetivo para su ataque
+     * @param entities el listado de entidades que pueden ser los objetivos de un ataque
+     * @return el objetivo de dicho ataque
+     */
+    public Entity selectObjective(LinkedList<Entity> entities){
+        return null;
+    }
+
+    /**
+     * Este método ara que los personajes reciban daño sabiendo que con el tipo de daño hecho también influencia en el
+     * daño recibido hemos decidido enviarlo como parámetro.
+     * @param dmgDone la cantidad de daño recibido
+     * @param damageType el tipo de daño recibido
+     */
+    public void getDamaged(int dmgDone, String damageType){
+        this.hitPoints -= dmgDone;
+        if(this.hitPoints < 0){
+            this.hitPoints = 0;
         }
     }
 }

@@ -66,9 +66,7 @@ public class CharacterManager {
      * @return un array de enteros con los valores de nuestros dados
      */
     public int[] generateCharacterStat(String stat, Char character) {
-
-
-        return character.generateStats(stat, character);
+        return character.generateStats(stat);
     }
 
     /**

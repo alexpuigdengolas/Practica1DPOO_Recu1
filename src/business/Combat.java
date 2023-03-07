@@ -27,4 +27,31 @@ public class Combat {
     public LinkedList<Monster> getMonsters() {
         return monsters;
     }
+
+    /**
+     * Este método nos permite eliminar un tipo concreto de monstruo de este combate
+     * @param monsterType es el nombre de los monstruos que queremos eliminar
+     * @return el número de monstruos eliminados
+     */
+    public int removeMonster(String monsterType) {
+        int numMonsters = 0;
+        for(int i = getMonsters().size()-1; i >= 0; i--){
+            if(getMonsters().get(i).getName().equals(monsterType)){
+                getMonsters().remove(i);
+                numMonsters++;
+            }
+        }
+        return numMonsters;
+    }
+
+    /**
+     * Este método nos permite añadir monstruos a este combate
+     * @param monsterAmount el número de monstruos de un mismo tipo que queremos añadir
+     * @param monster el tipo de monstruos que queremos añadir
+     */
+    public void addMonsters(int monsterAmount, Monster monster) {
+        for (int i = 0; i < monsterAmount; i++) {
+            getMonsters().add(monster);
+        }
+    }
 }

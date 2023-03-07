@@ -5,11 +5,11 @@
     "body": 0,
     "mind": 1,
     "spirit": 0,
-    "maxLife": 80,
+    "maxLife": 100,
     "type": "Adventurer",
     "name": "Oscar",
     "currentInitiative": 0,
-    "hitPoints": 80,
+    "hitPoints": 100,
     "damageType": "Physical"
   },
   {
@@ -114,6 +114,19 @@
     "name": "Hola",
     "currentInitiative": 0,
     "hitPoints": 48,
+    "damageType": "Physical"
+  },
+  {
+    "player": "Nelson",
+    "xp": 726,
+    "body": 1,
+    "mind": 1,
+    "spirit": 1,
+    "maxLife": 55,
+    "type": "Adventurer",
+    "name": "Grizzy",
+    "currentInitiative": 0,
+    "hitPoints": 55,
     "damageType": "Physical"
   }
 ]

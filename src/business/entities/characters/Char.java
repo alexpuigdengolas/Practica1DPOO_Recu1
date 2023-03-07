@@ -2,7 +2,6 @@ package business.entities.characters;
 
 import business.Dice;
 import business.entities.Entity;
-import business.entities.monster.Monster;
 
 import java.util.LinkedList;
 
@@ -27,12 +26,12 @@ public class Char extends Entity {
      * Este será el constructor de nuestro personaje
      * @param name el nombre que le queremos asignar
      * @param player el nombre de nuestro jugador
-     * @param xp la experiencia inicial de nuestro personaje
+     * @param level el nivel inicial del personaje
      */
-    public Char(String name, String player, int xp) {
+    public Char(String name, String player, int level) {
         super(name);
         this.player = player;
-        this.xp = xp;
+        this.xp = calcXp(level);
     }
 
     /**
@@ -134,6 +133,15 @@ public class Char extends Entity {
     }
 
     /**
+     * Método para poder calcular la experiencia a la que equivale un nivel
+     * @param level el nivel que queremos analizar
+     * @return la experiencia equivalente a dicho nivel
+     */
+    public int calcXp(int level){
+        return (level*100)-101;
+    }
+
+    /**
      * Este método nos retorna el nombre del jugador que lo creo
      * @return el nombre del jugador
      */
@@ -180,15 +188,6 @@ public class Char extends Entity {
     }
 
     /**
-     * Este método será capaz de implementar una manera en la que se puede seleccionar el objetivo de su ataque
-     * @param monsters esta será la lista de posibles objetivos del ataque
-     * @return el objetivo del ataque
-     */
-    public Monster selectMonsterObjective(LinkedList<Monster> monsters) {
-        return monsters.get(0);
-    }
-
-    /**
      * Es el método que implementa el descanso que deben tener cada personaje
      * @return el entero con el resultado de lo que hayan hecho
      */
@@ -201,11 +200,9 @@ public class Char extends Entity {
      * que se introduzca el personaje y el stat a modificar. Como esto se ara con dos dados y se deben mostrar por
      * pantalla, retornamos los valores extraídos por los dadoes en un array de enteros.
      * @param stat es la estadística a modificar
-     * @param character el personaje a modificar
      * @return los números extraídos por los dos dados
      */
-    //TODO: No pasar character (es un this)
-    public int[] generateStats(String stat, Char character) {
+    public int[] generateStats(String stat) {
         Dice dice = new Dice(6);
 
         int num1 = dice.throwDice();
@@ -221,44 +218,53 @@ public class Char extends Entity {
         switch (stat) {
             case "Body" -> {
                 if (sum <= 2) {
-                    character.setBody(-1);
+                    body = -1;
                 } else if (sum <= 5) {
-                    character.setBody(0);
+                    body = 0;
                 } else if (sum <= 9) {
-                    character.setBody(1);
+                    body = 1;
                 } else if (sum <= 11) {
-                    character.setBody(2);
+                    body = 2;
                 } else {
-                    character.setBody(3);
+                    body = 3;
                 }
             }
             case "Mind" -> {
                 if (sum <= 2) {
-                    character.setMind(-1);
+                    mind = -1;
                 } else if (sum <= 5) {
-                    character.setMind(0);
+                    mind = 0;
                 } else if (sum <= 9) {
-                    character.setMind(1);
+                    mind = 1;
                 } else if (sum <= 11) {
-                    character.setMind(2);
+                    mind = 2;
                 } else {
-                    character.setMind(3);
+                    mind = 3;
                 }
             }
             case "Spirit" -> {
                 if (sum <= 2) {
-                    character.setSpirit(-1);
+                    spirit = -1;
                 } else if (sum <= 5) {
-                    character.setSpirit(0);
+                    spirit = 0;
                 } else if (sum <= 9) {
-                    character.setSpirit(1);
+                    spirit = 1;
                 } else if (sum <= 11) {
-                    character.setSpirit(2);
+                    spirit = 2;
                 } else {
-                    character.setSpirit(3);
+                    spirit = 3;
                 }
             }
         }
         return nums;
+    }
+
+    /**
+     * Este método permite a los personajes curarse entre sí
+     * @param partners es el/los personajes que van a ser curados por este personaje
+     * @return la cantidad de cura realizada
+     */
+    public int heal(LinkedList<Char> partners){
+        return 0;
     }
 }

@@ -1,10 +1,11 @@
 package presentation;
 
-import business.entities.characters.Char;
 import business.Combat;
-import business.entities.Entity;
-import business.entities.monster.Monster;
 import business.adventure.Adventure;
+import business.entities.Entity;
+import business.entities.characters.Adventurer;
+import business.entities.characters.Char;
+import business.entities.monster.Monster;
 
 import java.util.InputMismatchException;
 import java.util.LinkedList;
@@ -122,6 +123,15 @@ public class ViewManager {
 
     }
 
+    /**
+     * Este método nos permite mostrar por pantalla al usuario el menu para crear un combate con sus respectivas funciones.
+     * Añadir un monstruo en el combate, eliminarlo o pasar al siguiente combate.
+     * @param i es el índice del combate actual
+     * @param numCombats el numero de combates totales de la aventura
+     * @param combat la información que contiene el combate en sí
+     * @param monsterNames una lista con los nombres de los monstrous distintos a mostrar
+     * @param monsterCount una lista con el número de monstruos iguales que hay en el combate
+     */
     public void showCombatCreationMenu(int i, int numCombats, Combat combat, LinkedList<String> monsterNames, LinkedList<Integer> monsterCount) {
         System.out.println("* Encounter "+i+" / "+numCombats);
         System.out.println("* Monsters in encounter");
@@ -154,12 +164,20 @@ public class ViewManager {
         System.out.println();
     }
 
+    /**
+     * Este método mostrará todos los monstruos que le pasemos en una lista
+     * @param monsterList la lista de monstruos a mostrar
+     */
     public void showMonsterList(LinkedList<Monster> monsterList) {
         for(int i = 0; i < monsterList.size(); i++){
             System.out.println((i+1)+". "+monsterList.get(i).getName()+" ("+monsterList.get(i).getChallenge()+")");
         }
     }
 
+    /**
+     * Este método mostrará todas la aventuras que tenemos disponibles
+     * @param adventureList el listado de aventuras
+     */
     public void showAdventureList(LinkedList<Adventure> adventureList) {
         System.out.println("Available adventures: ");
         for(int i = 0; i < adventureList.size(); i++){
@@ -168,6 +186,13 @@ public class ViewManager {
         System.out.println();
     }
 
+    /**
+     * Este método nos permite mostrar la pantalla de selección de personajes que se van a escoger para formar nuestra party
+     * @param characters es el listado de todos los personajes de la base de datos
+     * @param party es el listado de personajes que ya pertenecen a nuestra party
+     * @param index es el índice que nos dice cuantos personajes hay ya dentro de nuestra party
+     * @param numCharsInParty es el número de personajes que formaran nuestra party
+     */
     public void showSelectionCharacterScreen(LinkedList<Char> characters, LinkedList<Char> party, int index, int numCharsInParty) {
         System.out.println();
         System.out.println("--------------------------------");
@@ -187,6 +212,11 @@ public class ViewManager {
         }
     }
 
+    /**
+     * Este método mostrara un listado de todas los monstruos que van a haber en nuestro combate
+     * @param combat es el combate del cual extraemos nuestros monstruos
+     * @param currentCombat es un número que no indica por que combate de la aventura estamos
+     */
     public void showCombatMonsterList(Combat combat, int currentCombat) {
         System.out.println("----------------------");
         System.out.println("Starting Encounter "+currentCombat+":");
@@ -211,6 +241,10 @@ public class ViewManager {
         }
     }
 
+    /**
+     * Este método mostrará todas las acciones de descanso nuestra party
+     * @param party el listado de personajes que harán una acción de descanso
+     */
     public void preparationStageShow(LinkedList<Char> party) {
         for (Char aChar : party) {
             switch (aChar.getType()) {
@@ -221,6 +255,11 @@ public class ViewManager {
         }
     }
 
+    /**
+     * Este método nos permite mostrar por pantalla el resultado de la etapa de cálculo de iniciativa y mostrará en
+     * orden cuál ha sido el resultado de esta etapa.
+     * @param entitiesOnGame son las entidades que vamos a analizar y mostrar su iniciativa
+     */
     public void showInitiativeOrder(LinkedList<Entity> entitiesOnGame) {
         System.out.println();
         System.out.println("Rolling initiative...");
@@ -230,6 +269,11 @@ public class ViewManager {
         System.out.println();
     }
 
+    /**
+     * Este método se utiliza para poder mostrar él inició de la etapa de combate.
+     * @param party es el listado de personajes que pertenecen a la party
+     * @param round es el numero de rondas realizada para este combate
+     */
     public void showCombatStageStart(LinkedList<Char> party, int round) {
         System.out.println("--------------------");
         System.out.println("*** Combat stage ***");
@@ -241,12 +285,18 @@ public class ViewManager {
         }
     }
 
+    /**
+     * Este método mostrará el ataque de alguna de nuestras entidades siendo indiferente si esta es un personaje o un
+     * monstruo.
+     * @param entity Esta es la entidad atacante
+     * @param objective Esta será el objetivo del ataque
+     * @param dmgDone Este será el daño realizado en esta acción
+     * @param critical Este será el indicador de crítico del ataque [3 => Critico; 2=> Acierto; 1 => Fallo]
+     */
     public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
         System.out.print(entity.getName()+" attacks "+objective.getName());
-        switch (entity.getClass().getSimpleName()){
-            case "Adventurer":
-                System.out.print(" with Sword slash.");
-                break;
+        if (entity instanceof Adventurer) {
+            System.out.print(" with Sword slash.");
         }
         System.out.println();
         if(dmgDone != 0) {
@@ -259,7 +309,7 @@ public class ViewManager {
             System.out.println("Fails and deals 0 "+ entity.getDamageType());
         }
         if(objective.getHitPoints() <= 0){
-            if(objective.getClass().getSimpleName().equals("Monster")){
+            if(objective instanceof Monster){
                 System.out.println(objective.getName()+" dies.");
             }else{
                 System.out.println(objective.getName()+" falls unconscious.");
@@ -269,6 +319,11 @@ public class ViewManager {
 
     }
 
+    /**
+     * Este método nos mostrará los descansos de nuestros personajes que se harán entre combates.
+     * @param aChar el personaje que hace la acción de descanso
+     * @param amount la cantidad de (la acción que haga cada personaje en su descanso [Ex: Curar, dar espíritu, ...]) realizada
+     */
     public void showBrake(Char aChar, int amount) {
         switch (aChar.getType()){
             case "Adventurer" -> {System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");}

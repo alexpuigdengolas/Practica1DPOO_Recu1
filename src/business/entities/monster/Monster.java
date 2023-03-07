@@ -1,6 +1,5 @@
 package business.entities.monster;
 
-import business.entities.characters.Char;
 import business.Dice;
 import business.entities.Entity;
 
@@ -87,17 +86,26 @@ public class Monster extends Entity {
 
     /**
      * Este método permite a los monstruos seleccionar un objetivo para su ataque
-     * @param characters el listado de posibles objetivos
+     * @param entities el listado de posibles objetivos
      * @return el objetivo del ataque
      */
-    public Char selectCharacterObjective(LinkedList<Char> characters){
+    public Entity selectObjective(LinkedList<Entity> entities){
         Random random = new Random();
         int objectiveIndex;
+
+        LinkedList<Entity> characters = new LinkedList<>();
+        for (Entity entity : entities) {
+            if (!(entity instanceof Monster)) {
+                characters.add(entity);
+            }
+        }
+
         do {
             objectiveIndex = random.nextInt(characters.size());
         }while(characters.get(objectiveIndex).getHitPoints() == 0);
         return characters.get(objectiveIndex);
     }
+
 
     /**
      * Método que permite a la entidad atacar a otra entidad
@@ -114,16 +122,10 @@ public class Monster extends Entity {
         if(critical >= 2) {
             if(critical == 2) {
                 dmgDone = dice.throwDice();
-                entity.setHitPoints(entity.getHitPoints() - dmgDone);
             }
             else{
                 dmgDone = (dice.throwDice() * 2);
-                entity.setHitPoints(entity.getHitPoints() - dmgDone);
             }
-        }
-
-        if(entity.getHitPoints() < 0){
-            entity.setHitPoints(0);
         }
 
         return dmgDone;

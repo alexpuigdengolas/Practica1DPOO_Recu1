@@ -17,7 +17,7 @@ public class Adventurer extends Char {
      * @param aChar la información del personaje con la que podemos crear nuestro aventurero
      */
     public Adventurer(Char aChar) {
-        super(aChar.getName(), aChar.getPlayer(), aChar.getXp());
+        super(aChar);
         this.setType("Adventurer");
         this.setBody(aChar.getBody());
         this.setMind(aChar.getMind());
@@ -64,20 +64,29 @@ public class Adventurer extends Char {
     }
 
     /**
-     * Este método será capaz de implementar una manera en la que se puede seleccionar el objetivo de su ataque
-     * @param monsters esta será la lista de posibles objetivos del ataque
-     * @return el objetivo del ataque
+     * Este método implementará la función de selección de objetivo de los aventureros, donde esté ara daño al
+     * monstruo que esté más débil
+     * @param entities el listado de entidades que pueden ser los objetivos de un ataque
+     * @return la entidad seleccionada como objetivo
      */
     @Override
-    public Monster selectMonsterObjective(LinkedList<Monster> monsters) {
-        Comparator<Monster> hitpointsComparator = new Comparator<Monster>() {
-            public int compare(Monster m1, Monster m2) {
+    public Entity selectObjective(LinkedList<Entity> entities) {
+
+        LinkedList<Entity> monsters = new LinkedList<>();
+        for (Entity entity : entities) {
+            if (entity instanceof Monster) {
+                monsters.add(entity);
+            }
+        }
+
+        Comparator<Entity> hitpointsComparator = new Comparator<Entity>() {
+            public int compare(Entity m1, Entity m2) {
                 return Integer.compare(m1.getHitPoints(), m2.getHitPoints());
             }
         };
 
         monsters.sort(hitpointsComparator);
-        for (Monster monster : monsters) {
+        for (Entity monster : monsters) {
             if (monster.getHitPoints() > 0) {
                 return monster;
             }
@@ -98,16 +107,10 @@ public class Adventurer extends Char {
         if(critical >=2) {
             if(critical == 2){
                 dmgDone = dice.throwDice() + this.getBody();
-                entity.setHitPoints(entity.getHitPoints() - dmgDone);
             }
             else {
                 dmgDone =  (dice.throwDice() + this.getBody()) * 2;
-                entity.setHitPoints(entity.getHitPoints() - dmgDone);
             }
-        }
-
-        if(entity.getHitPoints() < 0){
-            entity.setHitPoints(0);
         }
         return dmgDone;
     }

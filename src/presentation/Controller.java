@@ -128,7 +128,14 @@ public class Controller {
         viewManager.showMessage("Tavern keeper: I see, I see...");
         viewManager.showMessage("Now, are you an experienced adventurer?");
         viewManager.spacing();
-        int level = viewManager.askForInteger("-> Enter the character’s level [1..10]: ");
+
+        int level;
+        do {
+            level = viewManager.askForInteger("-> Enter the character’s level [1..10]: ");
+            if(level < 1 || level > 10){
+                viewManager.showMessage("The level must be a valid number");
+            }
+        }while (level < 1 || level > 10);
         viewManager.spacing();
         viewManager.showMessage("Tavern keeper: Oh, so you are level "+level+"!");
 
@@ -141,10 +148,7 @@ public class Controller {
             //Calculamos las stats
             viewManager.showMessage("Great, let me get a closer look at you...");
             viewManager.spacing();
-            //TODO: No hacer calculos aqui
-            int xp = (level*100)-101;
-            if(xp < 0) xp = 0;
-            Char character = new Char(charName, playersName, xp);
+            Char character = new Char(charName, playersName, level);
             viewManager.showMessage("Generating your stats...");
             //Cuerpo
             int[] dices = businessController.generateCharacterStat("Body", character);
@@ -208,32 +212,34 @@ public class Controller {
 
         //Seleccionamos alguno de los personajes
         LinkedList<Char> characters = businessController.getCharacterListByPlayer(player);
-        viewManager.showCharacterList(characters);
-        viewManager.spacing();
+        if(characters.size()!= 0) {
+            viewManager.showCharacterList(characters);
+            viewManager.spacing();
 
-        boolean charSelectedStatus = false;
-        do {
-            int charSelected = viewManager.askForInteger("Who would you like to meet [0.."+characters.size()+"]: ");
-            if (charSelected >= 1 && charSelected <= characters.size()) {
-                charSelectedStatus = true;
-                viewManager.showCharacterInfo(characters.get(charSelected-1));
+            int charSelected;
+            do {
+                charSelected = viewManager.askForInteger("Who would you like to meet [0.." + characters.size() + "]: ");
+                if(charSelected < 0 || charSelected > characters.size()){
+                    viewManager.showMessage("You have to select an available character");
+                }
+            } while (charSelected < 0 || charSelected > characters.size());
+            if (charSelected >= 1) {
+                viewManager.showCharacterInfo(characters.get(charSelected - 1));
 
                 //Preguntamos si desean eliminar al personaje seleccionado
                 viewManager.showMessage("[Enter name to delete, or press enter to cancel]");
-                String charNameIntroduced = viewManager.askForString("Do you want to delete " + characters.get(charSelected-1).getName() + "? ");
-                if (charNameIntroduced.equals(characters.get(charSelected-1).getName())) {
-                    businessController.deleteCharacter(characters.get(charSelected-1).getName());
+                String charNameIntroduced = viewManager.askForString("Do you want to delete " + characters.get(charSelected - 1).getName() + "? ");
+                if (charNameIntroduced.equals(characters.get(charSelected - 1).getName())) {
+                    businessController.deleteCharacter(characters.get(charSelected - 1).getName());
                     viewManager.showMessage("Tavern keeper: I’m sorry kiddo, but you have to leave.");
                     viewManager.spacing();
-                    viewManager.showMessage("Character " + characters.get(charSelected-1).getName() + " left the Guild.");
+                    viewManager.showMessage("Character " + characters.get(charSelected - 1).getName() + " left the Guild.");
                     viewManager.spacing();
                 }
-            } else if (charSelected != 0) {
-                viewManager.showMessage("You have to select a number between [0.."+characters.size()+"]");
-            }else{
-                charSelectedStatus = true;
             }
-        }while (!charSelectedStatus);
+        }else{
+            viewManager.showMessage("At the moment there are no characters assigned to this player in the database");
+        }
 
     }
 
@@ -242,60 +248,71 @@ public class Controller {
      * acceder a esta function del menu principal
      */
     private void addAdventure() {
-        viewManager.showMessage("Tavern keeper: Planning an adventure? Good luck with that!");
-        viewManager.spacing();
-        String name = viewManager.askForString("-> Name your adventure: ");
-        if(businessController.checkAdventureName(name)){
+        LinkedList<Monster> monsters = businessController.getMonsterList();
+        if(monsters.size() != 0) {
+            viewManager.showMessage("Tavern keeper: Planning an adventure? Good luck with that!");
             viewManager.spacing();
-            viewManager.showMessage("Tavern keeper: You plan to undertake "+name+", really?");
-            viewManager.showMessage("How long will that take?");
-            viewManager.spacing();
-            int numCombats;
-            do {
-                numCombats = viewManager.askForInteger("-> How many encounters do you want [1..4]: ");
-            }while(numCombats < 1 || numCombats > 4);
-            viewManager.spacing();
-            viewManager.showMessage("Tavern keeper: "+numCombats+" encounters? That is too much for me...");
-            viewManager.spacing();
-            viewManager.spacing();
-
-            LinkedList<Combat> combats = new LinkedList<>();
-            Adventure adventure = new Adventure(name, numCombats);
-
-            for(int i = 0; i < numCombats; i++){
-                Combat newCombat = new Combat();
-                while(true) {
-                    LinkedList<String> monsterName = new LinkedList<>();
-                    LinkedList<Integer> monsterCount = new LinkedList<>();
-                    viewManager.showCombatCreationMenu(i + 1, numCombats, newCombat, monsterName, monsterCount);
-                    int option;
-                    do {
-                        option = viewManager.askForInteger("-> Enter an option [1..3]: ");
-                    } while (option < 1 || option > 3);
-
-                    switch (option) {
-                        case 1 -> addMonster(newCombat);
-
-                        case 2 -> removeMonster(newCombat, monsterName);
+            String name = viewManager.askForString("-> Name your adventure: ");
+            if (businessController.checkAdventureName(name)) {
+                viewManager.spacing();
+                viewManager.showMessage("Tavern keeper: You plan to undertake " + name + ", really?");
+                viewManager.showMessage("How long will that take?");
+                viewManager.spacing();
+                int numCombats;
+                do {
+                    numCombats = viewManager.askForInteger("-> How many encounters do you want [1..4]: ");
+                    if(numCombats < 1 || numCombats > 4){
+                        viewManager.showMessage("You have to select a possible number of encounters");
                     }
-                    if(option == 3){
-                        break;
+                } while (numCombats < 1 || numCombats > 4);
+                viewManager.spacing();
+                viewManager.showMessage("Tavern keeper: " + numCombats + " encounters? That is too much for me...");
+                viewManager.spacing();
+                viewManager.spacing();
+
+                LinkedList<Combat> combats = new LinkedList<>();
+                Adventure adventure = new Adventure(name, numCombats);
+
+                for (int i = 0; i < numCombats; i++) {
+                    Combat newCombat = new Combat();
+                    while (true) {
+                        LinkedList<String> monsterName = new LinkedList<>();
+                        LinkedList<Integer> monsterCount = new LinkedList<>();
+                        viewManager.showCombatCreationMenu(i + 1, numCombats, newCombat, monsterName, monsterCount);
+                        int option;
+                        do {
+                            option = viewManager.askForInteger("-> Enter an option [1..3]: ");
+                            if(option < 1 || option > 3){
+                                viewManager.showMessage("You have to select an available option");
+                            }
+                        } while (option < 1 || option > 3);
+
+                        switch (option) {
+                            case 1 -> addMonster(newCombat);
+
+                            case 2 -> removeMonster(newCombat, monsterName);
+                        }
+                        if (option == 3) {
+                            break;
+                        }
                     }
+                    combats.add(newCombat);
                 }
-                combats.add(newCombat);
-            }
 
-            adventure.setCombats(combats);
-            businessController.addAdventure(adventure);
-            viewManager.spacing();
-            viewManager.showMessage("Tavern keeper: Great plan lad! I hope you won’t die!");
-            viewManager.spacing();
-            viewManager.showMessage("The new adventure "+adventure.getName()+" has been created.");
+                adventure.setCombats(combats);
+                businessController.addAdventure(adventure);
+                viewManager.spacing();
+                viewManager.showMessage("Tavern keeper: Great plan lad! I hope you won’t die!");
+                viewManager.spacing();
+                viewManager.showMessage("The new adventure " + adventure.getName() + " has been created.");
+            } else {
+                viewManager.showMessage("There is already a Adventure named " + name);
+                viewManager.spacing();
+            }
         }else{
-            viewManager.showMessage("There is already a Adventure named "+name);
+            viewManager.showMessage("The current monster file does not contain any monsters to create your adventure");
             viewManager.spacing();
         }
-
     }
 
     /**
@@ -316,16 +333,21 @@ public class Controller {
             }
         }
 
-        int monsterChosen = viewManager.askForInteger("-> Choose a monster to add [1.."+monsters.size()+"]: ") -1;
+        int monsterChosen;
+        do {
+             monsterChosen = viewManager.askForInteger("-> Choose a monster to add [1.." + monsters.size() + "]: ") - 1;
+             if(monsterChosen < 0 || monsterChosen > monsters.size()-1){
+                 viewManager.showMessage("You have to select an available monster type");
+             }
+        } while (monsterChosen < 0 || monsterChosen > monsters.size()-1);
 
         if(monsters.get(monsterChosen).getChallenge().equals("Boss") && bossIn){
             viewManager.showMessage("The monster selected is a classified as a Boss and this combat already has one");
         }else {
             if (!monsters.get(monsterChosen).getChallenge().equals("Boss")) {
                 int monsterAmount = viewManager.askForInteger("-> How many " + monsters.get(monsterChosen).getName() + "(s) do you want to add: ");
-                for (int i = 0; i < monsterAmount; i++) {
-                    combat.getMonsters().add(monsters.get(monsterChosen));
-                }
+                businessController.addMonsters(combat, monsterAmount, monsters.get(monsterChosen));
+
             } else {
                 viewManager.showMessage("The monster selected is a classified as a Boss and there can only be one per combat");
                 combat.getMonsters().add(monsters.get(monsterChosen));
@@ -348,7 +370,7 @@ public class Controller {
             viewManager.showMessage("There are no monsters at the moment in this combat");
             viewManager.spacing();
         }else{
-            int numMonsters = 0;
+
             int monsterSelected;
             do {
                  monsterSelected = viewManager.askForInteger("-> Which monster do you want to delete: ") - 1;
@@ -357,12 +379,9 @@ public class Controller {
                  }
             }while (monsterSelected < 0 || monsterSelected > monsterName.size());
             String monsterType = monsterName.get(monsterSelected);
-            for(int i = combat.getMonsters().size()-1; i >= 0; i--){
-                if(combat.getMonsters().get(i).getName().equals(monsterType)){
-                    combat.getMonsters().remove(i);
-                    numMonsters++;
-                }
-            }
+
+            int numMonsters = businessController.getMonsterRemoved(combat, monsterType);
+
             viewManager.spacing();
             viewManager.showMessage(numMonsters+" "+monsterType+" were removed from the encounter.");
             viewManager.spacing();
@@ -434,7 +453,7 @@ public class Controller {
                         combatDone = true;
                         combatOver  = true;
 
-                        Entity objective = businessController.objectiveSelection(entity, adventure.getParty(), adventure.getCombats().get(i).getMonsters());
+                        Entity objective = businessController.objectiveSelection(entity, entitiesOnGame);
                         critical = businessController.attackCritical(entity);
                         dmgDone = businessController.attackStage(entity, objective, critical);
                         viewManager.showAttack(entity, objective, dmgDone, critical);
@@ -482,16 +501,17 @@ public class Controller {
                 viewManager.showMessage("Don’t worry, you are safe back at the Tavern.");
                 adventureLost = true;
                 break;
-            }
-
-            //Short Rest
-            viewManager.spacing();
-            viewManager.showMessage("------------------------");
-            viewManager.showMessage("*** Short rest stage ***");
-            viewManager.showMessage("------------------------");
-            for(int j = 0; j < adventure.getParty().size(); j++) {
-                int amount = businessController.shortBrake(adventure.getParty().get(j));
-                viewManager.showBrake(adventure.getParty().get(j), amount);
+            }else {
+                //Short Rest
+                viewManager.spacing();
+                viewManager.showMessage("------------------------");
+                viewManager.showMessage("*** Short rest stage ***");
+                viewManager.showMessage("------------------------");
+                for (int j = 0; j < adventure.getParty().size(); j++) {
+                    int amount = businessController.shortBrake(adventure.getParty().get(j));
+                    viewManager.showBrake(adventure.getParty().get(j), amount);
+                }
+                viewManager.spacing();
             }
 
 

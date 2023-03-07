@@ -120,32 +120,62 @@ public class BusinessController {
         characterManager.deleteCharacter(name);
     }
 
+    /**
+     *Este método chequeará que el nombre de la aventura sea único y que pueda existir una aventura que el nombre introducido
+     * @param name es el nombre de la aventura seleccionada
+     * @return el resultado de sí el nombre es apto o no
+     */
     public boolean checkAdventureName(String name) {
         return adventureManager.checkAdventureName(name);
     }
 
+    /**
+     * Este método recogerá la lista de monstruos de la base de datos y la retornará
+     * @return la lista de monstruos de la base de datos
+     */
     public LinkedList<Monster> getMonsterList() {
         return monsterManager.getMonsterList();
     }
 
+    /**
+     * Añadirá una aventura a nuestra base de datos recibiendo una y añadiéndola a la lista de aventuras existentes
+     * y sobreescribiendo el archivo
+     * @param adventure la aventura que queremos añadir
+     */
     public void addAdventure(Adventure adventure) {
         adventureManager.updateAdventureList(adventure);
     }
 
+    /**
+     * Este método nos permite recibir el listado de aventuras que tenemos en nuestra base de datos
+     * @return el listado de aventuras de nuestra base de datos
+     */
     public LinkedList<Adventure> getAdventureList() {
         return adventureManager.getAdventureList();
     }
 
+    /**
+     * Este método nos permite recibir el listado de personajes que tenemos en nuestra base de datos
+     * @return el listado de personajes de nuestra base de datos
+     */
     public LinkedList<Char> getCharacterList() {
         return characterManager.getCharacterList();
     }
 
+    /**
+     * Este método nos permite hacer que los personajes de la party pasen por la etapa de preparación (Support)
+     * @param party los personajes que pertenecen a nuestra aventura
+     */
     public void preparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
             aChar.preparationStage();
         }
     }
 
+    /**
+     * Este método calculará la iniciativa de todas nuestras entidades y las ordenará en función de ese valor
+     * @param entitiesOnGame estas serán las entidades que compongan nuestro combate
+     */
     public void calculateInitiative(LinkedList<Entity> entitiesOnGame) {
         for (Entity entity : entitiesOnGame) {
             entity.calculateCurrentInitiative();
@@ -160,35 +190,55 @@ public class BusinessController {
         entitiesOnGame.sort(initiativeComparator);
     }
 
+    /**
+     * Este método es contrario a uno visto antes y lo que ara seré eliminar los efectos de la etapa de preparación anterior (Support)
+     * @param party el listado de personajes que deben dejar de ser afectados y generar estos efectos
+     */
     public void stopPreparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
             aChar.stopPreparationStage();
         }
     }
 
-    //TODO: Instance Of
+    /**
+     * Este método permite a cualquier entidad atacar a cualquier otra entidad y no solo calcula el daño realizado por esta
+     * acción, sino que también retira la cantidad de vida de ese ataque al objetivo
+     * @param entity es la entidad que realiza el ataque
+     * @param objective es el objetivo del ataque
+     * @param critical es un entero que indica si el ataque ha sido critico o simplemente ha fallado
+     * @return el daño realizado por el ataque
+     */
     public int attackStage(Entity entity, Entity objective, int critical) {
-        if (entity.getClass().getSimpleName().equals("Monster")) {
-            Monster monster = new Monster((Monster) entity);
-            return monster.attack(objective, critical);
-        }
-        Char character = (Char) entity;
-        return character.attack(objective, critical);
+        int dmgDone = entity.attack(objective, critical);
+        objective.getDamaged(dmgDone, entity.getDamageType());
+        return dmgDone;
     }
 
-    public Entity objectiveSelection(Entity entity, LinkedList<Char> characters, LinkedList<Monster> monsters) {
-        if (entity.getClass().getSimpleName().equals("Monster")) {
-            Monster monster = new Monster((Monster) entity);
-            return monster.selectCharacterObjective(characters);
-        }
-        Char character = (Char) entity;
-        return character.selectMonsterObjective(monsters);
+    /**
+     * Este método permite a las entidades escoger cúal será el objetivo de su ataque.
+     * @param entity la entidad que va a atacar
+     * @param entities el resto de entidades que hay en la partida
+     * @return la entidad que será objetivo del ataque
+     */
+    public Entity objectiveSelection(Entity entity, LinkedList<Entity> entities) {
+        return entity.selectObjective(entities);
     }
 
+    /**
+     * Este método nos permite ver si un ataque es critico, si simplemente golpeará o si se fallara el ataque
+     * @param entity es la entidad que atacara
+     * @return un entero indicando el resultado del ataque (3 => Critico; 2 => Acierto; 1 => Fallo)
+     */
     public int attackCritical(Entity entity) {
         return entity.isCriticalDmg();
     }
 
+    /**
+     * Este método permitirá saber cuanta experiencia se ha ganado al derrotar a multiples monstruos en un combate
+     * @param adventure la aventura en la que se participa
+     * @param i el indice del combate a analizar
+     * @return la cantidad de experiencia ganada en este combate
+     */
     public int getXpEarned(Adventure adventure, int i) {
         int xpSum = 0;
         for(int j = 0; j < adventure.getCombats().get(i).getMonsters().size(); j++){
@@ -197,11 +247,41 @@ public class BusinessController {
         return xpSum;
     }
 
+    /**
+     * Este método reseteará la vida de todos los personajes antes de que estos vuelvan a ser introducidos en la base
+     * de datos.
+     * @param party la lista de personajes a resetear
+     */
     public void setCharsAfterGame(LinkedList<Char> party) {
         characterManager.setCharsAfterGame(party);
     }
 
+    /**
+     * Este método permite a todos los personajes tomarse un descanso y realizar la acción que se les asigne durante este
+     * @param character el personaje que realizará la acción
+     * @return un entero con la cantidad de lo que haya hecho durante este descanso
+     */
     public int shortBrake(Char character) {
         return characterManager.shortBrake(character);
+    }
+
+    /**
+     * Este método permite eliminar monstruos de un combate.
+     * @param combat el combate del que se eliminaran los monstruos
+     * @param monsterType el tipo de monstruos a eliminar
+     * @return la cantidad de monstruos eliminados
+     */
+    public int getMonsterRemoved(Combat combat, String monsterType) {
+        return combat.removeMonster(monsterType);
+    }
+
+    /**
+     * Este método permite añadir monstruos a un combate
+     * @param combat el combate al que se quieren añadir monstruos
+     * @param monsterAmount la cantidad de monstruos a añadir
+     * @param monster el tipo de monstruos a añadir
+     */
+    public void addMonsters(Combat combat, int monsterAmount, Monster monster) {
+        combat.addMonsters(monsterAmount, monster);
     }
 }
