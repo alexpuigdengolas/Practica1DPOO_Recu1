@@ -1,10 +1,13 @@
 package presentation;
 
 import business.BusinessController;
-import business.entities.characters.Char;
 import business.Combat;
 import business.adventure.Adventure;
 import business.entities.Entity;
+import business.entities.characters.Adventurer;
+import business.entities.characters.Char;
+import business.entities.characters.Cleric;
+import business.entities.characters.Mage;
 import business.entities.monster.Monster;
 
 import java.util.LinkedList;
@@ -148,23 +151,26 @@ public class Controller {
             //Calculamos las stats
             viewManager.showMessage("Great, let me get a closer look at you...");
             viewManager.spacing();
-            Char character = new Char(charName, playersName, level);
+            //Char character = new Char(charName, playersName, level);
             viewManager.showMessage("Generating your stats...");
             //Cuerpo
-            int[] dices = businessController.generateCharacterStat("Body", character);
+            int[] dices = businessController.generateDiceCharacterStat();
+            int body = businessController.generateCharacterStat(dices);
             viewManager.showMessage("Body:  You rolled "+(dices[0]+dices[1])+" ("+dices[0]+" and "+dices[1]+").");
             //Mente
-            dices = businessController.generateCharacterStat("Mind", character);
+            dices = businessController.generateDiceCharacterStat();
+            int mind = businessController.generateCharacterStat(dices);
             viewManager.showMessage("Mind:  You rolled "+(dices[0]+dices[1])+" ("+dices[0]+" and "+dices[1]+").");
             //Alma
-            dices = businessController.generateCharacterStat("Spirit", character);
+            dices = businessController.generateDiceCharacterStat();
+            int spirit = businessController.generateCharacterStat(dices);
             viewManager.showMessage("Spirit:  You rolled "+(dices[0]+dices[1])+" ("+dices[0]+" and "+dices[1]+").");
 
             //Mostramos el resultado de las tiradas
             viewManager.spacing();
-            viewManager.showMessage("   - Body: "+character.getBody());
-            viewManager.showMessage("   - Mind: "+character.getMind());
-            viewManager.showMessage("   - Spirit: "+character.getSpirit());
+            viewManager.showMessage("   - Body: "+body);
+            viewManager.showMessage("   - Mind: "+mind);
+            viewManager.showMessage("   - Spirit: "+spirit);
             viewManager.spacing();
 
             //Seleccionamos la clase
@@ -177,11 +183,11 @@ public class Controller {
                 viewManager.spacing();
                 viewManager.showMessage("Tavern keeper: Any decent party needs one of those.");
                 viewManager.showMessage("I guess that means you’re a " + type + " by now, nice!");
-                definitiveChar = businessController.generateClassifiedChar(character, type);
-                if(character == definitiveChar){
+                definitiveChar = businessController.generateClassifiedChar(charName, playersName, level, body, mind, spirit, type);
+                if(definitiveChar == null){
                     viewManager.showMessage("You have not selected an adecuate class");
                 }
-            }while(character == definitiveChar);
+            }while(definitiveChar == null);
 
             viewManager.showMessage("The new character "+charName+" has been created.");
 
@@ -446,6 +452,7 @@ public class Controller {
                 viewManager.showCombatStageStart(adventure.getParty(), round);
 
                 //Attack
+                viewManager.spacing();
                 for (Entity entity : entitiesOnGame) {
                     int dmgDone;
                     int critical;
@@ -455,7 +462,7 @@ public class Controller {
 
                         Entity objective = businessController.objectiveSelection(entity, entitiesOnGame);
                         critical = businessController.attackCritical(entity);
-                        dmgDone = businessController.attackStage(entity, objective, critical);
+                        dmgDone = businessController.attackStage(entity, objective, critical, adventure.getCombats().get(i).getMonsters());
                         viewManager.showAttack(entity, objective, dmgDone, critical);
 
                         for (int x = 0; x < adventure.getParty().size(); x++) {
@@ -475,6 +482,7 @@ public class Controller {
 
 
                 }
+                viewManager.spacing();
                 viewManager.showMessage("End of round "+round);
                 round++;
             }while(!combatDone && !combatOver);
@@ -530,21 +538,29 @@ public class Controller {
      * @param adventure la aventura en la que participan nuestros personajes
      */
     private void characterSelectionScreen(Adventure adventure){
+        LinkedList<Char> characters = businessController.getCharacterList();
+
         viewManager.showMessage("Tavern keeper: "+adventure.getName()+" it is!");
         viewManager.showMessage("And how many people shall join you?");
         viewManager.spacing();
         int numPartyMembers;
         do {
-            numPartyMembers = viewManager.askForInteger("-> Choose a number of characters [3..5]: ");
-            if(numPartyMembers < 3 || numPartyMembers > 5){
-                viewManager.showMessage("You have to select a good number");
+            do {
+                numPartyMembers = viewManager.askForInteger("-> Choose a number of characters [3..5]: ");
+                if (numPartyMembers < 3 || numPartyMembers > 5) {
+                    viewManager.showMessage("You have to select a good number");
+                }
+
+            } while (numPartyMembers < 3 || numPartyMembers > 5);
+            if (numPartyMembers > characters.size()) {
+                viewManager.showMessage("At the moment there are not enough characters to be able to do that");
             }
-        }while (numPartyMembers < 3 || numPartyMembers > 5);
+        }while (numPartyMembers > characters.size());
+
         viewManager.spacing();
         viewManager.showMessage("Tavern keeper: Great, "+numPartyMembers+" it is.");
         viewManager.showMessage("Who among these lads shall join you?");
         viewManager.spacing();
-        LinkedList<Char> characters = businessController.getCharacterList();
         int index = 1;
         do {
             viewManager.showSelectionCharacterScreen(characters, adventure.getParty(), index, numPartyMembers);
@@ -564,7 +580,12 @@ public class Controller {
                 }
             }while((characterSelected < 0 || characterSelected >= characters.size()) || !charNotInParty);
 
-            adventure.getParty().add(characters.get(characterSelected));
+            switch (characters.get(characterSelected).getType()){
+                case "Adventurer" -> adventure.getParty().add(new Adventurer(characters.get(characterSelected)));
+                case "Cleric" -> adventure.getParty().add(new Cleric(characters.get(characterSelected)));
+                case "Mage" -> adventure.getParty().add(new Mage(characters.get(characterSelected)));
+            }
+
 
             index++;
         }while (adventure.getParty().size() < numPartyMembers);

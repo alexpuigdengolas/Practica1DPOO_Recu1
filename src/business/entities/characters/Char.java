@@ -1,6 +1,5 @@
 package business.entities.characters;
 
-import business.Dice;
 import business.entities.Entity;
 
 import java.util.LinkedList;
@@ -10,6 +9,8 @@ import java.util.LinkedList;
  * Esta clase extiende de la clase Entity para poder aplicar ciertas funciones y servirá para poder
  * extender de ella y sacar distintos tipos de personajes
  */
+
+//WARNING: Si la clase char es abstracta tengo que implementar un instance creator para poder leer los personajes de la base de datos
 public class Char extends Entity {
     /**
      * Estas serán las variables que representaran a nuestros personajes
@@ -138,7 +139,8 @@ public class Char extends Entity {
      * @return la experiencia equivalente a dicho nivel
      */
     public int calcXp(int level){
-        return (level*100)-101;
+        int xp = (level*100)-101;
+        return Math.max(xp, 0);
     }
 
     /**
@@ -169,21 +171,21 @@ public class Char extends Entity {
      * Método para calcular la vida maxima actual del personaje
      */
     public void calcMaxLife(){
-        setMaxLife(10);
+        this.setMaxLife(((10 + getBody())*this.getLevel()));
     }
 
     /**
      * Este método implementa la etapa de preparación de cada personaje.
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
      */
-    public void preparationStage() {
+    public void preparationStage(LinkedList<Char> party) {
     }
 
     /**
      * Este método implementa el fin de la etapa de preparación de cada personaje
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
      */
-    public void stopPreparationStage(){
+    public void stopPreparationStage(LinkedList<Char> party){
 
     }
 
@@ -196,75 +198,16 @@ public class Char extends Entity {
     }
 
     /**
-     * Este método generará los stats del personaje. Como los tres stats se calculan de la misma manera hemos decidido
-     * que se introduzca el personaje y el stat a modificar. Como esto se ara con dos dados y se deben mostrar por
-     * pantalla, retornamos los valores extraídos por los dadoes en un array de enteros.
-     * @param stat es la estadística a modificar
-     * @return los números extraídos por los dos dados
+     * Este método permite a los personajes curarse entre sí
      */
-    public int[] generateStats(String stat) {
-        Dice dice = new Dice(6);
-
-        int num1 = dice.throwDice();
-        int num2 = dice.throwDice();
-
-        int[] nums = new int[2];
-
-        nums[0] = num1;
-        nums[1] = num2;
-
-        int sum = num1 + num2;
-
-        switch (stat) {
-            case "Body" -> {
-                if (sum <= 2) {
-                    body = -1;
-                } else if (sum <= 5) {
-                    body = 0;
-                } else if (sum <= 9) {
-                    body = 1;
-                } else if (sum <= 11) {
-                    body = 2;
-                } else {
-                    body = 3;
-                }
-            }
-            case "Mind" -> {
-                if (sum <= 2) {
-                    mind = -1;
-                } else if (sum <= 5) {
-                    mind = 0;
-                } else if (sum <= 9) {
-                    mind = 1;
-                } else if (sum <= 11) {
-                    mind = 2;
-                } else {
-                    mind = 3;
-                }
-            }
-            case "Spirit" -> {
-                if (sum <= 2) {
-                    spirit = -1;
-                } else if (sum <= 5) {
-                    spirit = 0;
-                } else if (sum <= 9) {
-                    spirit = 1;
-                } else if (sum <= 11) {
-                    spirit = 2;
-                } else {
-                    spirit = 3;
-                }
-            }
+    public void heal(int heal){
+        setHitPoints(getHitPoints() + heal);
+        if(getHitPoints() > maxLife){
+            setHitPoints(maxLife);
         }
-        return nums;
     }
 
-    /**
-     * Este método permite a los personajes curarse entre sí
-     * @param partners es el/los personajes que van a ser curados por este personaje
-     * @return la cantidad de cura realizada
-     */
-    public int heal(LinkedList<Char> partners){
-        return 0;
+    protected void addMindPoitns(int mindAdded) {
+        this.mind += mindAdded;
     }
 }

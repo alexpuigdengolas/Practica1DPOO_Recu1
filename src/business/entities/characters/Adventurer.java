@@ -27,12 +27,15 @@ public class Adventurer extends Char {
         this.setDamageType("Physical");
     }
 
-    /**
-     * Método para calcular la vida maxima actual del personaje
-     */
-    @Override
-    public void calcMaxLife() {
-        this.setMaxLife(((10 + getBody())*this.getLevel()));
+    public Adventurer(String name, String player, int level, int body, int mind, int spirit) {
+        super(name, player, level);
+        this.setBody(body);
+        this.setMind(mind);
+        this.setSpirit(spirit);
+        this.setType("Adventurer");
+        this.calcMaxLife();
+        this.setHitPoints(this.getMaxLife());
+        this.setDamageType("Physical");
     }
 
     /**
@@ -40,7 +43,7 @@ public class Adventurer extends Char {
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
      */
     @Override
-    public void preparationStage() {
+    public void preparationStage(LinkedList<Char> party) {
         setSpirit(getSpirit()+1);
     }
 
@@ -49,7 +52,7 @@ public class Adventurer extends Char {
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
      */
     @Override
-    public void stopPreparationStage() {
+    public void stopPreparationStage(LinkedList<Char> party) {
         setSpirit(getSpirit()-1);
     }
 

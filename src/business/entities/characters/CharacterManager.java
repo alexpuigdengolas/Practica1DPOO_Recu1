@@ -1,5 +1,6 @@
 package business.entities.characters;
 
+import business.Dice;
 import persistence.CharacterApiDAO;
 import persistence.CharacterDAO;
 import persistence.CharacterJsonDAO;
@@ -61,12 +62,20 @@ public class CharacterManager {
     /**
      * Este método service para generar las stats de nuestro personaje. Para economizar el crear tres métodos para lo mismo,
      * hemos decidido enviar el stat a modificar con el resultado de los dados.
-     * @param stat el stat a modificar [Body, Mind o Spirit]
-     * @param character el personaje a modificar
      * @return un array de enteros con los valores de nuestros dados
      */
-    public int[] generateCharacterStat(String stat, Char character) {
-        return character.generateStats(stat);
+    public int[] generateDiceCharacterStat() {
+        Dice dice = new Dice(6);
+
+        int num1 = dice.throwDice();
+        int num2 = dice.throwDice();
+
+        int[] nums = new int[2];
+
+        nums[0] = num1;
+        nums[1] = num2;
+
+        return nums;
     }
 
     /**
@@ -109,18 +118,16 @@ public class CharacterManager {
 
     /**
      * Este método generará los personajes nuevos dependiendo de su nivel y la clase seleccionada
-     * @param character el personaje que queremos generar
      * @param type la clase seleccionada
      * @return Es el personaje que queremos recibir
      */
-    public Char generateClassifiedChar(Char character, String type) {
-        switch (type){
-            case "Adventurer": return new Adventurer(character);
-            case "Cleric": break;//return new Cleric(character.getName(), character.getPlayer(), character.getLevel());
-            case "Paladin": break;//return new Paladin(character.getName(), character.getPlayer(), character.getLevel());
-            default: return character;
-        }
-        return character;
+    public Char generateClassifiedChar(String charName, String playerName, int level, int body, int mind, int spirit, String type) {
+        return switch (type) {
+            case "Adventurer" -> new Adventurer(charName, playerName, level, body, mind, spirit);
+            case "Cleric" -> new Cleric(charName, playerName, level, body, mind, spirit);
+            case "Mage" -> new Mage(charName, playerName, level, body, mind, spirit);
+            default -> null;
+        };
     }
 
     /**
@@ -177,5 +184,22 @@ public class CharacterManager {
      */
     public int shortBrake(Char character) {
         return character.shortBrake();
+    }
+
+    public int generateCharacterStat(int[] dices) {
+        int num1 = dices[0], num2 = dices[1];
+        int sum = num1 + num2;
+
+        if (sum <= 2) {
+            return -1;
+        } else if (sum <= 5) {
+            return 0;
+        } else if (sum <= 9) {
+            return 1;
+        } else if (sum <= 11) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 }

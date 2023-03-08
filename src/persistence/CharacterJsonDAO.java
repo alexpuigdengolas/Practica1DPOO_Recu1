@@ -2,6 +2,8 @@ package persistence;
 
 import business.entities.characters.Adventurer;
 import business.entities.characters.Char;
+import business.entities.characters.Cleric;
+import business.entities.characters.Mage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -36,6 +38,8 @@ public class CharacterJsonDAO implements CharacterDAO{
         for (Char character : characters) {
             switch (character.getType()) {
                 case "Adventurer" -> classifiedCharacters.add(new Adventurer(character));
+                case "Mage" -> classifiedCharacters.add(new Mage(character));
+                case "Cleric" -> classifiedCharacters.add(new Cleric(character));
             }
         }
         return classifiedCharacters;

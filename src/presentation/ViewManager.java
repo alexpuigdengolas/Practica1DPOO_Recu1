@@ -3,8 +3,8 @@ package presentation;
 import business.Combat;
 import business.adventure.Adventure;
 import business.entities.Entity;
-import business.entities.characters.Adventurer;
 import business.entities.characters.Char;
+import business.entities.characters.Mage;
 import business.entities.monster.Monster;
 
 import java.util.InputMismatchException;
@@ -248,9 +248,9 @@ public class ViewManager {
     public void preparationStageShow(LinkedList<Char> party) {
         for (Char aChar : party) {
             switch (aChar.getType()) {
-                case "Adventurer":
-                    System.out.println(aChar.getName() + " uses Self-Motivated. Their Spirit increases in +1.");
-                    break;
+                case "Adventurer" -> System.out.println(aChar.getName() + " uses Self-Motivated. Their Spirit increases in +1.");
+                case "Mage" -> System.out.println(aChar.getName() + " uses Mage shield. Their regenerate the shield.");
+                case "Cleric" -> System.out.println(aChar.getName() + " uses Blessing of good luck. Mind stat has been increased");
             }
         }
     }
@@ -281,7 +281,11 @@ public class ViewManager {
         System.out.println("Round "+round+":");
         System.out.println("Party:");
         for (Char aChar : party) {
-            System.out.println("    - " + aChar.getName() + "    " + aChar.getHitPoints() + " / " + aChar.getMaxLife() + " hit points");
+            if (aChar instanceof Mage) {
+                System.out.println("    - " + aChar.getName() + "    " + aChar.getHitPoints() + " / " + aChar.getMaxLife() + " hit points (Shield: "+((Mage) aChar).getShield()+")");
+            } else {
+                System.out.println("    - " + aChar.getName() + "    " + aChar.getHitPoints() + " / " + aChar.getMaxLife() + " hit points");
+            }
         }
     }
 
@@ -294,25 +298,50 @@ public class ViewManager {
      * @param critical Este será el indicador de crítico del ataque [3 => Critico; 2=> Acierto; 1 => Fallo]
      */
     public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
-        System.out.print(entity.getName()+" attacks "+objective.getName());
-        if (entity instanceof Adventurer) {
-            System.out.print(" with Sword slash.");
-        }
-        System.out.println();
-        if(dmgDone != 0) {
-            if (critical == 2) {
-                System.out.println("Hits and deals " + dmgDone + " " + entity.getDamageType());
-            } else if(critical == 3){
-                System.out.println("Critical hit and deals " + dmgDone + " " + entity.getDamageType());
+        if (entity instanceof Char) {
+            switch (((Char) entity).getType()) {
+                case "Adventurer" ->
+                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Sword slash. ");
+                case "Mage" -> {
+                    if (objective == null) {
+                        System.out.print(entity.getName() + " attacks all the monsters with Fireball. ");
+                    } else {
+                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Arcane missile. ");
+                    }
+                }
+                case "Cleric" -> {
+                    if (objective instanceof Char) {
+                        System.out.print(entity.getName() + " heals " + objective.getName() + " with Prayer of healing. ");
+                    } else {
+                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                    }
+                }
             }
         }else{
-            System.out.println("Fails and deals 0 "+ entity.getDamageType());
+            System.out.print(entity.getName()+" attacks "+objective.getName()+". ");
         }
-        if(objective.getHitPoints() <= 0){
-            if(objective instanceof Monster){
-                System.out.println(objective.getName()+" dies.");
-            }else{
-                System.out.println(objective.getName()+" falls unconscious.");
+
+        if(!(objective instanceof Char && entity instanceof Char)) {
+            if (dmgDone != 0) {
+                if (critical == 2) {
+                    System.out.println("Hits and deals " + dmgDone + " " + entity.getDamageType());
+                } else if (critical == 3) {
+                    System.out.println("Critical hit and deals " + dmgDone + " " + entity.getDamageType());
+                }
+            } else {
+                System.out.println("Fails and deals 0 " + entity.getDamageType());
+            }
+        }else{
+            System.out.println("Deals "+dmgDone+" of healing.");
+        }
+
+        if(objective != null) {
+            if (objective.getHitPoints() <= 0) {
+                if (objective instanceof Monster) {
+                    System.out.print(objective.getName() + " dies.");
+                } else {
+                    System.out.print(objective.getName() + " falls unconscious.");
+                }
             }
         }
         System.out.println();
@@ -326,7 +355,8 @@ public class ViewManager {
      */
     public void showBrake(Char aChar, int amount) {
         switch (aChar.getType()){
-            case "Adventurer" -> {System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");}
+            case "Adventurer" -> System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");
+            case "Cleric" -> System.out.println(aChar.getName()+" uses Prayer of self-healing. Heals "+amount+" hit points");
         }
 
     }

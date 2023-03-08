@@ -75,12 +75,10 @@ public class BusinessController {
 
     /**
      * Este método nos permite generar las stats de nuestros personajes con un único método
-     * @param stat el nombre del stat que queremos modificar
-     * @param character es el personaje al que le afecta este cambio
      * @return un array de enteros que dirán cuál ha sido el valor de los dados lanzados en este método
      */
-    public int[] generateCharacterStat(String stat, Char character) {
-        return characterManager.generateCharacterStat(stat, character);
+    public int[] generateDiceCharacterStat() {
+        return characterManager.generateDiceCharacterStat();
     }
 
     /**
@@ -104,12 +102,11 @@ public class BusinessController {
     /**
      * Este método nos retorna un personaje ya clasificado en su nuevo tipo. Es decir que pasa de ser Char a, por ejemplo,
      * Adventurer
-     * @param character el personaje original
      * @param type el tipo al que se quiere llegar
      * @return el personaje ya modificado dentro de su tipo
      */
-    public Char generateClassifiedChar(Char character, String type) {
-        return characterManager.generateClassifiedChar(character, type);
+    public Char generateClassifiedChar(String charName, String playerName, int level, int body, int mind, int spirit , String type) {
+        return characterManager.generateClassifiedChar(charName, playerName, level, body, mind, spirit, type);
     }
 
     /**
@@ -168,7 +165,7 @@ public class BusinessController {
      */
     public void preparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
-            aChar.preparationStage();
+            aChar.preparationStage(party);
         }
     }
 
@@ -196,7 +193,7 @@ public class BusinessController {
      */
     public void stopPreparationStage(LinkedList<Char> party) {
         for (Char aChar : party) {
-            aChar.stopPreparationStage();
+            aChar.stopPreparationStage(party);
         }
     }
 
@@ -208,9 +205,19 @@ public class BusinessController {
      * @param critical es un entero que indica si el ataque ha sido critico o simplemente ha fallado
      * @return el daño realizado por el ataque
      */
-    public int attackStage(Entity entity, Entity objective, int critical) {
+    public int attackStage(Entity entity, Entity objective, int critical, LinkedList<Monster> monsters) {
         int dmgDone = entity.attack(objective, critical);
-        objective.getDamaged(dmgDone, entity.getDamageType());
+        if(entity instanceof Char && objective instanceof Char){
+            ((Char) objective).heal(dmgDone);
+        }else {
+            if(objective != null) {
+                objective.getDamaged(dmgDone, entity.getDamageType());
+            }else{
+                for (Monster monster : monsters) {
+                    monster.getDamaged(dmgDone, entity.getDamageType());
+                }
+            }
+        }
         return dmgDone;
     }
 
@@ -283,5 +290,9 @@ public class BusinessController {
      */
     public void addMonsters(Combat combat, int monsterAmount, Monster monster) {
         combat.addMonsters(monsterAmount, monster);
+    }
+
+    public int generateCharacterStat(int[] dices) {
+        return characterManager.generateCharacterStat(dices);
     }
 }

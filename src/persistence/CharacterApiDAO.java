@@ -92,6 +92,7 @@ public class CharacterApiDAO implements CharacterDAO{
      */
     @Override
     public void updateCharList(LinkedList<Char> characters) throws IOException {
+        deleteApiInfo();
         try {
             for (int i = 0; i < characters.size(); i++) {
                 String output = toJson(characters.get(i)).toString();
@@ -104,6 +105,16 @@ public class CharacterApiDAO implements CharacterDAO{
 
         } catch (URISyntaxException | IOException | InterruptedException e) {
             //Exceptions are simplified for any classes that need to catch them
+        }
+    }
+
+    private void deleteApiInfo() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(new URI(APIURL)).DELETE().build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            response.body();
+        } catch (URISyntaxException | IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
