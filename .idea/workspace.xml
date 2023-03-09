@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Implementación acceso a la API funcionando correctamente.&#10;&#10;TODO:&#10;- Crear todas las clases derivadas de Char&#10;- Implementar el método de subir de nivel para poder evolucionar durante un combate.">
-      <change afterPath="$PROJECT_DIR$/src/business/entities/characters/Cleric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/entities/characters/Mage.java" afterDir="false" />
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage">
+      <change afterPath="$PROJECT_DIR$/src/business/entities/characters/Champion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/entities/characters/Paladin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/entities/characters/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Char.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Cleric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Cleric.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Mage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
     </list>
@@ -53,19 +53,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex/Downloads/Lists - Java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Alex/Downloads/Lists - Java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="business" />
@@ -160,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678219003261</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage">
+      <created>1678292312723</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678292312723</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,15 +198,21 @@
     <MESSAGE value="Todo el código ha sido comentado y solo queda hacer unas últimas comprobaciones&#10;&#10;TODO:&#10;- Fase 4&#10;   + API Reader&#10;   + Char classes&#10;   + Monster boss change attack&#10;- Comprobaciones fase 2" />
     <MESSAGE value="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien." />
     <MESSAGE value="Implementación acceso a la API funcionando correctamente.&#10;&#10;TODO:&#10;- Crear todas las clases derivadas de Char&#10;- Implementar el método de subir de nivel para poder evolucionar durante un combate." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementación acceso a la API funcionando correctamente.&#10;&#10;TODO:&#10;- Crear todas las clases derivadas de Char&#10;- Implementar el método de subir de nivel para poder evolucionar durante un combate." />
+    <MESSAGE value="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>587</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/src/business/entities/characters/Cleric.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/business/entities/characters/Mage.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -211,5 +225,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Practica_1_Recu$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1678355674956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

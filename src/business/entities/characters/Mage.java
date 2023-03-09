@@ -77,7 +77,7 @@ public class Mage extends Char{
 
         if(monsters.size() < 3){
             Random random = new Random();
-            return monsters.get(random.nextInt(monsters.size())+1);
+            return monsters.get(random.nextInt(monsters.size()));
         }
         return null;
     }

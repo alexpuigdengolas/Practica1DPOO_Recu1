@@ -182,8 +182,16 @@ public class CharacterManager {
      * @param character el personaje que se toma el descanso
      * @return la cantidad de lo que haga este personaje durante su descanso (vida, escudo, ...)
      */
-    public int shortBrake(Char character) {
-        return character.shortBrake();
+    public int shortBrake(Char character, LinkedList<Char> party) {
+        int breakAmount = character.shortBrake();
+
+        if(character instanceof Paladin){
+            for(Char healedChar: party){
+                healedChar.heal(breakAmount);
+            }
+        }
+
+        return breakAmount;
     }
 
     public int generateCharacterStat(int[] dices) {
@@ -201,5 +209,9 @@ public class CharacterManager {
         } else {
             return 3;
         }
+    }
+
+    public Char charLevelUp(Char character) {
+        return character.levelUp();
     }
 }

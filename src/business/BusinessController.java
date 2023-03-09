@@ -268,8 +268,8 @@ public class BusinessController {
      * @param character el personaje que realizará la acción
      * @return un entero con la cantidad de lo que haya hecho durante este descanso
      */
-    public int shortBrake(Char character) {
-        return characterManager.shortBrake(character);
+    public int shortBrake(Char character, LinkedList<Char> party) {
+        return characterManager.shortBrake(character, party);
     }
 
     /**
@@ -294,5 +294,19 @@ public class BusinessController {
 
     public int generateCharacterStat(int[] dices) {
         return characterManager.generateCharacterStat(dices);
+    }
+
+    public Char charLevelUp(Char character, Adventure adventure) {
+        Char charAux = characterManager.charLevelUp(character);
+        if(charAux != null){
+            for(int i = 0; i < adventure.getParty().size(); i++){
+                if(adventure.getParty().get(i).getName().equals(charAux.getName())){
+                    adventure.getParty().add(i, charAux);
+                    adventure.getParty().remove(i+1);
+                    break;
+                }
+            }
+        }
+        return charAux;
     }
 }

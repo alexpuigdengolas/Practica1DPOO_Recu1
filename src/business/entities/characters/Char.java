@@ -210,4 +210,8 @@ public class Char extends Entity {
     protected void addMindPoitns(int mindAdded) {
         this.mind += mindAdded;
     }
+
+    public Char levelUp(){
+        return null;
+    }
 }

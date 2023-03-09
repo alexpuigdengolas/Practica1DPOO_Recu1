@@ -248,9 +248,11 @@ public class ViewManager {
     public void preparationStageShow(LinkedList<Char> party) {
         for (Char aChar : party) {
             switch (aChar.getType()) {
-                case "Adventurer" -> System.out.println(aChar.getName() + " uses Self-Motivated. Their Spirit increases in +1.");
+                case "Adventurer", "Warrior" -> System.out.println(aChar.getName() + " uses Self-Motivated. Their Spirit increases in +1.");
+                case "Champion" -> System.out.println(aChar.getName() + " uses Motivational speech. The Spirit stat of the party has been increased");
                 case "Mage" -> System.out.println(aChar.getName() + " uses Mage shield. Their regenerate the shield.");
                 case "Cleric" -> System.out.println(aChar.getName() + " uses Blessing of good luck. Mind stat has been increased");
+                case "Paladin" -> System.out.println(aChar.getName() + " uses Prayer of good luck. The Mind stat of the party has been increased");
             }
         }
     }
@@ -300,8 +302,8 @@ public class ViewManager {
     public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
         if (entity instanceof Char) {
             switch (((Char) entity).getType()) {
-                case "Adventurer" ->
-                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Sword slash. ");
+                case "Adventurer" -> System.out.print(entity.getName() + " attacks " + objective.getName() + " with Sword slash. ");
+                case "Warrior", "Champion" -> System.out.print(entity.getName() + " attacks " + objective.getName() + " with Improved sword slash. ");
                 case "Mage" -> {
                     if (objective == null) {
                         System.out.print(entity.getName() + " attacks all the monsters with Fireball. ");
@@ -312,6 +314,14 @@ public class ViewManager {
                 case "Cleric" -> {
                     if (objective instanceof Char) {
                         System.out.print(entity.getName() + " heals " + objective.getName() + " with Prayer of healing. ");
+                    } else {
+                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                    }
+                }
+
+                case "Paladin" -> {
+                    if (objective instanceof Char) {
+                        System.out.print(entity.getName() + " heals the party with Prayer of mass healing. ");
                     } else {
                         System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
                     }
@@ -355,8 +365,10 @@ public class ViewManager {
      */
     public void showBrake(Char aChar, int amount) {
         switch (aChar.getType()){
-            case "Adventurer" -> System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");
+            case "Adventurer", "Warrior" -> System.out.println(aChar.getName()+" uses Bandage time. Heals "+amount+" hit points");
+            case "Champion" -> System.out.println(aChar.getName()+" uses Improved bandage time. Heals "+amount+" hit points and gets to his maximum amount of life");
             case "Cleric" -> System.out.println(aChar.getName()+" uses Prayer of self-healing. Heals "+amount+" hit points");
+            case "Paladin" -> System.out.println(aChar.getName()+" uses Prayer of mass healing to heal the party. Heals "+amount+" hit points");
         }
 
     }

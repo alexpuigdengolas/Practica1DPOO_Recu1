@@ -128,5 +128,18 @@
     "currentInitiative": 0,
     "hitPoints": 88,
     "damageType": "Physical"
+  },
+  {
+    "player": "Charles",
+    "xp": 99,
+    "body": 1,
+    "mind": 2,
+    "spirit": 0,
+    "maxLife": 11,
+    "type": "Adventurer",
+    "name": "Pezzy",
+    "currentInitiative": 0,
+    "hitPoints": 11,
+    "damageType": "Physical"
   }
 ]

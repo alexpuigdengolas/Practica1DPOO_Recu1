@@ -132,4 +132,12 @@ public class Adventurer extends Char {
         }
         return healAmount;
     }
+
+    @Override
+    public Char levelUp() {
+        if(getLevel() >= 4){
+            return new Warrior(this);
+        }
+        return super.levelUp();
+    }
 }

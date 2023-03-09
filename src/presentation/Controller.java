@@ -501,6 +501,11 @@ public class Controller {
 
                     if(Math.floor(oldXp) < Math.floor(adventure.getParty().get(j).getLevel())){
                         viewManager.showMessage(adventure.getParty().get(j).getName()+" levels up. They are now lvl "+adventure.getParty().get(j).getLevel()+"!");
+                        Char character = businessController.charLevelUp(adventure.getParty().get(j), adventure);
+                        if(character != null){
+                            viewManager.showMessage(character.getName()+ " has evolved, and now is a "+character.getType());
+                        }
+
                     }
                 }
             }
@@ -516,7 +521,7 @@ public class Controller {
                 viewManager.showMessage("*** Short rest stage ***");
                 viewManager.showMessage("------------------------");
                 for (int j = 0; j < adventure.getParty().size(); j++) {
-                    int amount = businessController.shortBrake(adventure.getParty().get(j));
+                    int amount = businessController.shortBrake(adventure.getParty().get(j), adventure.getParty());
                     viewManager.showBrake(adventure.getParty().get(j), amount);
                 }
                 viewManager.spacing();
