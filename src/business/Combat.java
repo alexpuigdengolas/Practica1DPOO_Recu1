@@ -49,6 +49,7 @@ public class Combat {
      * @param monsterAmount el número de monstruos de un mismo tipo que queremos añadir
      * @param monster el tipo de monstruos que queremos añadir
      */
+    //TODO: Añadir Boss cuando sea de tipo Boss
     public void addMonsters(int monsterAmount, Monster monster) {
         for (int i = 0; i < monsterAmount; i++) {
             getMonsters().add(monster);

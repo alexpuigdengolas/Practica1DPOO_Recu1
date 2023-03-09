@@ -205,7 +205,20 @@ public class BusinessController {
      * @param critical es un entero que indica si el ataque ha sido critico o simplemente ha fallado
      * @return el daño realizado por el ataque
      */
-    public int attackStage(Entity entity, Entity objective, int critical, LinkedList<Monster> monsters) {
+    public int attackStage(Entity entity, Entity objective, int critical, LinkedList<Entity> entities) {
+        LinkedList<Char> characters = new LinkedList<>();
+        LinkedList<Monster> monsters = new LinkedList<>();
+
+        for (Entity entityAux : entities) {
+            if(entityAux.getHitPoints() > 0) {
+                if (entityAux instanceof Char) {
+                    characters.add((Char) entityAux);
+                } else {
+                    monsters.add((Monster) entityAux);
+                }
+            }
+        }
+
         int dmgDone = entity.attack(objective, critical);
         if(entity instanceof Char && objective instanceof Char){
             ((Char) objective).heal(dmgDone);
@@ -213,8 +226,14 @@ public class BusinessController {
             if(objective != null) {
                 objective.getDamaged(dmgDone, entity.getDamageType());
             }else{
-                for (Monster monster : monsters) {
-                    monster.getDamaged(dmgDone, entity.getDamageType());
+                if(entity instanceof Char) {
+                    for (Monster monster : monsters) {
+                        monster.getDamaged(dmgDone, entity.getDamageType());
+                    }
+                }else{
+                    for (Char character : characters) {
+                        character.getDamaged(dmgDone, entity.getDamageType());
+                    }
                 }
             }
         }

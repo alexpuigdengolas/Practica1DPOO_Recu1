@@ -299,6 +299,7 @@ public class ViewManager {
      * @param dmgDone Este será el daño realizado en esta acción
      * @param critical Este será el indicador de crítico del ataque [3 => Critico; 2=> Acierto; 1 => Fallo]
      */
+    //TODO: Boss Attack Show
     public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
         if (entity instanceof Char) {
             switch (((Char) entity).getType()) {
