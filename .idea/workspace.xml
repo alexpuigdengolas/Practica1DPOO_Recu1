@@ -4,17 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Las clases derivadas de Char ya están creadas.&#10;&#10;TODO:&#10;- Comprobar que las clases funcionan&#10;- Crear la clase de Boss para monster&#10;- Hacer que al crear un personaje se pueda subir directamente de nivel">
+    <list default="true" id="5b7d7078-4d4d-4f92-9623-bc325a6285d7" name="Changes" comment="Varios problemas arreglados.&#10;&#10;TODO:&#10;- Comprobar que las clases funcionan&#10;- Arreglar la función de subir de nivel para que solo evolucionen/suban de nivel cuando sea real">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/adventure.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/adventure.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/character.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/character.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Combat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/BusinessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/adventure/AdventureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/adventure/AdventureManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Adventurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Champion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Champion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Char.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/CharacterManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Cleric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Cleric.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Mage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Paladin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Paladin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/characters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/characters/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/monster/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/monster/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/monster/MonsterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureApiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/AdventureJsonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterApiDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/CharacterJsonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/MonsterJsonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ViewManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +85,9 @@
       <recent name="D:\Universidad\Archivos Universidad\DPOO\Practica 1 Recu\lib" />
       <recent name="D:\Universidad\Archivos Universidad\DPOO\Practica 1 Recu\data" />
       <recent name="D:\Universidad\Archivos Universidad\DPOO\Practica 1 Recu\src\persistance" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universidad\Archivos Universidad\DPOO\Practica 1 Recu" />
     </key>
   </component>
   <component name="RunManager">
@@ -166,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678292312723</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Varios problemas arreglados.&#10;&#10;TODO:&#10;- Comprobar que las clases funcionan&#10;- Arreglar la función de subir de nivel para que solo evolucionen/suban de nivel cuando sea real">
+      <created>1678445019689</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678445019689</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +218,8 @@
     <MESSAGE value="Fase 2 Acabada comprobada y aplicados los cambios recomendados por Pol.&#10;&#10;TODO:&#10;_ Comprobar que todos los comentarios tienen sentido y están bien." />
     <MESSAGE value="Implementación acceso a la API funcionando correctamente.&#10;&#10;TODO:&#10;- Crear todas las clases derivadas de Char&#10;- Implementar el método de subir de nivel para poder evolucionar durante un combate." />
     <MESSAGE value="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación e implementación de las clases Cleric y Mage.&#10;&#10;TODO:&#10;- El resto de clases derivadas de Char&#10;- La clase Boss derivada de Mage" />
+    <MESSAGE value="Varios problemas arreglados.&#10;&#10;TODO:&#10;- Comprobar que las clases funcionan&#10;- Arreglar la función de subir de nivel para que solo evolucionen/suban de nivel cuando sea real" />
+    <option name="LAST_COMMIT_MESSAGE" value="Varios problemas arreglados.&#10;&#10;TODO:&#10;- Comprobar que las clases funcionan&#10;- Arreglar la función de subir de nivel para que solo evolucionen/suban de nivel cuando sea real" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -209,23 +231,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/Controller.java</url>
-          <line>481</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/ViewManager.java</url>
-          <line>326</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/ViewManager.java</url>
-          <line>325</line>
-          <option name="timeStamp" value="78" />
+          <line>500</line>
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/business/entities/characters/Paladin.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="80" />
+          <line>23</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

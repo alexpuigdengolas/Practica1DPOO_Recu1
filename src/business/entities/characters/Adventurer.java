@@ -27,6 +27,15 @@ public class Adventurer extends Char {
         this.setDamageType("Physical");
     }
 
+    /**
+     * Este es uno de los constructores de esta clase. Este se utilizará para la fase de creación de un personaje nuevo
+     * @param name el nombre de nuestro personaje
+     * @param player el nombre del jugador que lo ha creado
+     * @param level el nivel de nuestro personaje
+     * @param body la estadística de corpulencia
+     * @param mind la estadística de mentalidad
+     * @param spirit la estadística de espiritualidad
+     */
     public Adventurer(String name, String player, int level, int body, int mind, int spirit) {
         super(name, player, level);
         this.setBody(body);

@@ -13,8 +13,21 @@ import java.util.LinkedList;
  * Esta clase gestionará toda la información relacionada con nuestros personajes.
  */
 public class CharacterManager {
+
+    /**
+     * Esta será la constante que indica si se accede al JSON
+     */
     private static final int JSON = 1;
+
+
+    /**
+     * Esta será la constante que indica si se accede a al API
+     */
     private static final int API = 2;
+
+    /**
+     * Esta será la DAO clase que nos permitirá acceder a la base de datos de aventuras
+     */
     private CharacterDAO characterDAO;
 
     /**
@@ -117,9 +130,16 @@ public class CharacterManager {
     }
 
     /**
-     * Este método generará los personajes nuevos dependiendo de su nivel y la clase seleccionada
-     * @param type la clase seleccionada
-     * @return Es el personaje que queremos recibir
+     * Este método nos retorna un personaje ya clasificado en su nuevo tipo. Es decir que pasa de ser Char a, por ejemplo,
+     * Adventurer
+     * @param charName el nombre del personaje
+     * @param playerName el nombre del jugador que lo creo
+     * @param level el nivel del personaje
+     * @param body la estadística de corpulencia
+     * @param mind la estadística de mentalidad
+     * @param spirit la estadística de espiritualidad
+     * @param type la clase del personaje
+     * @return retorna un personaje del tipo que hemos determinado pero con todos los datos introducidos
      */
     public Char generateClassifiedChar(String charName, String playerName, int level, int body, int mind, int spirit, String type) {
          Char character;
@@ -141,7 +161,7 @@ public class CharacterManager {
             }
             case "Mage" -> character = new Mage(charName, playerName, level, body, mind, spirit);
             default -> character = null;
-        };
+        }
          return character;
     }
 
@@ -195,6 +215,7 @@ public class CharacterManager {
     /**
      * Este método permite al personaje ejecutar la función de tomarse un descanso para poder entre combates
      * @param character el personaje que se toma el descanso
+     * @param party el listado de los personajes que participan en la aventura
      * @return la cantidad de lo que haga este personaje durante su descanso (vida, escudo, ...)
      */
     public int shortBrake(Char character, LinkedList<Char> party) {
@@ -209,6 +230,11 @@ public class CharacterManager {
         return breakAmount;
     }
 
+    /**
+     * Este método generará las estadísticas de nuestros personajes
+     * @param dices los dados que hemos sacado con la generación de estadísticas
+     * @return el valor generado para la stat por los dados
+     */
     public int generateCharacterStat(int[] dices) {
         int num1 = dices[0], num2 = dices[1];
         int sum = num1 + num2;

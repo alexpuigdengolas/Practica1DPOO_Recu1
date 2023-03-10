@@ -16,6 +16,9 @@ import java.util.Scanner;
  * Hemos utilizado una clase mostrada en clase como referencia para esta clase.
  */
 public class ViewManager {
+    /**
+     * Este es el scanner genérico que usamos para poder leer las cosas introducidas por pantalla
+     */
     private final Scanner scanner;//Empleamos un scanner como variable para poder leer toda la información necesaria
 
     /**
@@ -312,10 +315,12 @@ public class ViewManager {
                     }
                 }
                 case "Cleric" -> {
-                    if (objective instanceof Char) {
-                        System.out.print(entity.getName() + " heals " + objective.getName() + " with Prayer of healing. ");
-                    } else {
-                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                    if(objective != null) {
+                        if (objective instanceof Char) {
+                            System.out.print(entity.getName() + " heals " + objective.getName() + " with Prayer of healing. ");
+                        } else {
+                            System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                        }
                     }
                 }
 

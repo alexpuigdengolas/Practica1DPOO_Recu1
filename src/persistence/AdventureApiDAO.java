@@ -110,6 +110,9 @@ public class AdventureApiDAO implements AdventureDAO{
         }
     }
 
+    /**
+     * Este método nos permite eliminar el contenido de un archivo JSON
+     */
     private void deleteApiInfo() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(new URI(APIURL)).DELETE().build();
@@ -121,8 +124,9 @@ public class AdventureApiDAO implements AdventureDAO{
     }
 
     /**
-     * Este metodo es util para poder guardar la informacion de la aventura en un formato apto para escribir en un
+     * Este metodo es util para poder guardar la información de la aventura en un formato apto para escribir en un
      * JSON
+     * @param adventure la aventura que queremos escribir
      * @return la aventura en formato JSON
      */
     private JSONObject toJson(Adventure adventure) {

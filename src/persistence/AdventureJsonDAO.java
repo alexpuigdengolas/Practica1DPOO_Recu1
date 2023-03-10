@@ -20,7 +20,13 @@ import java.util.List;
  */
 public class AdventureJsonDAO implements AdventureDAO{
 
+    /**
+     * Es la dirección del archivo JSON
+     */
     static final String PATH = "data/adventure.json";
+    /**
+     * Esta será la herramienta gson que nos permitirá leer/escribir toda la información de las aventuras
+     */
     private final Gson gson;
 
     /**

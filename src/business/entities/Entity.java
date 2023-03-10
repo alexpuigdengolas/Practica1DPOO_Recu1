@@ -8,10 +8,25 @@ import java.util.LinkedList;
  * Esta clase sirve para poder representar cualquier tipo de personaje o monstruo que puedan haber en un combate
  */
 public abstract class Entity {
+
+    /**
+     * El nombre de la entidad
+     */
     private final String name;
+
+    /**
+     * La iniciativa actual de la entidad
+     */
     private int currentInitiative;
+
+    /**
+     * La vida de la entidad
+     */
     private int hitPoints;
 
+    /**
+     * El tipo de daño que ara la entidad
+     */
     private String damageType;
 
     /**

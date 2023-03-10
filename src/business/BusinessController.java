@@ -17,10 +17,18 @@ import java.util.LinkedList;
  */
 public class BusinessController {
     /**
-     * Aquí crearemos las variables de todos los managers que necesitemos en nuestro código
+     * Parámetro para acceder a la base de datos de los personajes
      */
     private final CharacterManager characterManager; //Manager de personajes
+
+    /**
+     * Parámetro para acceder a la base de datos de las aventuras
+     */
     private final AdventureManager adventureManager; //Manager de aventuras
+
+    /**
+     * Parámetro para acceder a la base de datos de los monstruos
+     */
     private final MonsterManager monsterManager; //Manager de monstruos
 
     /**
@@ -102,8 +110,14 @@ public class BusinessController {
     /**
      * Este método nos retorna un personaje ya clasificado en su nuevo tipo. Es decir que pasa de ser Char a, por ejemplo,
      * Adventurer
-     * @param type el tipo al que se quiere llegar
-     * @return el personaje ya modificado dentro de su tipo
+     * @param charName el nombre del personaje
+     * @param playerName el nombre del jugador que lo creo
+     * @param level el nivel del personaje
+     * @param body la estadística de corpulencia
+     * @param mind la estadística de mentalidad
+     * @param spirit la estadística de espiritualidad
+     * @param type la clase del personaje
+     * @return retorna un personaje del tipo que hemos determinado pero con todos los datos introducidos
      */
     public Char generateClassifiedChar(String charName, String playerName, int level, int body, int mind, int spirit , String type) {
         return characterManager.generateClassifiedChar(charName, playerName, level, body, mind, spirit, type);
@@ -203,6 +217,7 @@ public class BusinessController {
      * @param entity es la entidad que realiza el ataque
      * @param objective es el objetivo del ataque
      * @param critical es un entero que indica si el ataque ha sido critico o simplemente ha fallado
+     * @param entities es el listado de las entidades de la partida
      * @return el daño realizado por el ataque
      */
     public int attackStage(Entity entity, Entity objective, int critical, LinkedList<Entity> entities) {
@@ -285,6 +300,7 @@ public class BusinessController {
     /**
      * Este método permite a todos los personajes tomarse un descanso y realizar la acción que se les asigne durante este
      * @param character el personaje que realizará la acción
+     * @param party es un listado de los personajes que pueden beneficiarse de esta acción
      * @return un entero con la cantidad de lo que haya hecho durante este descanso
      */
     public int shortBrake(Char character, LinkedList<Char> party) {
@@ -311,10 +327,22 @@ public class BusinessController {
         combat.addMonsters(monsterAmount, monster);
     }
 
+    /**
+     * Este método servirá para llamar al método de generación de estadísticas de personajes
+     * @param dices los dados lanzados en la etapa anterior
+     * @return el valor final de la estadística
+     */
     public int generateCharacterStat(int[] dices) {
         return characterManager.generateCharacterStat(dices);
     }
 
+    /**
+     * Este método permite saber si nuestro personaje está listo para evolucionar y si es el caso se añadirá el
+     * personaje evolucionado a la party eliminando el anterior
+     * @param character el personaje que queremos evolucionar
+     * @param adventure la aventura que estamos jugando
+     * @return el personaje evolucionado o no
+     */
     public Char charLevelUp(Char character, Adventure adventure) {
         Char charAux = characterManager.charLevelUp(character);
         if(charAux != null){

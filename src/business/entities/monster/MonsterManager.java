@@ -9,8 +9,20 @@ import java.util.LinkedList;
  * Esta clase sirve para poder gestionar toda la información relacionada con los monstruos
  */
 public class MonsterManager {
+
+    /**
+     * Esta será la constante que indica si se accede al JSON
+     */
     private static final int JSON = 1;
+
+    /**
+     * Esta será la constante que indica si se accede a al API
+     */
     private static final int API = 2;
+
+    /**
+     * Esta será la DAO clase que nos permitirá acceder a la base de datos de aventuras
+     */
     private MonsterDAO monsterDAO;
 
     /**

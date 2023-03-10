@@ -14,7 +14,14 @@ import java.util.LinkedList;
  * Esta clase nos permite acceder a la información relacionada con nuestros monstruos guardada en el JSON
  */
 public class MonsterJsonDAO implements MonsterDAO{
+    /**
+     * Esta será la dirección de acceso al JSON
+     */
     static final String PATH = "data/monster.json";
+
+    /**
+     * Este será el parámetro que usaremos para poder actualizar la base de datos
+     */
     private final Gson gson;
 
     /**

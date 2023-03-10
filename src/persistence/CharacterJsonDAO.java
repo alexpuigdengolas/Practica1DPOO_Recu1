@@ -13,7 +13,14 @@ import java.util.LinkedList;
  */
 public class CharacterJsonDAO implements CharacterDAO{
 
+    /**
+     * Esta será la dirección de acceso a la api
+     */
     static final String PATH = "data/character.json";
+
+    /**
+     * Este será el parámetro que usaremos para poder actualizar la base de datos
+     */
     private final Gson gson;
 
     /**

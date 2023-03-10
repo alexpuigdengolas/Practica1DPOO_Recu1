@@ -177,6 +177,7 @@ public class Char extends Entity {
     /**
      * Este método implementa la etapa de preparación de cada personaje.
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propia etapa de preparación.
+     * @param party es el grupo de personas que va a acompañar a nuestros personajes
      */
     public void preparationStage(LinkedList<Char> party) {
     }
@@ -184,6 +185,7 @@ public class Char extends Entity {
     /**
      * Este método implementa el fin de la etapa de preparación de cada personaje
      * Empleando polimorfismo cada clase de personaje será capaz de poder implementar su propio fin de la etapa de preparación.
+     * @param party es el grupo de personas que va a acompañar a nuestros personajes
      */
     public void stopPreparationStage(LinkedList<Char> party){
 
@@ -199,6 +201,7 @@ public class Char extends Entity {
 
     /**
      * Este método permite a los personajes curarse entre sí
+     * @param heal la cantidad de healing que queremos darle al personaje
      */
     public void heal(int heal){
         setHitPoints(getHitPoints() + heal);
@@ -207,10 +210,18 @@ public class Char extends Entity {
         }
     }
 
-    protected void addMindPoitns(int mindAdded) {
+    /**
+     * Este método sirve para poder aumentar los puntos de la estadística de mentalidad
+     * @param mindAdded es la cantidad de puntos a añadir
+     */
+    protected void addMindPoints(int mindAdded) {
         this.mind += mindAdded;
     }
 
+    /**
+     * Este método sirve para poder evolucionar de personaje al subir a cierto nivel
+     * @return el nuevo personaje al que evoluciona el personaje actual
+     */
     public Char levelUp(){
         return null;
     }

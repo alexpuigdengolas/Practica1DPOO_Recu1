@@ -40,6 +40,9 @@ public class CharacterApiDAO implements CharacterDAO{
      */
     private boolean apiWorks = true;
 
+    /**
+     * Este será el constructor de nuestra clase de acceso a la base de datos de personajes
+     */
     public CharacterApiDAO() {
         try {
             client = HttpClient.newBuilder().sslContext(insecureContext()).build();
@@ -108,6 +111,9 @@ public class CharacterApiDAO implements CharacterDAO{
         }
     }
 
+    /**
+     * Este método nos permite eliminar la información de la base de datos de nuestros personajes
+     */
     private void deleteApiInfo() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(new URI(APIURL)).DELETE().build();
@@ -119,7 +125,8 @@ public class CharacterApiDAO implements CharacterDAO{
     }
 
     /**
-     * Metodo que nos permite mostrar el personaje en formato apto para le JSON
+     * Método que nos permite mostrar el personaje en formato apto para le JSON
+     * @param character el personaje que queremos escribir
      * @return el JSONObject de nuestro personaje
      */
     private JSONObject toJson(Char character) {
