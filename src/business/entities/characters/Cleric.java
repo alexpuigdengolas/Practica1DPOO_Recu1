@@ -88,9 +88,13 @@ public class Cleric extends Char{
             }
         }
 
-        Random random = new Random();
-        int num = random.nextInt(monsters.size());
-        return monsters.get(num);
+        if(monsters.size() == 0){
+            return null;
+        }else {
+            Random random = new Random();
+            int num = random.nextInt(monsters.size());
+            return monsters.get(num);
+        }
     }
 
     @Override

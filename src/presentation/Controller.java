@@ -4,10 +4,8 @@ import business.BusinessController;
 import business.Combat;
 import business.adventure.Adventure;
 import business.entities.Entity;
-import business.entities.characters.Adventurer;
-import business.entities.characters.Char;
-import business.entities.characters.Cleric;
-import business.entities.characters.Mage;
+import business.entities.characters.*;
+import business.entities.monster.Boss;
 import business.entities.monster.Monster;
 
 import java.util.LinkedList;
@@ -181,14 +179,14 @@ public class Controller {
             do {
                 String type = viewManager.askForString("-> Enter the character’s initial class [Adventurer, Cleric, Mage]: ");
                 viewManager.spacing();
-                viewManager.showMessage("Tavern keeper: Any decent party needs one of those.");
-                viewManager.showMessage("I guess that means you’re a " + type + " by now, nice!");
                 definitiveChar = businessController.generateClassifiedChar(charName, playersName, level, body, mind, spirit, type);
                 if(definitiveChar == null){
                     viewManager.showMessage("You have not selected an adecuate class");
                 }
             }while(definitiveChar == null);
 
+            viewManager.showMessage("Tavern keeper: Any decent party needs one of those.");
+            viewManager.showMessage("I guess that means you’re a " + definitiveChar.getType() + " by now, nice!");
             viewManager.showMessage("The new character "+charName+" has been created.");
 
             //Añadimos el personaje a la base de datos seleccionada
@@ -416,6 +414,14 @@ public class Controller {
         }while (adventureSelected < 0 || adventureSelected >= adventureList.size());
 
         Adventure adventure = adventureList.get(adventureSelected);
+        for(int i = 0; i < adventure.getCombats().size(); i++) {
+            for (int j = 0; j < adventure.getCombats().get(i).getMonsters().size(); j++) {
+                if(adventure.getCombats().get(i).getMonsters().get(j).getChallenge().equals("Boss")){
+                    adventure.getCombats().get(i).getMonsters().add(j, new Boss(adventure.getCombats().get(i).getMonsters().get(j)));
+                    adventure.getCombats().get(i).getMonsters().remove(j+1);
+                }
+            }
+        }
         characterSelectionScreen(adventure);
 
         boolean adventureLost = false;
@@ -572,26 +578,31 @@ public class Controller {
             int characterSelected;
             boolean charNotInParty = false;
             do {
-
+                charNotInParty = true;
                 characterSelected = viewManager.askForInteger("-> Choose character " + index + " in your party: ") -1;
-                if(!(characterSelected < 0 || characterSelected >= characters.size())) {
-                    if (adventure.getParty().contains(characters.get(characterSelected))) {
-                        viewManager.showMessage("This character already belongs to the party");
-                    } else {
-                        charNotInParty = true;
+                if(!(characterSelected <= 0 || characterSelected > characters.size())) {
+                    for(Char character: adventure.getParty()){
+                        if (character.getName().equals(characters.get(characterSelected).getName())) {
+                            charNotInParty = false;
+                            break;
+                        }
                     }
-                }else{
-                    viewManager.showMessage("You have to select an available member to the party");
+                    if (!charNotInParty) {
+                        viewManager.showMessage("This character already belongs to the party");
+                    }
                 }
             }while((characterSelected < 0 || characterSelected >= characters.size()) || !charNotInParty);
 
+            viewManager.showMessage("You have to select an available member to the party");
+
             switch (characters.get(characterSelected).getType()){
                 case "Adventurer" -> adventure.getParty().add(new Adventurer(characters.get(characterSelected)));
+                case "Warrior" -> adventure.getParty().add(new Warrior(characters.get(characterSelected)));
+                case "Champion" -> adventure.getParty().add(new Champion(characters.get(characterSelected)));
                 case "Cleric" -> adventure.getParty().add(new Cleric(characters.get(characterSelected)));
+                case "Paladin" -> adventure.getParty().add(new Paladin(characters.get(characterSelected)));
                 case "Mage" -> adventure.getParty().add(new Mage(characters.get(characterSelected)));
             }
-
-
             index++;
         }while (adventure.getParty().size() < numPartyMembers);
     }

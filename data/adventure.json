@@ -1032,5 +1032,67 @@
         ]
       }
     ]
+  },
+  {
+    "numCombat": 4,
+    "name": "Boss Party",
+    "combats": [
+      {
+        "monsters": [
+          {
+            "initiative": 4,
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "challenge": "Boss",
+            "hitPoints": 100,
+            "damageDice": "d20",
+            "experience": 168,
+            "damageType": "Psychical"
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "initiative": 3,
+            "name": "Vegna",
+            "currentInitiative": 0,
+            "challenge": "Boss",
+            "hitPoints": 120,
+            "damageDice": "d12",
+            "experience": 50,
+            "damageType": "Magic"
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "initiative": 4,
+            "name": "Morgoth",
+            "currentInitiative": 0,
+            "challenge": "Boss",
+            "hitPoints": 100,
+            "damageDice": "d20",
+            "experience": 168,
+            "damageType": "Psychical"
+          }
+        ]
+      },
+      {
+        "monsters": [
+          {
+            "initiative": 3,
+            "name": "Vegna",
+            "currentInitiative": 0,
+            "challenge": "Boss",
+            "hitPoints": 120,
+            "damageDice": "d12",
+            "experience": 50,
+            "damageType": "Magic"
+          }
+        ]
+      }
+    ]
   }
 ]

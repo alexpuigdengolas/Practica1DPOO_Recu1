@@ -122,12 +122,27 @@ public class CharacterManager {
      * @return Es el personaje que queremos recibir
      */
     public Char generateClassifiedChar(String charName, String playerName, int level, int body, int mind, int spirit, String type) {
-        return switch (type) {
-            case "Adventurer" -> new Adventurer(charName, playerName, level, body, mind, spirit);
-            case "Cleric" -> new Cleric(charName, playerName, level, body, mind, spirit);
-            case "Mage" -> new Mage(charName, playerName, level, body, mind, spirit);
-            default -> null;
+         Char character;
+        switch (type) {
+            case "Adventurer" ->{
+                character = new Adventurer(charName, playerName, level, body, mind, spirit);
+                if(character.getLevel() >= 8){
+                    character = character.levelUp();
+                    character = character.levelUp();
+                }else if(character.getLevel() >= 4){
+                    character = character.levelUp();
+                }
+            }
+            case "Cleric" -> {
+                character = new Cleric(charName, playerName, level, body, mind, spirit);
+                if(character.getLevel() >= 5){
+                    character = character.levelUp();
+                }
+            }
+            case "Mage" -> character = new Mage(charName, playerName, level, body, mind, spirit);
+            default -> character = null;
         };
+         return character;
     }
 
     /**

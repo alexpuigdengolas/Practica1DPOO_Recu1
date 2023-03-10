@@ -75,8 +75,13 @@ public class Paladin extends Cleric{
             }
         }
 
-        Random random = new Random();
-        return monsters.get(random.nextInt(monsters.size())-1);
+        if(monsters.size() == 0){
+            return null;
+        }else {
+            Random random = new Random();
+            int num = random.nextInt(monsters.size());
+            return monsters.get(num);
+        }
     }
 
     @Override

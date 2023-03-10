@@ -1,9 +1,6 @@
 package persistence;
 
-import business.entities.characters.Adventurer;
-import business.entities.characters.Char;
-import business.entities.characters.Cleric;
-import business.entities.characters.Mage;
+import business.entities.characters.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,8 +35,11 @@ public class CharacterJsonDAO implements CharacterDAO{
         for (Char character : characters) {
             switch (character.getType()) {
                 case "Adventurer" -> classifiedCharacters.add(new Adventurer(character));
+                case "Warrior" -> classifiedCharacters.add(new Warrior(character));
+                case "Champion" -> classifiedCharacters.add(new Champion(character));
                 case "Mage" -> classifiedCharacters.add(new Mage(character));
                 case "Cleric" -> classifiedCharacters.add(new Cleric(character));
+                case "Paladin" -> classifiedCharacters.add(new Paladin(character));
             }
         }
         return classifiedCharacters;

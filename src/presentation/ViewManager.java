@@ -299,7 +299,6 @@ public class ViewManager {
      * @param dmgDone Este será el daño realizado en esta acción
      * @param critical Este será el indicador de crítico del ataque [3 => Critico; 2=> Acierto; 1 => Fallo]
      */
-    //TODO: Boss Attack Show
     public void showAttack(Entity entity, Entity objective, int dmgDone, int critical) {
         if (entity instanceof Char) {
             switch (((Char) entity).getType()) {
@@ -321,15 +320,21 @@ public class ViewManager {
                 }
 
                 case "Paladin" -> {
-                    if (objective instanceof Char) {
-                        System.out.print(entity.getName() + " heals the party with Prayer of mass healing. ");
-                    } else {
-                        System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                    if(objective != null) {
+                        if (objective instanceof Char) {
+                            System.out.print(entity.getName() + " heals the party with Prayer of mass healing. ");
+                        } else {
+                            System.out.print(entity.getName() + " attacks " + objective.getName() + " with Not on my watch. ");
+                        }
                     }
                 }
             }
         }else{
-            System.out.print(entity.getName()+" attacks "+objective.getName()+". ");
+            if(((Monster)entity).getChallenge().equals("Boss")){
+                System.out.print(entity.getName()+" attacks all the party with an area attack. ");
+            }else{
+                System.out.print(entity.getName()+" attacks "+objective.getName()+". ");
+            }
         }
 
         if(!(objective instanceof Char && entity instanceof Char)) {

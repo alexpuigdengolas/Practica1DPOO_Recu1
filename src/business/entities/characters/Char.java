@@ -139,7 +139,7 @@ public class Char extends Entity {
      * @return la experiencia equivalente a dicho nivel
      */
     public int calcXp(int level){
-        int xp = (level*100)-101;
+        int xp = (level*100)-1;
         return Math.max(xp, 0);
     }
 

@@ -1,5 +1,6 @@
 package business;
 
+import business.entities.monster.Boss;
 import business.entities.monster.Monster;
 
 import java.util.LinkedList;
@@ -49,10 +50,13 @@ public class Combat {
      * @param monsterAmount el número de monstruos de un mismo tipo que queremos añadir
      * @param monster el tipo de monstruos que queremos añadir
      */
-    //TODO: Añadir Boss cuando sea de tipo Boss
     public void addMonsters(int monsterAmount, Monster monster) {
         for (int i = 0; i < monsterAmount; i++) {
-            getMonsters().add(monster);
+            if(monster.getChallenge().equals("Boss")){
+                getMonsters().add(new Boss(monster));
+            }else {
+                getMonsters().add(monster);
+            }
         }
     }
 }
