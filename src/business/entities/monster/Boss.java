@@ -40,4 +40,21 @@ public class Boss extends Monster{
     public Entity selectObjective(LinkedList<Entity> entities) {
         return null;
     }
+
+    /**
+     * Este método permite a los monstruos de tipo Boss a reducir su daño recibido si este es
+     * del mismo tipo que el del Boss.
+     * @param dmgDone la cantidad de daño recibido
+     * @param damageType el tipo de daño recibido
+     */
+    @Override
+    public void getDamaged(int dmgDone, String damageType) {
+        if(damageType.equals(this.getDamageType())){
+            dmgDone /= 2;
+        }
+        setHitPoints(getHitPoints() - (dmgDone)/2);
+        if(getHitPoints() < 0){
+            setHitPoints(0);
+        }
+    }
 }

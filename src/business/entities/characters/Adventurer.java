@@ -142,6 +142,10 @@ public class Adventurer extends Char {
         return healAmount;
     }
 
+    /**
+     * Este método servirá para poder gestionar que los personajes al alcanzar un nivel evolucionen
+     * @return el personaje evolucionado
+     */
     @Override
     public Char levelUp() {
         if(getLevel() >= 4){

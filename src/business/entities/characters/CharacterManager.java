@@ -252,6 +252,11 @@ public class CharacterManager {
         }
     }
 
+    /**
+     * Este método comprobará que el personaje enviado puede evolucionar a cierto nivel
+     * @param character es el personaje que vamos a comprobar
+     * @return el personaje nuevo evolucionado o el anterior sin evolucionar
+     */
     public Char charLevelUp(Char character) {
         return character.levelUp();
     }
